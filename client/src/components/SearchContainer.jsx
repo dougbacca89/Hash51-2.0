@@ -4,11 +4,13 @@ import Search from './Search.jsx';
 import SearchResult from './SearchResult.jsx';
 
 const SearchContainer = props => {
-  
+
+
   return (
-  <div>
-  </div>
-  )
-};
+    <div>
+    </div>
+  );
+
+}
 
 export default SearchContainer;

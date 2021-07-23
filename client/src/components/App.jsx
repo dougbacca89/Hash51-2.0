@@ -1,29 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Login from './Login.jsx';
-import User from './User.jsx';
-import ConspiratorList from './ConspiratorList.jsx';
+import LoginContainer from './LoginContainer.jsx';
 import StoryContainer from './StoryContainer.jsx';
 import SearchContainer from './SearchContainer.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
 
-    this.state = {
-    };
-  }
-
-  componentDidMount() {
-  }
-
+  const[view, setView] = useState('login');
+  const[user, setUser] = useState(null);
  
-  render() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return (
+    <div>
+      {user === null
+        ? <LoginContainer />
+        : <StoryContainer />
+      }
+    </div>
+  );
 }
 
 export default App;
