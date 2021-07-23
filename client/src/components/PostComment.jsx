@@ -1,11 +1,7 @@
 import React from 'react';
 
-const PostComment = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const PostComment = props => (
+  <div />
+  );
 
 export default PostComment;

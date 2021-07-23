@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack"
+    "dev": "webpack",
+    "lint": "eslint . --ext .js --ext .jsx",
+    "lint:fix": "eslint --fix . --ext .js --ext .jsx"
+  },
+  "husky": {
+    "pre-commit": "npm run lint && npm run lint:fix"
   },
   "repository": {
     "type": "git",
@@ -38,9 +43,19 @@
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
     "eslint": "^7.30.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json": "^3.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-markdown": "^2.2.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^7.0.1",
     "rimraf": "^3.0.2",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.7.2"

@@ -1,11 +1,7 @@
 import React from 'react';
 
-const Conspirator = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const Conspirator = props => (
+  <div />
+  );
 
 export default Conspirator;

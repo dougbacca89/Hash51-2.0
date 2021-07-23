@@ -1,11 +1,7 @@
 import React from 'react';
 
-const CreateUser = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const CreateUser = props => (
+  <div />
+  );
 
 export default CreateUser;

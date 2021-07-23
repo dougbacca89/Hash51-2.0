@@ -13,6 +13,6 @@ const LoginContainer = () => {
       login container
     </div>
   ); 
-}
+};
 
 export default LoginContainer;

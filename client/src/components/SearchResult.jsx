@@ -1,11 +1,7 @@
 import React from 'react';
 
-const SearchResult = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const SearchResult = props => (
+  <div />
+  );
 
 export default SearchResult;

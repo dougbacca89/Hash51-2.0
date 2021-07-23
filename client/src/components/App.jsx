@@ -11,12 +11,12 @@ const App = () => {
  
   return (
     <div>
-      {user === null
-        ? <LoginContainer />
-        : <StoryContainer />
+      {user === null ?
+        <LoginContainer /> :
+        <StoryContainer />
       }
     </div>
   );
-}
+};
 
 export default App;

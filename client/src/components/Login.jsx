@@ -1,11 +1,7 @@
 import React from 'react';
 
-const Login = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const Login = props => (
+  <div />
+  );
 
 export default Login;

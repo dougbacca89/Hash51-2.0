@@ -1,11 +1,7 @@
 import React from 'react';
 
-const User = props => {
-  
-  return (
-  <div>
-  </div>
-  )
-};
+const User = props => (
+  <div />
+  );
 
 export default User;

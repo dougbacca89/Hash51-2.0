@@ -41,7 +41,7 @@ module.exports = {
     port: 3000
   }, 
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({template: path.join(__dirname, 'client/src', 'index.html')})
   ],
 
 };
