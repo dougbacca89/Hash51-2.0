@@ -13,7 +13,11 @@ const LoginContainer = (props) => {
 
   return (
     <div>
-      yo
+      {
+        view === 'login' ? 
+        <Login createUserClick={createUserClick}/> : 
+        <CreateUser updateUserClick={updateUserClick}/>
+      }
     </div>
   ); 
 };

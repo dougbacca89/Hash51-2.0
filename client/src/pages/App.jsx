@@ -11,19 +11,20 @@ const App = () => {
 
   const updateUserClick = (userName) => {
     setUser(userName);
+    
   }
 
   return (
     <div>
       <Switch> 
-        <Route path="/login">
-          <LoginContainer />
+        <Route path="/">
+          <LoginContainer user={user} updateUserClick={updateUserClick}/>
         </Route>
         <Route path="/story">
-          <StoryContainer />
+          <StoryContainer user={user}/>
         </Route>
         <Route path="/search">
-          <SearchContainer />
+          <SearchContainer user={user}/>
         </Route>
       </Switch>
     </div>
