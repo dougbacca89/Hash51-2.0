@@ -3,7 +3,9 @@ const express = require('express');
 // const { Tasks } = require('./db');
 
 const port = 3000;
-const distPath = path.resolve(__dirname, '..', 'dist');
+const distPath = path.resolve(__dirname, '../client/dist');
+// eslint-disable-next-line no-console
+console.log(distPath);
 
 const app = express();
 
@@ -13,13 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(distPath));
 
-app.get();
+// app.get();
 
-app.post();
+// app.post();
 
-app.put();
+// app.put();
 
-app.delete();
+// app.delete();
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
