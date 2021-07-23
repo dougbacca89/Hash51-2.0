@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comment = props => {
+const Login = props => {
   
   return (
   <div>
@@ -8,4 +8,4 @@ const Comment = props => {
   )
 };
 
-export default Comment;
+export default Login;
