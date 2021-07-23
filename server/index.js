@@ -5,11 +5,9 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const { serverRouter } = require('./routes/routes');
+const { passportRouter } = require('./routes/passportRoutes');
 
-// const passportLocalMongoose = require('passport-local-mongoose');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
-
-// const findOrCreate = require('mongoose-findorcreate');
 
 // const { Tasks } = require('./db');
 
@@ -24,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(distPath));
 app.use('/routes/routes', serverRouter);
+app.use('/routes/routes', passportRouter);
 
 app.use(session({
   secret: process.env.SECRET,
