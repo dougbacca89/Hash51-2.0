@@ -12,14 +12,20 @@ const App = () => {
   const updateUserClick = (userName) => {
     setUser(userName);
   }
- 
+
   return (
     <div>
-      {
-        user === null ?
-        <LoginContainer user={user} updateUserClick={updateUserClick}/> :
-        <StoryContainer user={user}/>
-      }
+      <Switch> 
+        <Route path="/login">
+          <LoginContainer />
+        </Route>
+        <Route path="/story">
+          <StoryContainer />
+        </Route>
+        <Route path="/search">
+          <SearchContainer />
+        </Route>
+      </Switch>
     </div>
   );
 };
