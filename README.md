@@ -1,6 +1,6 @@
 # Hash51
-## Introduction 
-We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots. 
+## Introduction
+We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots.
 
 ---
 ## Folder structure
@@ -39,8 +39,8 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://axios-http.com/docs/intro)
 * [Add docs]()
 
-### - APIs: 
-- YouTube API: 
+### - APIs:
+- YouTube API:
 * [Add docs]()
 - NASA API:
 * [Add docs]()
@@ -49,17 +49,22 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://docs.mongodb.com/manual/)
 * [Add docs]()
 
-### - Mongoose: 
+### - Mongoose:
 * [Documentation](https://mongoosejs.com/docs/guide.html)
 * [Add docs]()
 
 
-### - AWS: 
+### - AWS:
 * [Creating and managing a Node.js server on AWS](https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171)
 * [Add docs]()
 
+### - Github Actions:
+* [Documentation](https://docs.github.com/en/actions/quickstart)
+* [Testing Node Version](https://docs.github.com/en/actions/guides/building-and-testing-nodejs)
+* [Lint Docs](https://github.com/sibiraj-s/action-eslint)
+* [Setup-Node](https://github.com/actions/setup-node/)
 ### - Dotenv:
-* [Add docs]()
+* [Documentation](https://github.com/motdotla/dotenv#readme)
 
-### - lodash: 
+### - lodash:
 * [Add docs]()
