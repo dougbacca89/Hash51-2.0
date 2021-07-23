@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/berhanecole/Hash51.git"
+    "url": "git+https://github.com/SpaceExecs/Hash51.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/berhanecole/Hash51/issues"
+    "url": "https://github.com/SpaceExecs/Hash51/issues"
   },
-  "homepage": "https://github.com/berhanecole/Hash51#readme",
+  "homepage": "https://github.com/SpaceExecs/Hash51#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
