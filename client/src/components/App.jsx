@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 
-import LoginContainer from './LoginContainer.jsx';
-import StoryContainer from './StoryContainer.jsx';
-import SearchContainer from './SearchContainer.jsx';
+import LoginContainer from './pages/LoginContainer.jsx';
+import StoryContainer from './pages/StoryContainer.jsx';
+import SearchContainer from './../SearchContainer.jsx';
 
 const App = () => {
+  const [user, setUser] = useState(null);
 
-  const[view, setView] = useState('login');
-  const[user, setUser] = useState(null);
+  const updateUserClick = (userName) => {
+    setUser(userName);
+  }
  
   return (
     <div>
-      {user === null ?
-        <LoginContainer /> :
-        <StoryContainer />
+      {
+        user === null ?
+        <LoginContainer user={user} updateUserClick={updateUserClick}/> :
+        <StoryContainer user={user}/>
       }
     </div>
   );
