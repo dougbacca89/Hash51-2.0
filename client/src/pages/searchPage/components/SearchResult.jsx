@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = props => (
+const SearchResult = () => (
   <div />
   );
 

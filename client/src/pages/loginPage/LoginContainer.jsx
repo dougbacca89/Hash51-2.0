@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import Login from './components/Login.jsx';
-import CreateUser from './components/CreateUser.jsx';
+import Login from './components/Login';
+import CreateUser from './components/CreateUser';
 
 const LoginContainer = (props) => {
   const { updateUserClick } = props;

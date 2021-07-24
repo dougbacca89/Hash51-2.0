@@ -1,9 +1,11 @@
 import React from 'react';
 
-import Comment from './Comment.jsx';
+import Comment from './Comment';
 
-const ListComment = props => (
-  <div />
+const CommentList = () => (
+  <div>
+    <Comment />
+  </div>
   );
 
-export default ListComment;
+export default CommentList;

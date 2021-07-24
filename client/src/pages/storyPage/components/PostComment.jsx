@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostComment = props => (
+const PostComment = () => (
   <div />
   );
 
