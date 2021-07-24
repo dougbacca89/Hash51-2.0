@@ -8,13 +8,8 @@ const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 
 
-// const { Tasks } = require('./db');
-// const { Video, Image } = require('./database');
-
 const port = process.env.PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
-// eslint-disable-next-line no-console
-// console.log(distPath);
 
 const app = express();
 

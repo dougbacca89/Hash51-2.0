@@ -10,6 +10,7 @@ const { User } = require('../database/index');
 
 const passportRouter = Router();
 
+// Local Strategy //
 passportRouter.post('/register', (req, res) => {
   const { username, password } = req.body;
   User.register({ username }, password, (err, user) => {
@@ -40,6 +41,26 @@ passportRouter.get('/login', (req, res) => {
   }
   });
 });
+
+passportRouter.get('/logout', (req, res) => {
+  req.logout();
+  console.log('user successfully logged out');
+});
+
+// Google Strategy //
+
+passportRouter.get('/auth/google', (req, res) => {
+  passport.authenticate('google', { scope: ['profile'] });
+  });
+
+
+passportRouter.get('/auth/google/home',
+passport.authenticate('google', { failureRedirect: '/login' }),
+(req, res) => {
+  // Successful authentication, redirect home.
+  res.redirect('/');
+});
+
 
 
 module.exports = {

@@ -3,7 +3,6 @@
 // import mongoose from 'mongoose';
 
 const mongoose = require('mongoose');
-
 const passport = require('passport');
 
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -24,6 +23,10 @@ db.once('open', () => {
   // eslint-disable-next-line no-console
   console.log('Database Connection');
 });
+
+// const { Tasks } = require('./db');
+// const { Video, Image } = require('./database');
+
 // Create a mongoose connection to out mongo database
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
@@ -59,11 +62,12 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://localhost:8080/auth/google/hash51',
+  callbackURL: 'http://localhost:3000/routes/passportRoutes/auth/google/hash51',
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 }, (accessToken, refreshToken, profile, cb) => {
   // eslint-disable-next-line no-console
   console.log(profile);
+  // we can use plain mongoose to satisfy this query as well.
   User.findOrCreate({ googleId: profile.id }, (err, user) => cb(err, user)
   );
 }
