@@ -25,6 +25,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://reactrouter.com/web/example/basic)
 * [Server-Side Routing](https://reactrouter.com/web/guides/server-rendering)
 * [Add docs]()
+
+### - PropTypes in React:
+* [Documentation](https://reactjs.org/docs/typechecking-with-proptypes.html)
+
 ### - Chakra UI:
 * [Documentation](https://reactrouter.com/web/example/basic)
 * [Light/dark mode](https://www.youtube.com/watch?v=wI2vqXsjsIo)

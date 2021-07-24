@@ -15,16 +15,17 @@ const LoginContainer = (props) => {
   return (
     <div>
       {
-        view === 'login' ? 
-        <Login createUserClick={createUserClick}/> : 
+        view === 'login' ?
+        <Login createUserClick={createUserClick}/> :
         <CreateUser updateUserClick={updateUserClick}/>
       }
     </div>
-  ); 
+  );
 };
 
 LoginContainer.propTypes = {
-  updateUserClick: PropTypes.isRequired,
+  updateUserClick: PropTypes.func.isRequired
+  // updateUserClick: PropTypes.func
 };
 
 export default LoginContainer;

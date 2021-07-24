@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Flex,
   Heading,
@@ -12,9 +12,13 @@ import {
   InputRightElement
 } from "@chakra-ui/react";
 
+import { UserContext } from '../../../contexts/UserContext';
+
 const CreateUser = () => {
+  const { isLoggedIn } = useContext(UserContext);
+  console.log(isLoggedIn);
   const [showPassword] = useState(false);
-  
+
   return (
     <Flex
       flexDirection="column"
