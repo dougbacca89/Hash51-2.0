@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Search from './components/Search.jsx';
-import SearchResult from './components/SearchResult.jsx';
+import Search from './components/Search';
+import SearchResult from './components/SearchResult';
 
-const SearchContainer = props => (
-    <div />
-  );
-
-SearchContainer.propTypes = {
-};
+const SearchContainer = () => (
+  <div>
+    <Search/>
+    <SearchResult/>
+  </div>
+);
 
 export default SearchContainer;

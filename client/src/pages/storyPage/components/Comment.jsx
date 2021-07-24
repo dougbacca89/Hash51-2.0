@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Comment = props => (
+const Comment = () => (
   <div />
   );
-
-Comment.propTypes = {
-};
 
 export default Comment;

@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Comment from './Comment.jsx';
+import Comment from './Comment';
 
-const CommentList = props => (
-  <div />
+const CommentList = () => (
+  <div>
+    <Comment />
+  </div>
   );
-
-CommentList.propTypes = {
-};
 
 export default CommentList;

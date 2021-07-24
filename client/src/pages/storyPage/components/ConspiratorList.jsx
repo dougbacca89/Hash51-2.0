@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Conspirator from './Conspirator.jsx';
+import Conspirator from './Conspirator';
 
-const ConspiratorList = props => (
-  <div />
+const ConspiratorList = () => (
+  <div>
+    <Conspirator />
+  </div>
   );
-
-ConspiratorList.propTypes = {
-};
 
 export default ConspiratorList;
