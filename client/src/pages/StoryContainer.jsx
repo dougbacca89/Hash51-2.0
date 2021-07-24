@@ -10,10 +10,8 @@ const StoryContainer = props => {
   const { user } = props;
   
   return (
-    <div>
-      
-    </div>
-  )
+    <div />
+  );
 };
 
 export default StoryContainer;

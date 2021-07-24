@@ -8,8 +8,8 @@ const LoginContainer = (props) => {
   const [ view, setView ] = useState('login');
 
   const createUserClick = () => {
-    setView('createUser')
-  }
+    setView('createUser');
+  };
 
   return (
     <div>

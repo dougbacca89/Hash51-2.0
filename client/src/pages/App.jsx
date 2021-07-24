@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Switch, Route } from "react-router-dom";
 
 import LoginContainer from './LoginContainer.jsx';
 import StoryContainer from './StoryContainer.jsx';
@@ -12,7 +12,7 @@ const App = () => {
   const updateUserClick = (userName) => {
     setUser(userName);
     
-  }
+  };
 
   return (
     <div>
