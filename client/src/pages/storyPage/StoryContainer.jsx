@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
@@ -12,6 +13,9 @@ const StoryContainer = props => {
   return (
     <div />
   );
+};
+
+StoryContainer.propTypes = {
 };
 
 export default StoryContainer;

@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 # Hash51
 ## Introduction
 We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots.
@@ -33,7 +34,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
 ### - Passport:
 * [Documentation](https://www.passportjs.org/docs/downloads/html/)
-* [Add docs]()
+* [Passport Operations](http://www.passportjs.org/docs/login/)
+
+### - Google OAUTH 2.0 with Passport:
+* [Documentation](http://www.passportjs.org/packages/passport-google-oauth20/)
 
 ### - Axios:
 * [Documentation](https://axios-http.com/docs/intro)
@@ -63,8 +67,9 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Testing Node Version](https://docs.github.com/en/actions/guides/building-and-testing-nodejs)
 * [Lint Docs](https://github.com/sibiraj-s/action-eslint)
 * [Setup-Node](https://github.com/actions/setup-node/)
+
 ### - Dotenv:
 * [Documentation](https://github.com/motdotla/dotenv#readme)
 
 ### - lodash:
-* [Add docs]()
+* [Add docs](https://lodash.com/docs/)
