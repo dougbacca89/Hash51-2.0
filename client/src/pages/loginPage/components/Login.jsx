@@ -9,14 +9,13 @@ import {
   Stack,
   InputLeftElement,
   Box,
-  Link,
   FormControl,
   InputRightElement
 } from "@chakra-ui/react";
 
 const Login = props => {
   const { createUserClick } = props;
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword] = useState(false);
  
   return ( 
     <Flex

@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const PostComment = props => (
+const PostComment = () => (
   <div />
   );
 
-PostComment.propTypes = {
-};
 export default PostComment;

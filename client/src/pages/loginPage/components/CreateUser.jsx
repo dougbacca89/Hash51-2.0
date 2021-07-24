@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter } from "react-router-dom";
-import PropTypes from 'prop-types';
 import {
   Flex,
   Heading,
@@ -10,14 +8,12 @@ import {
   Stack,
   InputLeftElement,
   Box,
-  Link,
   FormControl,
   InputRightElement
 } from "@chakra-ui/react";
 
-const CreateUser = props => {
-  const { updateUserClick } = props;
-  const [showPassword, setShowPassword] = useState(false);
+const CreateUser = () => {
+  const [showPassword] = useState(false);
   
   return (
     <Flex
@@ -102,7 +98,4 @@ const CreateUser = props => {
   );
 };
 
-  CreateUser.propTypes = {
-    updateUserClick: PropTypes.isRequired,
-  };
 export default CreateUser;
