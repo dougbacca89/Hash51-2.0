@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console  */
+/* eslint-disable no-unused-vars  */
 
 const { Router } = require('express');
 const passport = require('passport');
@@ -16,7 +17,7 @@ passportRouter.post('/register', (req, res) => {
       console.log(err);
       res.sendStatus(500);
     } else {
-      passport.authenticate('local')(req, res, (err, result) => {
+      passport.authenticate('local')(req, res, (error, result) => {
         console.log(user);
         res.sendStatus(200);
       });
@@ -32,7 +33,7 @@ passportRouter.get('/login', (req, res) => {
       console.log(err);
       res.sendStatus(500);
     } else {
-      passport.authenticate('local')(req, res, (err, result) => {
+      passport.authenticate('local')(req, res, (error, result) => {
         console.log(user);
         res.sendStatus(200);
     });

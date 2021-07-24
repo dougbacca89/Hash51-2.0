@@ -15,14 +15,22 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
 
+const db = mongoose.connection;
+
+// eslint-disable-next-line no-console
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  // we're connected!
+  // eslint-disable-next-line no-console
+  console.log('Database Connection');
+});
 // Create a mongoose connection to out mongo database
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: true,
-}).then(() => console.log('Connected to database'))
-.catch(err => console.error('Failed to connect to database', err));;
+});
 
 const userSchema = mongoose.Schema({
   email: String,
@@ -64,6 +72,8 @@ passport.use(new GoogleStrategy({
 
 
 module.exports = { User };
+
+
 
 // const TestSchema = new Schema({
 
