@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-// const { Video } = require('./database');
+// const { Video, Image } = require('./database');
 
 const port = 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
