@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 # Hash51
 ## Introduction
 We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots.
@@ -33,7 +34,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
 ### - Passport:
 * [Documentation](https://www.passportjs.org/docs/downloads/html/)
-* [Add docs]()
+* [Passport Operations](http://www.passportjs.org/docs/login/)
+
+### - Google OAUTH 2.0 with Passport:
+* [Documentation](http://www.passportjs.org/packages/passport-google-oauth20/)
 
 ### - Axios:
 * [Documentation](https://axios-http.com/docs/intro)
