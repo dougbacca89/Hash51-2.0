@@ -7,9 +7,14 @@ const passport = require('passport');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 
+// const { User } = require('./database/index');
+
+// const { Video, Image, Comment } = require('./database');
 
 const port = process.env.PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
+// eslint-disable-next-line no-console
+// console.log(distPath);
 
 const app = express();
 
@@ -27,6 +32,21 @@ app.use(session({
   saveUninitialized: false,
 }));
 
+// app.get('/api/images', (req, res) =>{
+//   Image.find()
+//   .then((images) =>{
+//     res.status(200).send(images);
+//   })
+//   .catch((error) =>{
+//     // eslint-disable-next-line no-console
+//     console.log('ERROR app.GET /images', error);
+//     res.sendStatus(500);
+//   });
+// });
+
+// app.post('/images', (req, res) =>{
+//   Image.
+// });
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

@@ -76,13 +76,3 @@ passport.use(new GoogleStrategy({
 
 
 module.exports = { User };
-
-
-
-// const TestSchema = new Schema({
-
-// });
-
-// module.exports = {
-//   Schema: model('Test', TestSchema),
-// };
