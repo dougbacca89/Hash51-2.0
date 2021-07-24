@@ -7,4 +7,5 @@ const Comment = props => (
 
 Comment.propTypes = {
 };
+
 export default Comment;
