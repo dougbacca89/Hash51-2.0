@@ -1,10 +1,10 @@
-const { Express, Router } = require('express');
+const { Router } = require('express');
 
 const Images = Router();
 
 const { getImagesFromNasa } = require('../helpers/getImages');
 
-Images.use(Express.json());
+
 
 // Images.get('api/images', (req, res) =>{
 
@@ -12,10 +12,11 @@ Images.use(Express.json());
 
 Images.post('/', (req, res) => getImagesFromNasa(req.body)
     // eslint-disable-next-line arrow-body-style
-    .then((data) => { return data ;})
-    .then((data) => { res.status(200).send(data); })
-    .catch((err) => {
-      res.status(500).send('Database Error', err);
+    // eslint-disable-next-line no-console
+    .then((data) => { console.log(data) ;})
+    .then((data) => { res.status(201).send(data); })
+    .catch(() => {
+      res.sendStatus(500);
     }));
 
 

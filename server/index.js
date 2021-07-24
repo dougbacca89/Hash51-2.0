@@ -8,7 +8,7 @@ const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 
 // const { User } = require('./database/index');
-
+const { Images } = require('./api/images');
 // const { Video, Image, Comment } = require('./database');
 
 const port = process.env.PORT || 3000;
@@ -25,7 +25,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/routes/routes', serverRouter);
 app.use('/routes/passportRoutes', passportRouter);
-
+app.use('/api/images', Images);
 app.use(session({
   secret: process.env.SECRET,
   resave: false,
