@@ -1,5 +1,10 @@
+/* eslint-disable import/extensions */
+
 import React, { useState } from 'react';
-import { BrowserRouter as Switch, Route } from "react-router-dom";
+import {
+  // BrowserRouter as Router,
+  Switch,
+  Route } from "react-router-dom";
 
 
 import LoginContainer from './loginPage/LoginContainer.jsx';
@@ -12,13 +17,13 @@ const App = () => {
 
   const updateUserClick = (userName) => {
     setUser(userName);
-    
+
   };
 
   return (
     <div>
-      <Switch> 
-        <Route path="/">
+      <Switch>
+        <Route exact path="/">
           <LoginContainer user={user} updateUserClick={updateUserClick}/>
         </Route>
         <Route path="/story">

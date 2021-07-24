@@ -23,6 +23,7 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
 ### - React-router:
 * [Documentation](https://reactrouter.com/web/example/basic)
+* [Server-Side Routing](https://reactrouter.com/web/guides/server-rendering)
 * [Add docs]()
 ### - Chakra UI:
 * [Documentation](https://reactrouter.com/web/example/basic)
@@ -35,7 +36,7 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 ### - Passport:
 * [Documentation](https://www.passportjs.org/docs/downloads/html/)
 * [Passport Operations](http://www.passportjs.org/docs/login/)
-
+* [With React Router](https://reactrouter.com/web/example/auth-workflow)
 ### - Google OAUTH 2.0 with Passport:
 * [Documentation](http://www.passportjs.org/packages/passport-google-oauth20/)
 
