@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Login from './components/Login.jsx';
 import CreateUser from './components/CreateUser.jsx';
 
 const LoginContainer = (props) => {
-  const { user, setUser, updateUserClick } = props;
+  const { updateUserClick } = props;
   const [ view, setView ] = useState('login');
 
   const createUserClick = () => {
@@ -20,6 +21,10 @@ const LoginContainer = (props) => {
       }
     </div>
   ); 
+};
+
+LoginContainer.propTypes = {
+  updateUserClick: PropTypes.isRequired,
 };
 
 export default LoginContainer;

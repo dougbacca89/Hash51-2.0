@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Switch, Route } from "react-router-dom";
 
-import LoginContainer from './LoginContainer.jsx';
-import StoryContainer from './StoryContainer.jsx';
-import SearchContainer from './SearchContainer.jsx';
+import LoginContainer from './loginPage/LoginContainer.jsx';
+import StoryContainer from './storyPage/StoryContainer.jsx';
+import SearchContainer from './searchPage/SearchContainer.jsx';
 
 
 const App = () => {
