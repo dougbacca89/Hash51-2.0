@@ -1,15 +1,19 @@
 /* eslint-disable no-console */
 
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+
+const mongoose = require('mongoose');
 
 const passport = require('passport');
 
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
 // const { Schema, model } = mongoose;
 
-const mongoUri = 'mongodb://localhost:3000/Hash51';
+const mongoUri = 'mongodb://localhost:27017/Hash51';
 
 // Create a mongoose connection to out mongo database
 mongoose.connect(mongoUri, {
@@ -30,7 +34,7 @@ userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 // eslint-disable-next-line new-cap
-const User = new mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 passport.use(User.createStrategy());
 
@@ -47,7 +51,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/google/secrets',
+  callbackURL: 'http://localhost:8080/auth/google/hash51',
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 }, (accessToken, refreshToken, profile, cb) => {
   // eslint-disable-next-line no-console
@@ -59,10 +63,7 @@ passport.use(new GoogleStrategy({
 
 
 
-
-
-
-
+module.exports = { User };
 
 // const TestSchema = new Schema({
 
