@@ -1,5 +1,6 @@
 /*  eslint-disable func-style */
 import React, { createContext, useState } from 'react';
+
 import axios from 'axios';
 
 
@@ -11,8 +12,8 @@ function UserContextProvider({ children }){
   const {favorites, setFavorites} = useState([]);
   const isLoggedIn = true;
 
-  const googleLogin = () => {
-    axios.get('/auth/google')
+  const googleLogin = async () => {
+    await axios.get('/auth/google')
     // .then(() => axios.get('routes/passportRoutes/auth/google/home'))
     .then(() => console.log('successful login'))
     .catch((err) => console.log(err));

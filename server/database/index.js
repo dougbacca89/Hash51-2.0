@@ -75,6 +75,24 @@ passport.use(new GoogleStrategy({
 }
 ));
 
+// alt insertion into db
+// (accessToken, refreshToken, profile, done) => {
+//   User.findOne({ googleId: profile.id }).then((existingUser) => {
+//       if (existingUser) {
+//           done(null, existingUser);
+//       } else {
+//           new User({
+//               googleId: profile.id,
+//           })
+//               .save()
+//               .then((newUser) => {
+//                   done(null, newUser);
+//               });
+//       }
+//   });
+// }
+// )
+
 
 
 module.exports = { User };

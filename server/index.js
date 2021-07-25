@@ -26,19 +26,23 @@ const app = express();
     //   next();
     // });
 
-    app.use(cors({
-      origin: '*',
-      methods: "GET,POST,PATCH,DELETE,PUT",
-      allowedHeaders: "Content-Type, Authorization",
-  }));
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+  //   app.use(cors({
+  //     origin: true,
+  //     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  //     allowedHeaders: "Content-Type, Authorization",
+  // }));
+  app.options('*', cors());
+
     app.use(express.static(distPath));
+
+
     app.use(passport.initialize());
     app.use(passport.session());
-    app.use('/routes/routes', serverRouter);
     app.use('/', passportRouter);
+    app.use('/routes/routes', serverRouter);
 
 app.use(session({
   secret: process.env.SECRET,
