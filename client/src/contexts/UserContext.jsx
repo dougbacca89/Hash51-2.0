@@ -1,16 +1,29 @@
-// eslint-disable (func-style)
-import React, { createContext } from 'react';
+/*  eslint-disable func-style */
+import React, { createContext, useState } from 'react';
+import axios from 'axios';
 
 
 const UserContext = createContext();
 
 function UserContextProvider({ children }){
-
+  const {user, setUser} = useState({});
+  const {conspirators, setConspirators} = useState([]);
+  const {favorites, setFavorites} = useState([]);
   const isLoggedIn = true;
 
-  const userProps = {
-    isLoggedIn
+  const googleLogin = () => {
+    axios.get('routes/passportRoutes/auth/google')
+    // .then(() => axios.get('routes/passportRoutes/auth/google/home'))
+    .then(() => console.log('successful login'))
+    .catch((err) => console.log(err));
+
   };
+
+  const userProps = {
+    isLoggedIn,
+    googleLogin
+  };
+
 
   return (
     <UserContext.Provider value={userProps}>

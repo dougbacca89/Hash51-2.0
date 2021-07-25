@@ -49,16 +49,16 @@ passportRouter.get('/logout', (req, res) => {
 
 // Google Strategy //
 
-passportRouter.get('/auth/google', (req, res) => {
-  passport.authenticate('google', { scope: ['profile'] });
-  });
+passportRouter.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] })
+  );
 
 
 passportRouter.get('/auth/google/home',
-passport.authenticate('google', { failureRedirect: '/login' }),
+passport.authenticate('google', { failureRedirect: '/error' }),
 (req, res) => {
   // Successful authentication, redirect home.
-  res.redirect('/');
+  res.redirect('/success');
 });
 
 

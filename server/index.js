@@ -31,7 +31,7 @@ app.use(session({
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`
-  Listening at: http://127.0.0.1:${port}
+  Listening at: http://localhost:${port}
   `);
 });
 

@@ -4,6 +4,7 @@
 
 const mongoose = require('mongoose');
 const passport = require('passport');
+require('dotenv').config();
 
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
@@ -62,10 +63,11 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/routes/passportRoutes/auth/google/hash51',
+  callbackURL: 'http://localhost:3000/login',
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
 }, (accessToken, refreshToken, profile, cb) => {
   // eslint-disable-next-line no-console
+  console.log('within auth');
   console.log(profile);
   // we can use plain mongoose to satisfy this query as well.
   User.findOrCreate({ googleId: profile.id }, (err, user) => cb(err, user)
