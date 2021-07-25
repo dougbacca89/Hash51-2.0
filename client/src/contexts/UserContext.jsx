@@ -1,5 +1,7 @@
-/*  eslint-disable func-style */
+/*  eslint-disable func-style, no-unused-vars, no-console */
 import React, { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
+
 
 import axios from 'axios';
 
@@ -30,7 +32,12 @@ function UserContextProvider({ children }){
     <UserContext.Provider value={userProps}>
       {children}
     </UserContext.Provider>
-  )
+  );
 }
+
+
+UserContextProvider.propTypes = {
+  children: PropTypes.element.isRequired
+};
 
 export { UserContext, UserContextProvider };

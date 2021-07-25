@@ -1,5 +1,6 @@
 /* eslint-disable func-style */
 import React, { createContext } from 'react';
+import PropTypes from 'prop-types';
 
 
 const EvidenceContext = createContext();
@@ -18,5 +19,10 @@ function EvidenceContextProvider({ children }){
     </EvidenceContext.Provider>
   );
 }
+
+EvidenceContextProvider.propTypes = {
+  children: PropTypes.element.isRequired
+};
+
 
 export { EvidenceContext, EvidenceContextProvider };

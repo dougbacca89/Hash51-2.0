@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {

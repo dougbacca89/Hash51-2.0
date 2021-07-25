@@ -23,4 +23,8 @@ StoryContainer.defaultProps = {
   user: null,
 };
 
+StoryContainer.propTypes = {
+  user: null,
+};
+
 export default StoryContainer;
