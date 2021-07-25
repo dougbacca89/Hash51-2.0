@@ -29,15 +29,25 @@ const app = express();
 
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-  //   app.use(cors({
-  //     origin: true,
-  //     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  //     allowedHeaders: "Content-Type, Authorization",
-  // }));
-  app.options('*', cors());
 
     app.use(express.static(distPath));
 
+      app.use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: "Content-Type, Authorization",
+        credentials: true
+    }));
+
+    // app.use(cors());
+
+    // app.use((req, res, next) => {
+    //   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //   next();
+    // });
+
+    // app.options('*', cors());
 
     app.use(passport.initialize());
     app.use(passport.session());
@@ -49,18 +59,6 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
 }));
-
-// app.get('/auth/google',
-//   passport.authenticate('google', { scope: ['profile'] })
-//   );
-
-
-// app.get('/auth/google/login',
-// passport.authenticate('google', { failureRedirect: '/error' }),
-// (req, res) => {
-//   // Successful authentication, redirect home.
-//   res.redirect('/success');
-// });
 
 
 app.listen(port, () => {

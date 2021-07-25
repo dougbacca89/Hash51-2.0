@@ -47,6 +47,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Endpoint Docs](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#oauth-2.0-endpoints_4)
 * [Facebook Example of OAUTH implementation](https://github.com/passport/express-4.x-facebook-example)
 
+### - CORS:
+* [Documentation](https://www.npmjs.com/package/cors#configuring-cors)
+* [Add docs]()
+
 ### - Axios:
 * [Documentation](https://axios-http.com/docs/intro)
 * [Add docs]()
