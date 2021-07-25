@@ -1,4 +1,4 @@
-/* eslint-disable (func-style) */
+/* eslint-disable func-style */
 import React, { createContext } from 'react';
 
 
@@ -6,7 +6,7 @@ const EvidenceContext = createContext();
 
 function EvidenceContextProvider({ children }){
 
-  const hasEvidence = 'Yes We Do'
+  const hasEvidence = 'Yes We Do';
 
   const evidenceProps = {
     hasEvidence,
@@ -16,7 +16,7 @@ function EvidenceContextProvider({ children }){
     <EvidenceContext.Provider value={evidenceProps}>
       {children}
     </EvidenceContext.Provider>
-  )
+  );
 }
 
 export { EvidenceContext, EvidenceContextProvider };

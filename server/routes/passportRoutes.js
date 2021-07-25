@@ -50,11 +50,10 @@ passportRouter.get('/logout', (req, res) => {
 // Google Strategy //
 
 passportRouter.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] })
-  );
+passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => console.log('wagwan'));
 
 
-passportRouter.get('/auth/google/home',
+passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: '/error' }),
 (req, res) => {
   // Successful authentication, redirect home.

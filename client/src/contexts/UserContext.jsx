@@ -12,7 +12,7 @@ function UserContextProvider({ children }){
   const isLoggedIn = true;
 
   const googleLogin = () => {
-    axios.get('routes/passportRoutes/auth/google')
+    axios.get('/auth/google')
     // .then(() => axios.get('routes/passportRoutes/auth/google/home'))
     .then(() => console.log('successful login'))
     .catch((err) => console.log(err));
