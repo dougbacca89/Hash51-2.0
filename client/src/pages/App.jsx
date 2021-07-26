@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions */
+/* eslint-disable import/extensions, no-console, no-unused-vars */
 
 import React, { useState } from 'react';
 import {
@@ -13,7 +13,7 @@ import {
 
 
 import LoginContainer from './loginPage/LoginContainer.jsx';
-import StoryContainer from './storyPage/StoryContainer.jsx';
+import StoryContainer from './storyPage/StoryContainer';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
@@ -30,8 +30,10 @@ const testUser = {
   conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };
 
+const updateUserClick = () => console.log('click');
+
 const App = () => {
-  const [user] = useState(testUser);
+  const [user, setUser] = useState(testUser);
 
   return (
     <div>
@@ -49,8 +51,8 @@ const App = () => {
           <Route exact path="/">
             <StoryContainer user={user}/>
           </Route>
-          <Route exact path="/login">
-            <LoginContainer user={user} />
+          <Route path="/userLogin">
+            <LoginContainer user={user} updateUserClick={updateUserClick}/>
           </Route>
           <Route exact path="/story/:nasa_id">
             <StoryContainer user={user} />

@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
+
 import React, {useContext, useState} from 'react';
-import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 import {
   Flex,
@@ -10,6 +11,7 @@ import {
   InputLeftElement,
   InputRightElement
 } from "@chakra-ui/react";
+import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const Search = () => {
   const { fetchSearch } = useContext(EvidenceContext);

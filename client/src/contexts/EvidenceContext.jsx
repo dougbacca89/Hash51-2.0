@@ -16,7 +16,7 @@ function EvidenceContextProvider({ children }){
   const fetchSearch = async(query) => {
     await axios.post('/api/images/search', { query })
     .then(results => {
-      console.log(results);
+      // console.log(results);
       setSearchResults(results.data);
     });
   };

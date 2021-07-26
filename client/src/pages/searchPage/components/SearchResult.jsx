@@ -5,7 +5,7 @@ import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
   const { searchResults } = useContext(EvidenceContext);
-  console.log(searchResults);
+  // console.log(searchResults);
 
   return searchResults.length ?
  (

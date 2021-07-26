@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import  { useParams } from 'react-router-dom';
-import { Heading } from "@chakra-ui/react";
 
 import PropTypes from 'prop-types';
 
@@ -11,6 +10,7 @@ import {
   Text,
   Box,
   Square,
+  Heading,
   Center
 } from "@chakra-ui/react";
 

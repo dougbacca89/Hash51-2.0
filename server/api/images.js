@@ -1,4 +1,4 @@
-// eslint-disable no-console
+/* eslint-disable no-console, no-unused-vars */
 
 const { Router } = require('express');
 const express = require('express');
