@@ -60,6 +60,10 @@ const app = express();
     app.use('/api/images', Images);
     app.use('/routes/routes', serverRouter);
 
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+    });
+
 app.use(session({
   secret: process.env.SECRET,
   resave: false,

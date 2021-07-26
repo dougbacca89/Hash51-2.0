@@ -2,6 +2,8 @@
 
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import {
   Flex,
   Heading,
@@ -74,6 +76,7 @@ const Login = props => {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
+              <Link to='/Search'>
               <Button
                 borderRadius={10}
                 type="submit"
@@ -82,6 +85,7 @@ const Login = props => {
               >
                 Login
               </Button>
+              </Link>
               <Box>
                 Do we know you?{" "}
               </Box>

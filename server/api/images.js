@@ -12,8 +12,9 @@ Images.use(express.json());
 const { saveImage } = require('../database/index');
 
 
-Images.post('/search', (req, res) =>
-getImagesFromNasa('saturn')
+Images.post('/search', (req, res) => {
+const { query } = req.body;
+getImagesFromNasa(query)
   .then(({ data }) =>  data )
     .then(data => {
       const parsedData = data.collection.items.map( result => {
@@ -26,13 +27,15 @@ getImagesFromNasa('saturn')
         };
         return resultObj;
       });
+      console.log(parsedData);
       return parsedData;
     })
     .then(data => res.status(201).send(data))
     .catch((err) => {
       console.log(err);
       res.sendStatus(500);
-    }));
+    });
+  });
 
 
 
