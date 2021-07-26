@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   Flex,
@@ -13,11 +15,16 @@ import {
   InputRightElement
 } from "@chakra-ui/react";
 
+import { UserContext } from '../../../contexts/UserContext';
+
 const Login = props => {
   const { createUserClick } = props;
   const [showPassword] = useState(false);
- 
-  return ( 
+
+  const { isLoggedIn } = useContext(UserContext);
+  console.log(isLoggedIn);
+
+  return (
     <Flex
     flexDirection="column"
     width="100wh"
@@ -78,9 +85,9 @@ const Login = props => {
               <Box>
                 Do we know you?{" "}
               </Box>
-              <Button 
+              <Button
                 borderRadius={10}
-                color="white" 
+                color="white"
                 onClick={createUserClick}
                 variant="solid"
                 colorScheme="purple"
@@ -96,7 +103,7 @@ const Login = props => {
 };
 
 Login.propTypes = {
-  createUserClick: PropTypes.isRequired,
+  createUserClick: PropTypes.func.isRequired,
 };
 
 export default Login;

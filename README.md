@@ -25,6 +25,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://reactrouter.com/web/example/basic)
 * [Server-Side Routing](https://reactrouter.com/web/guides/server-rendering)
 * [Add docs]()
+
+### - PropTypes in React:
+* [Documentation](https://reactjs.org/docs/typechecking-with-proptypes.html)
+
 ### - Chakra UI:
 * [Documentation](https://reactrouter.com/web/example/basic)
 * [Light/dark mode](https://www.youtube.com/watch?v=wI2vqXsjsIo)
@@ -37,8 +41,15 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://www.passportjs.org/docs/downloads/html/)
 * [Passport Operations](http://www.passportjs.org/docs/login/)
 * [With React Router](https://reactrouter.com/web/example/auth-workflow)
+* [Troubleshooting CORS](https://stackoverflow.com/questions/63289585/cors-issue-with-passport-js-google-oauth-strategy)
 ### - Google OAUTH 2.0 with Passport:
 * [Documentation](http://www.passportjs.org/packages/passport-google-oauth20/)
+* [Endpoint Docs](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#oauth-2.0-endpoints_4)
+* [Facebook Example of OAUTH implementation](https://github.com/passport/express-4.x-facebook-example)
+
+### - CORS:
+* [Documentation](https://www.npmjs.com/package/cors#configuring-cors)
+* [Add docs]()
 
 ### - Axios:
 * [Documentation](https://axios-http.com/docs/intro)

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const ImageSchema = new mongoose.Schema({
+  id: Number,
   title: String,
   photographer: String,
   description: String,
@@ -10,4 +11,26 @@ const ImageSchema = new mongoose.Schema({
 
 const Image = mongoose.model('Image', ImageSchema);
 
+const saveImage = (image) => {
+  const anImage = new Image({
+    id: image.id,
+    title: image.title,
+    photographer: image.photographer,
+    description: image.description,
+    imageUrl: image.imageUrl,
+    location: image.location,
+  });
+  return Image.findOne({ id: anImage.id }).then((data) => {
+    if (data) {
+      return data;
+    }
+    return anImage.save();
+  });
+};
+
+
+// const getImages = () => {
+//   return Image.find({}, null,)
+// }
 module.exports = Image;
+module.exports.saveImage = saveImage;

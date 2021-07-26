@@ -3,6 +3,7 @@
 
 const { Router } = require('express');
 const passport = require('passport');
+const cors = require('cors');
 
 
 const { User } = require('../database/index');
@@ -49,16 +50,15 @@ passportRouter.get('/logout', (req, res) => {
 
 // Google Strategy //
 
-passportRouter.get('/auth/google', (req, res) => {
-  passport.authenticate('google', { scope: ['profile'] });
-  });
+passportRouter.get('/auth/google',
+passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => console.log('wagwan'));
 
 
-passportRouter.get('/auth/google/home',
-passport.authenticate('google', { failureRedirect: '/login' }),
+passportRouter.get('/auth/google/login',
+passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
   // Successful authentication, redirect home.
-  res.redirect('/');
+  res.redirect('/success');
 });
 
 
