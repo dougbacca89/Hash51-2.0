@@ -28,7 +28,23 @@ const StoryContainer = props => {
         <User user={user}/>
         <ConspiratorList conspirators={conspirators}/>
       </Box>
-      <Box h="85vh" minW="60vw" verticalAlign="top" borderRadius={10}>
+      <Box 
+        maxH="80vh" 
+        minW="60vw" 
+        verticalAlign="top" 
+        borderRadius={10} 
+        overflowY="scroll" 
+        sx={{
+          '&::-webkit-scrollbar': {
+            width: '16px',
+            borderRadius: '8px',
+            backgroundColor: `rgba(0, 0, 0, 0.05)`,
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: `rgba(0, 0, 0, 0.05)`,
+          },
+        }}
+      >
         <Story conspiracies={conspiracies}/>
         <Story conspiracies={conspiracies}/>
         <Story conspiracies={conspiracies}/>

@@ -32,7 +32,7 @@ const App = () => {
       <Flex
         flexDirection="column"
         width="100wh"
-        height="100vh"
+        minH="91vh"
         backgroundColor="#3a2a5e"
         justifyContent="top"
         alignItems="center"
