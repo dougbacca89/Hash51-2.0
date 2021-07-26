@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 
-// import LoginContainer from './loginPage/LoginContainer.jsx';
+import LoginContainer from './loginPage/LoginContainer.jsx';
 import StoryContainer from './storyPage/StoryContainer.jsx';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
@@ -49,6 +49,9 @@ const App = () => {
           <Route exact path="/">
           <StoryContainer user={user}/>
           {/* <LoginContainer user={user} updateUserClick={updateUserClick}/> */}
+          </Route>
+          <Route exact path="/login">
+            <LoginContainer user={user} />
           </Route>
           <Route path="/story">
             <StoryContainer user={user} />
