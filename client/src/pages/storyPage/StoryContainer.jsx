@@ -20,13 +20,15 @@ import PostComment from './components/PostComment.jsx';
 
 const StoryContainer = props => {
   const { user } = props;
+  const { conspirators } = user;
 
   return (
     <Flex color="white">
-      <Center w="15vw" bg="green.500" mr="10px">
-        <Text>Box 1</Text>
-      </Center>
-      <Box flex="1" bg="green.500" h="70vh" minW="75vw">
+      <Box w="10vw" mr="10px">
+        <User />
+        <ConspiratorList conspirators={conspirators}/>
+      </Box>
+      <Box flex="1" bg="green.500" h="85vh" minW="80vw" verticalAlign="top">
         <Text>Box 3</Text>
       </Box>
     </Flex>

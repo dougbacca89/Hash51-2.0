@@ -8,7 +8,7 @@ const Header = () => (
         Hash 51
       </Heading>
       <Heading as="h3" size="md" m={2}>
-        <Link color="green.500">Get evidence</Link>
+        <Link color="green.500">Get evidence</Link> {" "}
         <Link color="green.500">Find conspirators</Link>
       </Heading>
     </Flex>

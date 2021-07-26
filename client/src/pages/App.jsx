@@ -27,7 +27,7 @@ import Header from './Header.jsx';
 
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(testUser);
 
   const updateUserClick = (userName) => {
     setUser(userName);
@@ -60,6 +60,10 @@ const App = () => {
       </Flex>
     </div>
   );
+};
+
+const testUser = {
+  conspirators: [{},{},{},{},{}]
 };
 
 export default App;
