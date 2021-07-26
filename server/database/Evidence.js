@@ -7,6 +7,7 @@ const EvidenceSchema = new mongoose.Schema({
   description: String,
   imageUrl: String,
   location: String,
+  keywords: [String],
   imageThumb: String,
   nasa_id: String
 });

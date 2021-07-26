@@ -19,8 +19,8 @@ const distPath = path.resolve(__dirname, '../client/dist');
 // console.log(distPath);
 
 const app = express();
-app.use('/api/images', Evidence);
-// app.use('/api/comments', Comments);
+
+
 
 // app.use((req, res, next) => {
   //   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -58,6 +58,7 @@ app.use('/api/images', Evidence);
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
+    app.use('/api/images', Evidence);
     app.use('/routes/routes', serverRouter);
 
 app.use(session({

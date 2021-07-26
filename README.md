@@ -23,8 +23,9 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
 ### - React-router:
 * [Documentation](https://reactrouter.com/web/example/basic)
-* [Server-Side Routing](https://reactrouter.com/web/guides/server-rendering)
-* [Add docs]()
+* [Server-Side Routing with ](https://reactrouter.com/web/guides/server-rendering)
+* [Server-Side For React-Router 5](https://ui.dev/react-router-v5-server-rendering/)
+* [Different Routers in React-Router](https://learnwithparam.com/blog/different-types-of-router-in-react-router/)
 
 ### - PropTypes in React:
 * [Documentation](https://reactjs.org/docs/typechecking-with-proptypes.html)
