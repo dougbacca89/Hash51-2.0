@@ -30,7 +30,7 @@ const StoryContainer = props => {
       </Box>
       <Box 
         maxH="80vh" 
-        minW="60vw" 
+        minW="50vw" 
         verticalAlign="top" 
         borderRadius={10} 
         overflowY="scroll" 
@@ -41,7 +41,7 @@ const StoryContainer = props => {
             backgroundColor: `rgba(0, 0, 0, 0.05)`,
           },
           '&::-webkit-scrollbar-thumb': {
-            backgroundColor: `rgba(0, 0, 0, 0.05)`,
+            backgroundColor: `rgba(0, 0, 0, 0.5)`,
           },
         }}
       >
