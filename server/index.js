@@ -9,7 +9,8 @@ const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 
 // const { User } = require('./database/index');
-const { Images } = require('./api/images');
+const { Evidence } = require('./api/images');
+// const { Comments } = require('./api/comments');
 // const { Video, Image, Comment } = require('./database');
 
 const port = process.env.PORT || 3000;
@@ -18,8 +19,8 @@ const distPath = path.resolve(__dirname, '../client/dist');
 // console.log(distPath);
 
 const app = express();
-app.use('/api/images', Images);
-
+app.use('/api/images', Evidence);
+// app.use('/api/comments', Comments);
 
 // app.use((req, res, next) => {
   //   res.setHeader("Access-Control-Allow-Origin", "*");
