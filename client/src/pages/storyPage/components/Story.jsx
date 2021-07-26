@@ -6,10 +6,10 @@ import {
 } from "@chakra-ui/react";
 
 const Story = () => (
-  <Box bg="purple.400" mb="1px" w="80vw" borderRadius={10} >
-      <Text ml="10px" fontSize="10px">User name -- conspiracy name</Text>
-      <Box bg="purple.100" w="80vw" h="50vh" />
-      <Text ml="10px" fontSize="10px">story</Text>
+  <Box bg="purple.700" mb="1px" w="60vw" borderRadius={10} mb="5">
+      <Text ml="10px" fontSize="10px">conspiracy name</Text>
+      <Box bg="purple.100" w="60vw" h="50vh" />
+      <Text ml="10px" fontSize="10px">Created at by user name</Text>
   </Box>
   );
 
