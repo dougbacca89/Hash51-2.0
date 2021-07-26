@@ -34,7 +34,9 @@ nasaIdCall('PIA01973')
   .then((data) => data)
   // eslint-disable-next-line no-lone-blocks
   // eslint-disable-next-line no-console
-  .then((data) => {{console.log(data.data.collection);} return data.data.collection; })
+  // eslint-disable-next-line no-lone-blocks
+  // {console.log(data.data.collection);}
+  .then((data) => data.data.collection)
   .then((data) => res.status(201).send(data))
   .catch((err) =>{
     // eslint-disable-next-line no-console
