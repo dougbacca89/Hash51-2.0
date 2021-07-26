@@ -27,7 +27,6 @@ getImagesFromNasa(query)
         };
         return resultObj;
       });
-      console.log(parsedData);
       return parsedData;
     })
     .then(data => res.status(201).send(data))
