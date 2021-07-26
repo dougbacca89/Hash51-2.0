@@ -9,8 +9,6 @@ const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 
 // const { User } = require('./database/index');
-const { Evidence } = require('./api/images');
-// const { Comments } = require('./api/comments');
 // const { Video, Image, Comment } = require('./database');
 
 const port = process.env.PORT || 3000;
@@ -58,7 +56,6 @@ const app = express();
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
-    app.use('/api/images', Evidence);
     app.use('/routes/routes', serverRouter);
 
 app.use(session({
