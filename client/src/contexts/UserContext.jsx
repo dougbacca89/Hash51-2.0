@@ -24,7 +24,9 @@ function UserContextProvider({ children }){
 
   const userProps = {
     isLoggedIn,
-    googleLogin
+    googleLogin, 
+    conspirators,
+    setConspirators
   };
 
 

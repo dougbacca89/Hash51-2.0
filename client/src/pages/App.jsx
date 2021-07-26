@@ -4,35 +4,60 @@ import React, { useState } from 'react';
 import {
   // BrowserRouter as Router,
   Switch,
-  Route } from "react-router-dom";
+  Route 
+} from "react-router-dom";
+
+import {
+  Flex,
+} from "@chakra-ui/react";
 
 
-import LoginContainer from './loginPage/LoginContainer.jsx';
+// import LoginContainer from './loginPage/LoginContainer.jsx';
 import StoryContainer from './storyPage/StoryContainer.jsx';
 import SearchContainer from './searchPage/SearchContainer.jsx';
+import Header from './Header.jsx';
 
+const testStory = {
+  userName: "Bobby",
+  storyTitle: "They're out there",
+  proof: "html",
+  comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
+};
+
+const testUser = {
+  userName: 'Bobby',
+  conspiracies: [testStory,testStory,testStory],
+  conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
+};
 
 const App = () => {
-  const [user, setUser] = useState(null);
-
-  const updateUserClick = (userName) => {
-    setUser(userName);
-
-  };
+  const [user] = useState(testUser);
 
   return (
     <div>
-      <Switch>
-        <Route exact path="/">
-          <LoginContainer user={user} updateUserClick={updateUserClick}/>
-        </Route>
-        <Route path="/story">
+      <Header />
+      <Flex
+        flexDirection="column"
+        width="100wh"
+        minH="91vh"
+        backgroundColor="#3a2a5e"
+        justifyContent="top"
+        alignItems="center"
+        pt="20px"
+      >
+        <Switch>
+          <Route exact path="/">
           <StoryContainer user={user}/>
-        </Route>
-        <Route path="/search">
-          <SearchContainer user={user}/>
-        </Route>
-      </Switch>
+          {/* <LoginContainer user={user} updateUserClick={updateUserClick}/> */}
+          </Route>
+          <Route path="/story">
+            <StoryContainer user={user} />
+          </Route>
+          <Route path="/search">
+            <SearchContainer user={user}/>
+          </Route>
+        </Switch>
+      </Flex>
     </div>
   );
 };
