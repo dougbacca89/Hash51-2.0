@@ -6,11 +6,11 @@ import { UserContext } from '../../../contexts/UserContext';
 const GoogleButton = () => {
   const { googleLogin } = useContext(UserContext);
   return (
-  <a href='auth/google'>
-  {/* <button type='button' onClick={ googleLogin }> */}
-    Sign In With Google
-  {/* </button> */}
-  </a>
+    <a href='auth/google'>
+      <button type='button' onClick={ googleLogin }>
+        Sign In With Google
+      </button>
+    </a>
     );
 };
 

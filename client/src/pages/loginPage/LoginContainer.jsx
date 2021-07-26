@@ -20,7 +20,7 @@ const LoginContainer = (props) => {
         <div>
         <Login createUserClick={createUserClick}/>
         <GoogleButton />
-        </div>:
+        </div> :
         <CreateUser updateUserClick={updateUserClick}/>
       }
     </div>
