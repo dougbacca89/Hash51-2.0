@@ -45,18 +45,14 @@ const StoryContainer = props => {
           },
         }}
       >
-        {conspiracies.map((conspiracy) => <Story conspiracy={conspiracy}/>)}
+        {conspiracies.map((conspiracy) => <Story key={conspiracy.userName} conspiracy={conspiracy}/>)}
       </Box>
     </Flex>
   );
 };
 
-StoryContainer.defaultProps = {
-  user: null,
-};
-
 StoryContainer.propTypes = {
-  user: null,
+  user: PropTypes.func.isRequired,
 };
 
 export default StoryContainer;
