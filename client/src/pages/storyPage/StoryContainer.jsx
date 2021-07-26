@@ -19,8 +19,12 @@ const StoryContainer = props => {
   );
 };
 
+StoryContainer.defaultProps = {
+  user: null,
+};
+
 StoryContainer.propTypes = {
-  user: PropTypes.isRequired,
+  user: null,
 };
 
 export default StoryContainer;

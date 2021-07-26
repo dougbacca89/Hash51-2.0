@@ -30,16 +30,19 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              '@babel/transform-runtime'
+            ]
           },
         },
       },
     ],
   },
-  devServer: { 
+  devServer: {
     contentBase: distDir,
     compress: true,
     port: 3000
-  }, 
+  },
   plugins: [
     new HtmlWebpackPlugin({template: path.join(__dirname, 'client/src', 'index.html')})
   ],
