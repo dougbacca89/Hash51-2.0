@@ -54,11 +54,18 @@ const App = () => {
     </div>
   );
 };
+const testStory = {
+  userName: "Bobby",
+  storyTitle: "They're out there",
+  proof: "html",
+  comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
+};
 
 const testUser = {
   userName: 'Bobby',
-  conspiracies: [{},{},{}],
+  conspiracies: [testStory,testStory,testStory],
   conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };
+
 
 export default App;

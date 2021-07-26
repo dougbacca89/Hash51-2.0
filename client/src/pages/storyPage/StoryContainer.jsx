@@ -21,6 +21,8 @@ import PostComment from './components/PostComment.jsx';
 const StoryContainer = props => {
   const { user } = props;
   const { conspirators, conspiracies } = user;
+  // eslint-disable-next-line no-console
+  console.log(conspiracies);
 
   return (
     <Flex color="white">
@@ -45,9 +47,7 @@ const StoryContainer = props => {
           },
         }}
       >
-        <Story conspiracies={conspiracies}/>
-        <Story conspiracies={conspiracies}/>
-        <Story conspiracies={conspiracies}/>
+        {conspiracies.map((conspiracy) => <Story conspiracy={conspiracy}/>)}
       </Box>
     </Flex>
   );
