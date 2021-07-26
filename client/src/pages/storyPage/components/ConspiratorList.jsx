@@ -24,7 +24,7 @@ const ConspiratorList = (props) => {
 };
 
 ConspiratorList.propTypes = {
-  conspirators: PropTypes.isRequired,
+  conspirators: PropTypes.func.isRequired,
 };
 
 export default ConspiratorList;

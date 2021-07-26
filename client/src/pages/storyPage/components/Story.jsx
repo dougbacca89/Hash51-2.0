@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Text,
@@ -10,7 +11,7 @@ import CommentList from './CommentList';
 
 const Story = (props) => {
   const { conspiracy } = props;
-  const { userName, storyTitle, proof, comments } = conspiracy;
+  const { userName, storyTitle, comments } = conspiracy;
   return (
   <div>
     <Box bg="purple.400" mb=".5vh" w="60vw" borderTopRadius={10}>
@@ -20,7 +21,11 @@ const Story = (props) => {
     </Box>
     <CommentList comments={comments}/>
   </div>
-  )
+  );
+};
+
+Story.propTypes = {
+  conspiracy: PropTypes.isRequired,
 };
 
 export default Story;

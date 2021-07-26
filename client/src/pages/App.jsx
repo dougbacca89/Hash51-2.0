@@ -12,19 +12,26 @@ import {
 } from "@chakra-ui/react";
 
 
-//import LoginContainer from './loginPage/LoginContainer.jsx';
+// import LoginContainer from './loginPage/LoginContainer.jsx';
 import StoryContainer from './storyPage/StoryContainer.jsx';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
+const testStory = {
+  userName: "Bobby",
+  storyTitle: "They're out there",
+  proof: "html",
+  comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
+};
+
+const testUser = {
+  userName: 'Bobby',
+  conspiracies: [testStory,testStory,testStory],
+  conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
+};
 
 const App = () => {
-  const [user, setUser] = useState(testUser);
-
-  const updateUserClick = (userName) => {
-    setUser(userName);
-
-  };
+  const [user] = useState(testUser);
 
   return (
     <div>
@@ -54,18 +61,5 @@ const App = () => {
     </div>
   );
 };
-const testStory = {
-  userName: "Bobby",
-  storyTitle: "They're out there",
-  proof: "html",
-  comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
-};
-
-const testUser = {
-  userName: 'Bobby',
-  conspiracies: [testStory,testStory,testStory],
-  conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
-};
-
 
 export default App;
