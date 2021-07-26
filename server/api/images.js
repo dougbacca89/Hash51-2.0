@@ -7,10 +7,18 @@ const Images = Router();
 const { getImagesFromNasa } = require('../helpers/getImages');
 
 Images.use(express.json());
-// const { saveImage } = require('../database/index');
+const { saveImage } = require('../database/index');
 
 // Images.get('/', (req, res) =>{
-//   return
+//   // Images.find({})
+//   //   .then(image =>{
+//   //     res.status(200).send(image);
+//   //   })
+//   //   .catch((err) =>{
+//   //     // eslint-disable-next-line no-console
+//   //     console.log('ERROR: GET /api/images', err);
+//   //     res.sendStatus(404);
+//   //   });
 // });
 
 Images.post('/', (req, res) =>
@@ -36,10 +44,10 @@ Images.post('/', (req, res) =>
     .then((ret) =>ret.map((item) =>axios.get(item, (request, result) =>{
           // eslint-disable-next-line no-console
           console.log('data from then block calling', request)
-          .then((data) =>Promise.all(data)).catch((err)=>{
+          .then((data) =>Promise.all(data.map(saveImage)).catch((err)=>{
             // eslint-disable-next-line no-console
             console.log('ERROR THEN BLOCK', err);
-          });
+          }));
         }))).then((finalData) =>{
       // eslint-disable-next-line no-console
       console.log('I am the final data', finalData);

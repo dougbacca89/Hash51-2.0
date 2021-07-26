@@ -29,8 +29,10 @@ const saveImage = (image) => {
 };
 
 
-// const getImages = () => {
-//   return Image.find({}, null,)
-// }
+const retrieveImages = () => Image.find({}, null)
+    .then((ret) => ret);
+
+
 module.exports = Image;
 module.exports.saveImage = saveImage;
+module.exports.retrieveImages = retrieveImages;
