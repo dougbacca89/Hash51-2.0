@@ -18,7 +18,7 @@ const distPath = path.resolve(__dirname, '../client/dist');
 // console.log(distPath);
 
 const app = express();
-app.use('/api/images', Images);
+
 
 
 // app.use((req, res, next) => {
@@ -57,6 +57,7 @@ app.use('/api/images', Images);
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
+    app.use('/api/images', Images);
     app.use('/routes/routes', serverRouter);
 
 app.use(session({
