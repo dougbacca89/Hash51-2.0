@@ -1,5 +1,10 @@
 import React from "react";
-import { Flex, Heading, Link, Box } from "@chakra-ui/react";
+import { 
+  Flex, 
+  Heading, 
+  Link, 
+  Box 
+} from "@chakra-ui/react";
 
 const Header = () => (
   <div>

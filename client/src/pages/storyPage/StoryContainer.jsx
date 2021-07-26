@@ -25,11 +25,11 @@ const StoryContainer = props => {
   return (
     <Flex color="white">
       <Box w="10vw" mr="10px">
-        <User />
+        <User user={user}/>
         <ConspiratorList conspirators={conspirators}/>
       </Box>
-      <Box flex="1" bg="green.500" h="85vh" minW="80vw" verticalAlign="top">
-        <Text>Box 3</Text>
+      <Box bg="purple.100" h="85vh" minW="80vw" verticalAlign="top" borderRadius={10}>
+        <Story />
       </Box>
     </Flex>
   );

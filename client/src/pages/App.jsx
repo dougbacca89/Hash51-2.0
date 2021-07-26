@@ -4,20 +4,12 @@ import React, { useState } from 'react';
 import {
   // BrowserRouter as Router,
   Switch,
-  Route } from "react-router-dom";
+  Route 
+} from "react-router-dom";
 
-  import {
-    Flex,
-    Heading,
-    Input,
-    Button,
-    InputGroup,
-    Stack,
-    InputLeftElement,
-    Box,
-    FormControl,
-    InputRightElement
-  } from "@chakra-ui/react";
+import {
+  Flex,
+} from "@chakra-ui/react";
 
 
 import LoginContainer from './loginPage/LoginContainer.jsx';
@@ -42,16 +34,17 @@ const App = () => {
         width="100wh"
         height="100vh"
         backgroundColor="#3a2a5e"
-        justifyContent="center"
+        justifyContent="top"
         alignItems="center"
+        pt="20px"
       >
         <Switch>
           <Route exact path="/">
-          <StoryContainer user={user}/>
-          {/* <LoginContainer user={user} updateUserClick={updateUserClick}/> */}
+            <StoryContainer user={user} />
+            {/* <LoginContainer user={user} updateUserClick={updateUserClick}/> */}
           </Route>
           <Route path="/story">
-            <StoryContainer user={user}/>
+            <StoryContainer user={user} />
           </Route>
           <Route path="/search">
             <SearchContainer user={user}/>
@@ -63,7 +56,9 @@ const App = () => {
 };
 
 const testUser = {
-  conspirators: [{},{},{},{},{}]
+  userName: 'Bobby',
+  conspiracies: [{},{},{}],
+  conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };
 
 export default App;

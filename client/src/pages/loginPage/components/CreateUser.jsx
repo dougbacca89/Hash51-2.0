@@ -2,7 +2,6 @@
 
 import React, { useState, useContext } from 'react';
 import {
-  Flex,
   Heading,
   Input,
   Button,

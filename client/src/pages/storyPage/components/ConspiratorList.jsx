@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
  VStack,
@@ -12,15 +13,18 @@ const ConspiratorList = (props) => {
   
   return (
   <VStack
-  divider={<StackDivider borderColor="gray.200" />}
-  spacing={1}
-  align="stretch"
->
-  <StackDivider borderColor="gray.200" />
-  {conspirators.map((conspirator) => <Conspirator conspirator={conspirator} />)}
+    divider={<StackDivider borderColor="gray.200" />}
+    spacing={1}
+    align="stretch"
+  >
+    <StackDivider borderColor="gray.200" />
+    {conspirators.map((conspirator) => <Conspirator conspirator={conspirator} />)}
+  </VStack>
+  );
+};
 
-</VStack>
-  )
+ConspiratorList.propTypes = {
+  conspirators: PropTypes.isRequired,
 };
 
 export default ConspiratorList;
