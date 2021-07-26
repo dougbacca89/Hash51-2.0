@@ -1,10 +1,10 @@
-/* eslint-disable import/extensions */
+/* eslint-disable import/extensions, no-console, no-unused-vars */
 
 import React, { useState } from 'react';
 import {
   // BrowserRouter as Router,
   Switch,
-  Route 
+  Route
 } from "react-router-dom";
 
 import {
@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 
 
-// import LoginContainer from './loginPage/LoginContainer.jsx';
-import StoryContainer from './storyPage/StoryContainer.jsx';
+import LoginContainer from './loginPage/LoginContainer.jsx';
+import StoryContainer from './storyPage/StoryContainer';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
@@ -30,8 +30,10 @@ const testUser = {
   conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };
 
+const updateUserClick = () => console.log('click');
+
 const App = () => {
-  const [user] = useState(testUser);
+  const [user, setUser] = useState(testUser);
 
   return (
     <div>
@@ -47,10 +49,12 @@ const App = () => {
       >
         <Switch>
           <Route exact path="/">
-          <StoryContainer user={user}/>
-          {/* <LoginContainer user={user} updateUserClick={updateUserClick}/> */}
+            <StoryContainer user={user}/>
           </Route>
-          <Route path="/story">
+          <Route path="/userLogin">
+            <LoginContainer user={user} updateUserClick={updateUserClick}/>
+          </Route>
+          <Route exact path="/story/:nasa_id">
             <StoryContainer user={user} />
           </Route>
           <Route path="/search">

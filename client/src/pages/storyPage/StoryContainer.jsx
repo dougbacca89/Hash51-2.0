@@ -1,13 +1,16 @@
 /* eslint-disable import/extensions, no-unused-vars */
 
 import React, { useState } from 'react';
+import  { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import {
   Flex,
   Text,
   Box,
-  Square, 
+  Square,
+  Heading,
   Center
 } from "@chakra-ui/react";
 
@@ -20,6 +23,14 @@ import PostComment from './components/PostComment.jsx';
 
 const StoryContainer = props => {
   const { user } = props;
+
+  // Using Params to Isolate Image
+  // const { nasa_id } = useParams();
+  // return (
+  //   <div>
+  //     <Heading>{ nasa_id }</Heading>
+  //   </div>
+
   const { conspirators, conspiracies } = user;
 
   return (
@@ -28,12 +39,12 @@ const StoryContainer = props => {
         <User user={user}/>
         <ConspiratorList conspirators={conspirators}/>
       </Box>
-      <Box 
-        maxH="80vh" 
-        minW="50vw" 
-        verticalAlign="top" 
-        borderRadius={10} 
-        overflowY="scroll" 
+      <Box
+        maxH="80vh"
+        minW="50vw"
+        verticalAlign="top"
+        borderRadius={10}
+        overflowY="scroll"
         sx={{
           '&::-webkit-scrollbar': {
             width: '16px',
