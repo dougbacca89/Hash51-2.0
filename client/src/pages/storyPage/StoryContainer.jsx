@@ -3,6 +3,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  Flex,
+  Text,
+  Box,
+  Square, 
+  Center
+} from "@chakra-ui/react";
+
+import LoginContainer from '../loginPage/LoginContainer.jsx';
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
@@ -13,9 +22,14 @@ const StoryContainer = props => {
   const { user } = props;
 
   return (
-    <div>
-      <h1>Stories</h1>
-    </div>
+    <Flex color="white">
+      <Center w="15vw" bg="green.500" mr="10px">
+        <Text>Box 1</Text>
+      </Center>
+      <Box flex="1" bg="green.500" h="70vh" minW="75vw">
+        <Text>Box 3</Text>
+      </Box>
+    </Flex>
   );
 };
 
