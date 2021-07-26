@@ -1,6 +1,9 @@
 /* eslint-disable import/extensions, no-unused-vars */
 
 import React, { useState } from 'react';
+import  { useParams } from 'react-router-dom';
+import { Heading } from "@chakra-ui/react";
+
 import PropTypes from 'prop-types';
 
 import User from './components/User.jsx';
@@ -11,10 +14,10 @@ import PostComment from './components/PostComment.jsx';
 
 const StoryContainer = props => {
   const { user } = props;
-
+  const { nasa_id } = useParams();
   return (
     <div>
-      <h1>Stories</h1>
+      <Heading>{ nasa_id }</Heading>
     </div>
   );
 };

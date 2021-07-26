@@ -26,7 +26,7 @@ const App = () => {
         <Route exact path="/">
           <LoginContainer user={user} updateUserClick={updateUserClick}/>
         </Route>
-        <Route path="/story">
+        <Route path="/story/:nasa_id">
           <StoryContainer user={user}/>
         </Route>
         <Route path="/search">
