@@ -3,13 +3,20 @@ const express = require('express');
 const { Router } = require('express');
 
 // const { Evidence } = require('../database/Evidence');
+const { Comment } = require('../database/Comment');
 
 const serverRouter = Router();
 serverRouter.use(express.json());
 
 const { getImagesFromNasa, nasaIdCall } = require('../helpers/getImages');
 
-// serverRouter.get();
+serverRouter.get('/', (req, res) =>{
+  res.json({ message: 'API Initialized!'});
+});
+
+// serverRouter.get('/comments', (req, res) => {
+
+// })
 
 serverRouter.post('/', (req, res) =>
   getImagesFromNasa('saturn')
