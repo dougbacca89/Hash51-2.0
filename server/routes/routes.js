@@ -91,18 +91,29 @@ serverRouter.post('/', (req, res) =>
 );
 
 serverRouter.post('/asset', (req, res) => {
-  // const { query } = req.body;
+  const { query } = req.body;
   // test data for
-  nasaIdCall('PIA20506')
-  // nasaIdCall(query)
+  // nasaIdCall('PIA20506')
+  nasaIdCall(query)
     .then((data) => {console.log('data', data); return data; })
     // {console.log(data.data.collection);}
     .then((data) => data.data.collection)
     .then((data) => { console.log('data', data); res.status(201).send(data);})
     .catch((err) => {
-      console.log('Error EVIDENCE.get', err);
+      console.log('Error serverRouter.post /asset', err);
     });
 });
+
+
+serverRouter.get('/story', (req, res) => {
+  Evidence.find((err, evidence) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(evidence);
+  });
+});
+
 
 serverRouter.post('/story', (req, res) =>{
   console.log(req.body);
@@ -113,20 +124,43 @@ serverRouter.post('/story', (req, res) =>{
 
   evidence.save((err) => {
     if (err) {res.send(err);}
+    res.json({ message: 'comment successfylly added' });
   });
 });
-// .then((data) => {
-//   const evidence = new Evidence();
-//   evidence.originalEvidence = data.items[0].href;
-//   // evidence.imageThumb = data.items[]
-//   evidence.save((err) => {
-//     if (err) {
-//       res.send(err);
-//     }
-//     // res.json({ message: 'comment successfylly added' });
-//   });
-//   return data;
-// })
+
+
+serverRouter.put('/story/:evidence_id', (req, res) => {
+  // eslint-disable-next-line consistent-return
+  Evidence.findById(req.params.evidence_id, (err, evidence) => {
+    if (err) {
+      return res.send(err);
+    }
+
+    // eslint-disable-next-line no-param-reassign
+    (req.body.textBody) ? evidence.textBody = req.body.textBody : null;
+
+    (req.body.userName) ? evidence.userName = req.body.userName : null;
+
+    (req.body.originalEvidence) ? evidence.originalEvidence = req.body.originalEvidence : null;
+
+    evidence.save((error)=> {
+      if (err) { res.send(error); }
+      return res.json({ message: 'Evidence was updated successfully'});
+
+    });
+  });
+});
+
+serverRouter.delete('/story/:evidence_id', (req, res) => {
+  Evidence.remove({_id: req.params.evidence_id }, (err, evidence) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json({ message: 'Evidence was deleted successfully!'});
+  });
+});
+
+
 
 
 serverRouter.post('/search', (req, res) => {
