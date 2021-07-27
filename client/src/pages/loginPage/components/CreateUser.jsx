@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-import React, { useState, useContext } from 'react';
+
+import React, {  useContext } from 'react';
 import {
   Heading,
   Input,
@@ -15,9 +16,17 @@ import {
 import { UserContext } from '../../../contexts/UserContext';
 
 const CreateUser = () => {
-  const { isLoggedIn } = useContext(UserContext);
-  console.log(isLoggedIn);
-  const [showPassword] = useState(false);
+  const {
+    showPassword,
+    userReg,
+    handleUserReg,
+    pass,
+    handlePass,
+    confirm,
+    handleConfirm,
+    localRegister
+   } = useContext(UserContext);
+
 
   return (
     <Stack
@@ -41,7 +50,7 @@ const CreateUser = () => {
                 <InputLeftElement
                   pointerEvents="none"
                 />
-                <Input type="email" placeholder="email address" />
+                <Input type="email" placeholder="email address" value={userReg} onChange={handleUserReg}/>
               </InputGroup>
             </FormControl>
             <FormControl>
@@ -51,6 +60,8 @@ const CreateUser = () => {
                   color="gray.300"
                 />
                 <Input
+                  value={pass}
+                  onChange={handlePass}
                   type={showPassword ? "text" : "password"}
                   placeholder="New Password"
                 />
@@ -68,6 +79,8 @@ const CreateUser = () => {
                   color="gray.300"
                 />
                 <Input
+                  value={confirm}
+                  onChange={handleConfirm}
                   type={showPassword ? "text" : "password"}
                   placeholder="Confirm password"
                 />
@@ -83,6 +96,7 @@ const CreateUser = () => {
               type="submit"
               variant="solid"
               colorScheme="purple"
+              onClick={() => localRegister(userReg, pass, confirm)}
             >
               Create user
             </Button>

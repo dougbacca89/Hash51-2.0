@@ -42,6 +42,6 @@ const saveEvidence = (evidence) => {
 //     });
 
 
-module.exports = Evidence;
-module.exports.saveEvidence = saveEvidence;
+module.exports = { Evidence, saveEvidence, EvidenceSchema };
+// module.exports.saveEvidence = saveEvidence;
 // module.exports.retrieveImages = retrieveImages;
