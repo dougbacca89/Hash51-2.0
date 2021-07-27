@@ -1,31 +1,43 @@
 import React, {useContext} from 'react';
-import { Image, SimpleGrid } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+
+import { 
+  Image, 
+  SimpleGrid,
+  Flex,
+  Heading
+} from '@chakra-ui/react';
+
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
   const { searchResults } = useContext(EvidenceContext);
-  // console.log(searchResults);
 
   return searchResults.length ?
- (
-  <SimpleGrid columns={4} spacing={10}>
-  { searchResults.map(result => (
-    <div>
-    <Link to={`story/${result.nasa_id}`}>
-    <Image
-  borderRadius="full"
-  boxSize="300px"
-  src={result.thumb}
-  alt={result.title}
-/>
-</Link>
-</div>
-  )
-  )
-}
-  </SimpleGrid>
- ) : <div>Results</div>;
-
+  (
+    <Flex
+      pt="20px"
+      
+    >
+      <SimpleGrid columns={4} spacing={10}>
+        { searchResults.map(result => (
+          <div>
+            <Link to={`story/${result.nasa_id}`}>
+              <Image
+              m={3}
+                borderRadius="full"
+                boxSize="300px"
+                src={result.thumb}
+                alt={result.title}
+                objectFit="cover"
+              />
+            </Link>
+          </div>
+          )
+        )
+      }
+      </SimpleGrid>
+    </Flex>
+  ) : <Heading color="green.500" size="md" m={2}>Search for the truth...</Heading>;
 };
 export default SearchResult;

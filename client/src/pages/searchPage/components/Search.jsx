@@ -1,16 +1,13 @@
-/* eslint-disable no-unused-vars */
-
 import React, {useContext, useState} from 'react';
 
 import {
-  Flex,
-  Heading,
   Input,
   Button,
   InputGroup,
-  InputLeftElement,
-  InputRightElement
+  InputRightElement,
+  Flex
 } from "@chakra-ui/react";
+
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const Search = () => {
@@ -23,18 +20,28 @@ const Search = () => {
   //   <h1>search</h1>
   //   <button type='button' onClick={fetchSearch}>Search</button>
   // </div>);
-  <InputGroup size="md">
-  <Input
-    pr="4.5rem"
-    value={value}
-    onChange={handleChange}
-  />
-  <InputRightElement width="4.5rem">
-    <Button h="1.75rem" size="sm" onClick={() => fetchSearch(value)}>
-      Search
-    </Button>
-  </InputRightElement>
-</InputGroup>
+    <Flex
+      w="25vw"
+      bg="white"
+      borderRadius={5}
+    >
+      <InputGroup size="md">
+        <Input
+          pr="4.5rem"
+          value={value}
+          onChange={handleChange}
+        />
+        <InputRightElement width="4.5rem">
+          <Button 
+            h="1.75rem" 
+            size="sm" 
+            onClick={() => fetchSearch(value)}
+          >
+            Search
+          </Button>
+        </InputRightElement>
+      </InputGroup>
+    </Flex>
   );
 };
 
