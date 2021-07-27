@@ -27,8 +27,9 @@ passportRouter.post('/register', (req, res) => {
   });
 });
 
-passportRouter.get('/login', (req, res) => {
+passportRouter.post('/login', (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body);
   const user = new User({ username, password });
   req.login(user, err => {
     if(err){
@@ -58,7 +59,7 @@ passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
   // Successful authentication, redirect home.
-  res.redirect('/success');
+  res.redirect('/');
 });
 
 
