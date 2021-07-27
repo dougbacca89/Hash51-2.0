@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema({
-  id: Number,
   imageId: Number,
   userId: Number,
-  description: String
+  text: String,
+  author: String
 });
 
 const Comment = mongoose.model('Comment', CommentSchema);
