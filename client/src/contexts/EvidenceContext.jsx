@@ -27,8 +27,8 @@ function EvidenceContextProvider({ children }){
     });
   };
 
-  const PostImage = async(query) => {
-    await axios.post('/routes/asset', { query })
+  const postStory = async(story) => {
+    await axios.post('/routes/story', { story })
     .then(results => {
       setSearchImage(results.data.items[0].href);
     });
@@ -39,7 +39,8 @@ function EvidenceContextProvider({ children }){
     searchResults,
     fetchSearch,
     searchImage,
-    fetchImage
+    fetchImage,
+    postStory
   };
 
   return (
