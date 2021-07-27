@@ -2,11 +2,16 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-
 const session = require('express-session');
 const passport = require('passport');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
+
+const { mongoUri } = require('./database/index');
+
+// const Store = new MongoStore(session);
 
 // const { User } = require('./database/index');
 // const { Video, Image, Comment } = require('./database');
@@ -42,6 +47,7 @@ app.use(session({
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
+  store: new MongoStore({ mongoUrl: mongoUri })
 }));
 
 // app.get('/api/images', (req, res) =>{

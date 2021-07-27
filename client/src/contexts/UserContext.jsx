@@ -12,7 +12,7 @@ function UserContextProvider({ children }){
   const {user, setUser} = useState({});
   const {conspirators, setConspirators} = useState([]);
   const {favorites, setFavorites} = useState([]);
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showPassword] = useState(false);
   const [userReg, setUserReg] = useState('');
   const [pass, setPass] = useState('');
@@ -26,11 +26,12 @@ function UserContextProvider({ children }){
   const handleUserLogin = (event) => setUserLogin(event.target.value);
   const handlePassLogin = (event) => setPassLogin(event.target.value);
 
+
+  // This isn't used
   const googleLogin = async () => {
     await axios.get('/auth/google')
-    .then(() => console.log('successful login'))
+    .then((result) => console.log('successful login', result))
     .catch((err) => console.log(err));
-
   };
 
   const localRegister = async (username, password, confirmation) => {
@@ -46,11 +47,16 @@ function UserContextProvider({ children }){
   };
 
   const localLogin = async ( username, password ) => {
-    await axios.get('/login', { username, password })
-    .then((result) => console.log('successful login', result))
-    .then(() => axios.get('/getUser'))
-    .then((user) => console.log(user))
+    await axios.post('/login', { username, password })
+    .then((result) => console.log('successful login', result.data))
+    // .then(() => axios.get('/getUser'))
+    // .then((user) => console.log(user))
     .catch((err) => console.log('login error', err));
+  };
+
+  const localLogout = async () => {
+    await axios.get('/logout')
+    .then(() => console.log('successful logout'));
   };
 
   const userProps = {
@@ -58,6 +64,7 @@ function UserContextProvider({ children }){
     googleLogin,
     localRegister,
     localLogin,
+    localLogout,
     conspirators,
     setConspirators,
     confirm,

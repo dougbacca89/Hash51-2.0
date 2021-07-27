@@ -3,6 +3,7 @@
 
 const { Router } = require('express');
 const passport = require('passport');
+const path = require('path');
 const cors = require('cors');
 
 
@@ -37,18 +38,18 @@ passportRouter.post('/login', (req, res) => {
       res.sendStatus(500);
     } else {
       passport.authenticate('local')(req, res, (error, result) => {
-        console.log(result);
-        res.status(200).send(result);
+        // console.log('THIS IS REQ', req);
+        res.status(200).send(req.user);
     });
   }
   });
 });
 
-passportRouter.get('/getUser', (req, res) => {
-  console.log(req);
-  console.log(req.user);
-  res.send(req.user);
-});
+// passportRouter.get('/', (req, res) => {
+//   console.log(req);
+//   console.log(req.user);
+//   res.sendFile(path.resolve(__dirname, '../client/dist/index.html'), { user: req });
+// });
 
 passportRouter.get('/logout', (req, res) => {
   req.logout();
@@ -58,13 +59,16 @@ passportRouter.get('/logout', (req, res) => {
 // Google Strategy //
 
 passportRouter.get('/auth/google',
-passport.authenticate('google', { scope: ['profile', 'email'] }));
+passport.authenticate('google', { scope: ['profile', 'email'] }),
+(req, res) => res.status(200).send(req.user));
 
 
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
-  res.redirect('/');
+const user = {...req.user};
+console.log(user);
+res.redirect('/userLogin');
 });
 
 

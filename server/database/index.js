@@ -41,7 +41,8 @@ const userSchema = mongoose.Schema({
   password: String,
   googleId: {
     type: String,
-    unique: true
+    unique: true,
+    sparse: true
   },
   profileImage: String,
   source: String,
@@ -80,22 +81,21 @@ passport.use(new GoogleStrategy({
   callbackURL: 'http://localhost:3000/auth/google/login',
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
   // proxy: true,
-}, (accessToken, refreshToken, profile, cb) => {
+  passReqToCallback: true
+}, (req, accessToken, refreshToken, profile, cb) => {
   // eslint-disable-next-line no-console
-  console.log('within auth');
-  console.log(profile);
   // we can use plain mongoose to satisfy this query as well.
   User.findOrCreate(
-    { googleId: profile.id,
-      username: profile.displayName,
-      email: profile.emails[0].value,
-      profileImage: profile.photos[0].value,
-      source: profile.provider
-    }, (err, user) => cb(err, user)
+    { googleId: profile.id},
+    { username: profile.displayName,
+    email: profile.emails[0].value,
+    profileImage: profile.photos[0].value,
+    source: profile.provider
+  }, (err, user) => cb(err, user)
   );
 }
 ));
 
 
 
-module.exports = { User };
+module.exports = { User, mongoUri };

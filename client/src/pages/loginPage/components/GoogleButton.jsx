@@ -12,9 +12,9 @@ const GoogleButton = () => {
   const { googleLogin } = useContext(UserContext);
   return (
     <Link href='auth/google'>
-      <Button 
-        type='button' 
-        onClick={ googleLogin }
+      <Button
+        type='button'
+        onClick={ () => console.log(Window) }
         borderRadius={10}
         color="white"
         variant="solid"

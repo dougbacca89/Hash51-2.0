@@ -24,13 +24,13 @@ const Login = props => {
   const { createUserClick } = props;
   const [showPassword] = useState(false);
 
-  const { isLoggedIn,
+  const {
           userLogin,
           passLogin,
           handleUserLogin,
           handlePassLogin,
           localLogin } = useContext(UserContext);
-  console.log(isLoggedIn);
+
 
   return (
     <Flex
@@ -80,8 +80,8 @@ const Login = props => {
                     onChange={handlePassLogin}
                   />
                   <InputRightElement width="4.5rem">
-                    <Button 
-                      h="1.75rem" 
+                    <Button
+                      h="1.75rem"
                       size="sm">
                       {showPassword ? "Hide" : "Show"}
                     </Button>
@@ -100,7 +100,7 @@ const Login = props => {
                   </Button>
                 </Link>
                 <GoogleButton />
-      
+
               <Box>
                 Do we know you?{" "}
               </Box>
