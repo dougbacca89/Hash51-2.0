@@ -11,11 +11,14 @@ const { Comment } = require('../database/Comment');
 const serverRouter = Router();
 serverRouter.use(express.json());
 
+
 const { getImagesFromNasa, nasaIdCall } = require('../helpers/getImages');
+
 
 serverRouter.get('/', (req, res) => {
   res.json({ message: 'API Initialized!' });
 });
+
 
 serverRouter.get('/comments', (req, res) => {
   Comment.find((err, comment) => {
@@ -25,6 +28,7 @@ serverRouter.get('/comments', (req, res) => {
     return res.json(comment);
   });
 });
+
 
 serverRouter.post('/comments', (req, res) => {
   const comment = new Comment();
@@ -41,6 +45,7 @@ serverRouter.post('/comments', (req, res) => {
   });
 });
 
+
 serverRouter.put('/comments/:comment_id', (req, res) => {
   // eslint-disable-next-line consistent-return
   Comment.findById(req.params.comment_id, (err, comment) => {
@@ -48,13 +53,11 @@ serverRouter.put('/comments/:comment_id', (req, res) => {
       return res.send(err);
     }
 
-    // eslint-disable-next-line no-param-reassign
     (req.body.author) ? comment.author = req.body.author : null;
-
     (req.body.text) ? comment.text = req.body.text : null;
 
     comment.save((error)=> {
-      if (err) { res.send(error); }
+      if (err) { return res.send(error); }
       return res.json({ message: 'comment was updated successfully'});
 
     });
@@ -72,23 +75,23 @@ serverRouter.delete('/comments/:comment_id', (req, res) => {
 });
 
 
-serverRouter.post('/', (req, res) =>
-  getImagesFromNasa('saturn')
-    .then(({ data }) => {
-      // eslint-disable-next-line no-console
-      console.log(data.collection.items[0].data);
-      return data;
-    })
-    .then((data) => {
-      // eslint-disable-next-line no-console
-      console.log('data from then block', data);
-      // .then((data) => { return saveImage(data) ;})
-      res.status(201).send(data);
-    })
-    .catch(() => {
-      res.sendStatus(500);
-    })
-);
+// serverRouter.post('/', (req, res) =>
+//   getImagesFromNasa('saturn')
+//     .then(({ data }) => {
+//       // eslint-disable-next-line no-console
+//       console.log(data.collection.items[0].data);
+//       return data;
+//     })
+//     .then((data) => {
+//       // eslint-disable-next-line no-console
+//       console.log('data from then block', data);
+//       res.status(201).send(data);
+//     })
+//     .catch(() => {
+//       res.sendStatus(500);
+//     })
+// );
+
 
 serverRouter.post('/asset', (req, res) => {
   const { query } = req.body;
@@ -150,6 +153,7 @@ serverRouter.put('/story/:evidence_id', (req, res) => {
     });
   });
 });
+
 
 serverRouter.delete('/story/:evidence_id', (req, res) => {
   Evidence.remove({_id: req.params.evidence_id }, (err, evidence) => {
