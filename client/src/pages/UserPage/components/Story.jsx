@@ -24,7 +24,7 @@ const Story = (props) => {
     >
       <Text 
         ml="10px" 
-        fontSize="10px"
+        fontSize="15px"
       >
         {storyTitle}
       </Text>

@@ -7,19 +7,12 @@ import PropTypes from 'prop-types';
 
 import {
   Flex,
-  Text,
   Box,
-  Square,
-  Heading,
-  Center
 } from "@chakra-ui/react";
 
-import LoginContainer from '../loginPage/LoginContainer.jsx';
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
-import CommentList from './components/CommentList.jsx';
-import PostComment from './components/PostComment.jsx';
 
 const StoryContainer = props => {
   const { user } = props;
