@@ -18,8 +18,6 @@ const Story = (props) => {
   const { userName } = user;
 
   const { searchImage } = useContext(EvidenceContext);
-  // eslint-disable-next-line no-console
-  console.log(searchImage);
   
   return (
     <div>
@@ -42,7 +40,7 @@ const Story = (props) => {
           objectFit="cover"
           bg="purple.100"
           w="60vw"
-          h="40vh" 
+          h="60vh" 
         />
         <PostStory />
       </Box>
@@ -50,8 +48,8 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
-  user: PropTypes.isRequired,
-};
+// Story.propTypes = {
+//   user: PropTypes.isRequired,
+// };
 
 export default Story;

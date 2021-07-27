@@ -23,12 +23,8 @@ function EvidenceContextProvider({ children }){
   };
 
   const fetchImage = async(query) => {
-    // eslint-disable-next-line no-console
-    console.log(query);
     await axios.post('/routes/asset', { query })
     .then(results => {
-      // eslint-disable-next-line no-console
-      console.log(results);
       setSearchImage(results.data.items[0].href);
     });
   };
