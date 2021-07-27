@@ -10,32 +10,28 @@ import {
   Box,
 } from "@chakra-ui/react";
 
+import NewStory from './components/NewStory.jsx';
 
-import ConspiratorList from './components/ConspiratorList.jsx';
-import Story from './components/Story.jsx';
 
 const CreateContainer = props => {
   const { user } = props;
-
-  // Using Params to Isolate Image
-  // const { nasa_id } = useParams();
-  // return (
-  //   <div>
-  //     <Heading>{ nasa_id }</Heading>
-  //   </div>
-
   const { conspirators, conspiracies } = user;
 
   return (
-    <Flex color="white">
-      <Box w="10vw" mr="10px">
-        <ConspiratorList conspirators={conspirators}/>
+    <Flex>
+      <Box
+        maxH="89vh"
+        minW="50vw"
+        verticalAlign="top"
+      >
+        <NewStory user={user}/>
+        
       </Box>
     </Flex>
   );
 };
 
-StoryContainer.propTypes = {
+CreateContainer.propTypes = {
   user: PropTypes.func.isRequired,
 };
 

@@ -7,12 +7,18 @@ import PropTypes from 'prop-types';
 
 import {
   Flex,
+  Text,
   Box,
+  Square,
+  Heading,
+  Center
 } from "@chakra-ui/react";
+
 
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
+
 
 const StoryContainer = props => {
   const { user } = props;
