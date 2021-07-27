@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const express = require('express');
 const { Router } = require('express');
@@ -39,14 +42,15 @@ serverRouter.post('/comments', (req, res) => {
 });
 
 serverRouter.put('/comments/:comment_id', (req, res) => {
+  // eslint-disable-next-line consistent-return
   Comment.findById(req.params.comment_id, (err, comment) => {
     if (err) {
       return res.send(err);
     }
 
-    // eslint-disable-next-line no-unused-expressions
+    // eslint-disable-next-line no-param-reassign
     (req.body.author) ? comment.author = req.body.author : null;
-    // eslint-disable-next-line no-unused-expressions
+
     (req.body.text) ? comment.text = req.body.text : null;
 
     comment.save((error)=> {
