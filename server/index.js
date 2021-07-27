@@ -13,22 +13,7 @@ const { passportRouter } = require('./routes/passportRoutes');
 
 const port = process.env.PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
-// eslint-disable-next-line no-console
-// console.log(distPath);
-
 const app = express();
-
-
-
-// app.use((req, res, next) => {
-  //   res.setHeader("Access-Control-Allow-Origin", "*");
-  //   res.setHeader(
-    //     "Access-Control-Allow-Methods",
-    //     "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-    //   );
-    //   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    //   next();
-    // });
 
 
     app.use(express.json());
@@ -43,15 +28,6 @@ const app = express();
         credentials: true
     }));
 
-    // app.use(cors());
-
-    // app.use((req, res, next) => {
-    //   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-    //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //   next();
-    // });
-
-    // app.options('*', cors());
 
     app.use(passport.initialize());
     app.use(passport.session());

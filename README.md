@@ -68,7 +68,8 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
 ### - Mongoose:
 * [Documentation](https://mongoosejs.com/docs/guide.html)
-* [Add docs]()
+* [Sub-Documents Documentation](https://mongoosejs.com/docs/subdocs.html)
+* [Embedding subDocuments](https://stackoverflow.com/questions/37537493/how-to-create-an-embedded-document-that-follows-a-model-with-mongoose)
 
 
 ### - AWS:
