@@ -14,9 +14,23 @@ serverRouter.get('/', (req, res) =>{
   res.json({ message: 'API Initialized!'});
 });
 
-// serverRouter.get('/comments', (req, res) => {
+serverRouter.get('/comments', (req, res) => {
+  Comment.find((err, comments) => {
+    if(err) { return res.send(err); }
+    return res.json(comments);
+  });
+});
 
-// })
+serverRouter.post('/comments', (req, res) => {
+  const comment = new Comment();
+  comment.userId = req.body.userId;
+  comment.text = req.body.text;
+
+  comment.save((err) => {
+    if (err) { res.send(err) ;}
+    res.json({ message: 'comment successfylly added'});
+  });
+});
 
 serverRouter.post('/', (req, res) =>
   getImagesFromNasa('saturn')
