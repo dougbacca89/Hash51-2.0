@@ -21,7 +21,7 @@ serverRouter.get('/', (req, res) => {
 
 
 serverRouter.get('/comments', (req, res) => {
-  Comment.find((err, comment) => {
+  Comment.find({}, (err, comment) => {
     if (err) {
       return res.send(err);
     }
@@ -66,7 +66,7 @@ serverRouter.put('/comments/:comment_id', (req, res) => {
 
 
 serverRouter.delete('/comments/:comment_id', (req, res) => {
-  Comment.remove({_id: req.params.comment_id }, (err, comment) => {
+  Comment.deleteOne({_id: req.params.comment_id }, (err, comment) => {
     if (err) {
       return res.send(err);
     }
@@ -75,22 +75,6 @@ serverRouter.delete('/comments/:comment_id', (req, res) => {
 });
 
 
-// serverRouter.post('/', (req, res) =>
-//   getImagesFromNasa('saturn')
-//     .then(({ data }) => {
-//       // eslint-disable-next-line no-console
-//       console.log(data.collection.items[0].data);
-//       return data;
-//     })
-//     .then((data) => {
-//       // eslint-disable-next-line no-console
-//       console.log('data from then block', data);
-//       res.status(201).send(data);
-//     })
-//     .catch(() => {
-//       res.sendStatus(500);
-//     })
-// );
 
 
 serverRouter.post('/asset', (req, res) => {
@@ -98,8 +82,8 @@ serverRouter.post('/asset', (req, res) => {
   // test data for
   // nasaIdCall('PIA20506')
   nasaIdCall(query)
-    .then((data) => {console.log('data', data); return data; })
-    // {console.log(data.data.collection);}
+  .then((data) => {console.log('data', data); return data; })
+  // {console.log(data.data.collection);}
     .then((data) => data.data.collection)
     .then((data) => { console.log('data', data); res.status(201).send(data);})
     .catch((err) => {
@@ -109,7 +93,7 @@ serverRouter.post('/asset', (req, res) => {
 
 
 serverRouter.get('/story', (req, res) => {
-  Evidence.find((err, evidence) => {
+  Evidence.find({}, (err, evidence) => {
     if (err) {
       return res.send(err);
     }
@@ -156,7 +140,7 @@ serverRouter.put('/story/:evidence_id', (req, res) => {
 
 
 serverRouter.delete('/story/:evidence_id', (req, res) => {
-  Evidence.remove({_id: req.params.evidence_id }, (err, evidence) => {
+  Evidence.deleteOne({_id: req.params.evidence_id }, (err, evidence) => {
     if (err) {
       return res.send(err);
     }
@@ -170,26 +154,44 @@ serverRouter.delete('/story/:evidence_id', (req, res) => {
 serverRouter.post('/search', (req, res) => {
   const { query } = req.body;
   getImagesFromNasa(query)
-    .then(({ data }) => data)
-    .then((data) => {
-      const parsedData = data.collection.items.map((result) => {
-        const resultObj = {
-          nasa_id: result.data[0].nasa_id,
-          title: result.data[0].title,
-          created: result.data[0].date_created,
-          keywords: result.data[0].keywords,
-          thumb: result.links[0].href,
-        };
-        return resultObj;
-      });
-      return parsedData;
-    })
-    .then((data) => res.status(201).send(data))
-    .catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
+  .then(({ data }) => data)
+  .then((data) => {
+    const parsedData = data.collection.items.map((result) => {
+      const resultObj = {
+        nasa_id: result.data[0].nasa_id,
+        title: result.data[0].title,
+        created: result.data[0].date_created,
+        keywords: result.data[0].keywords,
+        thumb: result.links[0].href,
+      };
+      return resultObj;
     });
+    return parsedData;
+  })
+  .then((data) => res.status(201).send(data))
+  .catch((err) => {
+    console.log(err);
+    res.sendStatus(500);
+  });
 });
+
+// serverRouter.post('/', (req, res) =>
+//   getImagesFromNasa('saturn')
+//     .then(({ data }) => {
+//       // eslint-disable-next-line no-console
+//       console.log(data.collection.items[0].data);
+//       return data;
+//     })
+//     .then((data) => {
+//       // eslint-disable-next-line no-console
+//       console.log('data from then block', data);
+//       res.status(201).send(data);
+//     })
+//     .catch(() => {
+//       res.sendStatus(500);
+//     })
+// );
+
 
 // serverRouter.put();
 
