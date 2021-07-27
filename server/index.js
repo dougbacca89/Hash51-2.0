@@ -56,7 +56,11 @@ const app = express();
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
-    app.use('/routes/routes', serverRouter);
+    app.use('/routes', serverRouter);
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+    });
 
 app.use(session({
   secret: process.env.SECRET,
