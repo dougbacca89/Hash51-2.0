@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Box,
@@ -13,11 +14,6 @@ const PostComment = () => {
   const { postStory, bodyText, handlePostBody } = useContext(EvidenceContext);
 
   let userText;
-
-  const postClickHandler = (textBody) => {
-    // eslint-disable-next-line no-console
-    console.log(bodyText);
-  };
 
   return (
     <Flex
@@ -50,17 +46,19 @@ const PostComment = () => {
           onChange={handlePostBody}
         />
       </Box>
-      <Button 
-        w="4vw" 
-        h="80px"
-        borderLeftRadius={0} 
-        backgroundColor="#3a2a5e"
-        onClick={() => postClickHandler(userText)}
-      >
-        Post
-      </Button>
+      <Link to="/userPage">
+        <Button 
+          w="4vw" 
+          h="80px"
+          borderLeftRadius={0} 
+          backgroundColor="#3a2a5e"
+          onClick={() => postStory(bodyText)}
+        >
+          Post
+        </Button>
+      </Link>
     </Flex>
-  )
+  );
 };
 
 export default PostComment;

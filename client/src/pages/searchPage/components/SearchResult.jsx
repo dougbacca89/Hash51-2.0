@@ -33,10 +33,13 @@ const SearchResult = () => {
                 m={3}
                 borderRadius="full"
                 boxSize="300px"
-                src={result.thumb}
-                key={result.title}
                 objectFit="cover"
+                src={result.thumb}
+                thumb={result.thumb}
+                key={result.title}
                 nasa_id={result.nasa_id}
+                title={result.title}
+                keyWords={result.keyword}
                 onClick={() => handleCLick(result.nasa_id)}
               />
             </Link>

@@ -12,6 +12,10 @@ function EvidenceContextProvider({ children }){
   const [ searchResults, setSearchResults ] = useState([]);
   const [ searchImage, setSearchImage ] = useState({});
   const [ bodyText, setBodyText ] = useState('');
+  const [ href, setHref ] = useState('');
+  const [ nasa_id, setNasa_id ] = useState('');
+  const [ title, setTitle ] = useState('');
+  const [ keyWords, setKeywords ] = useState([]);
 
   const handlePostBody = (event) => setBodyText(event.target.value);
 
@@ -31,9 +35,10 @@ function EvidenceContextProvider({ children }){
   };
 
   const postStory = async(story) => {
-    await axios.post('/routes/story', { story })
-    .then(results => {
-      setSearchImage(results.data.items[0].href);
+    const newStory = { userName: 'testUser', textBody: story };
+    await axios.post('/routes/story', { newStory })
+    .then(() => {
+      
     });
   };
 
@@ -46,7 +51,15 @@ function EvidenceContextProvider({ children }){
     postStory,
     bodyText, 
     setBodyText,
-    handlePostBody
+    handlePostBody,
+    href, 
+    setHref,
+    nasa_id, 
+    setNasa_id,
+    title, 
+    setTitle,
+    keyWords, 
+    setKeywords
   };
 
   return (

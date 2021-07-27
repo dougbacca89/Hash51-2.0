@@ -98,10 +98,10 @@ serverRouter.post('/asset', (req, res) => {
   // test data for
   // nasaIdCall('PIA20506')
   nasaIdCall(query)
-    .then((data) => {console.log('data', data); return data; })
+    .then((data) => data)
     // {console.log(data.data.collection);}
     .then((data) => data.data.collection)
-    .then((data) => { console.log('data', data); res.status(201).send(data);})
+    .then((data) => res.status(201).send(data))
     .catch((err) => {
       console.log('Error serverRouter.post /asset', err);
     });
@@ -119,10 +119,10 @@ serverRouter.get('/story', (req, res) => {
 
 
 serverRouter.post('/story', (req, res) =>{
-  console.log(req.body);
+  const { userName, textBody } = req.body.newStory;
   const evidence = new Evidence();
-  evidence.textBody = req.body.textBody;
-  evidence.userName = req.body.userName;
+  evidence.textBody = textBody;
+  evidence.userName = userName;
   evidence.originalEvidence = req.body.originalEvidence;
 
   evidence.save((err) => {
