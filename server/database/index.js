@@ -1,17 +1,16 @@
 /* eslint-disable no-console */
 
-// import mongoose from 'mongoose';
-
+require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
-require('dotenv').config();
 
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-// const { Schema, model } = mongoose;
+// const { CommentSchema, Comment }  = require('./Comment');
+// const { EvidenceSchema, Evidence } = require('./Evidence');
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
 
@@ -38,8 +37,23 @@ mongoose.connect(mongoUri, {
 
 const userSchema = mongoose.Schema({
   email: String,
+  username: String,
   password: String,
-  googleId: String,
+  googleId: {
+    type: String,
+    unique: true
+  },
+  profileImage: String,
+  source: String,
+  coConspirators: [String],
+  favorites: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Evidence'
+  },
+  comments: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -71,28 +85,16 @@ passport.use(new GoogleStrategy({
   console.log('within auth');
   console.log(profile);
   // we can use plain mongoose to satisfy this query as well.
-  User.findOrCreate({ googleId: profile.id }, (err, user) => cb(err, user)
+  User.findOrCreate(
+    { googleId: profile.id,
+      username: profile.displayName,
+      email: profile.emails[0].value,
+      profileImage: profile.photos[0].value,
+      source: profile.provider
+    }, (err, user) => cb(err, user)
   );
 }
 ));
-
-// alt insertion into db
-// (accessToken, refreshToken, profile, done) => {
-//   User.findOne({ googleId: profile.id }).then((existingUser) => {
-//       if (existingUser) {
-//           done(null, existingUser);
-//       } else {
-//           new User({
-//               googleId: profile.id,
-//           })
-//               .save()
-//               .then((newUser) => {
-//                   done(null, newUser);
-//               });
-//       }
-//   });
-// }
-// )
 
 
 

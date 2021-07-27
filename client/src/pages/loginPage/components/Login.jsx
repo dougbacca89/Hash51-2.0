@@ -22,7 +22,12 @@ const Login = props => {
   const { createUserClick } = props;
   const [showPassword] = useState(false);
 
-  const { isLoggedIn } = useContext(UserContext);
+  const { isLoggedIn,
+          userLogin,
+          passLogin,
+          handleUserLogin,
+          handlePassLogin,
+          localLogin } = useContext(UserContext);
   console.log(isLoggedIn);
 
   return (
@@ -55,7 +60,11 @@ const Login = props => {
                   <InputLeftElement
                     pointerEvents="none"
                   />
-                  <Input type="email" placeholder="email address" />
+                  <Input
+                    type="email"
+                    placeholder="email address"
+                    value={userLogin}
+                    onChange={handleUserLogin} />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -67,6 +76,8 @@ const Login = props => {
                   <Input
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
+                    value={passLogin}
+                    onChange={handlePassLogin}
                   />
                   <InputRightElement width="4.5rem">
                     <Button h="1.75rem" size="sm">
@@ -81,6 +92,7 @@ const Login = props => {
                 type="submit"
                 variant="solid"
                 colorScheme="purple"
+                onClick={() => localLogin(userLogin, passLogin)}
               >
                 Login
               </Button>
