@@ -5,7 +5,7 @@
 const express = require('express');
 const { Router } = require('express');
 
-// const { Evidence } = require('../database/Evidence');
+const { Evidence } = require('../database/Evidence');
 const { Comment } = require('../database/Comment');
 
 const serverRouter = Router();
@@ -91,18 +91,43 @@ serverRouter.post('/', (req, res) =>
 );
 
 serverRouter.post('/asset', (req, res) => {
-  const { query } = req.body;
-  // test data for nasaIdCall'GSFC_20171208_Archive_e000146'
-  nasaIdCall(query)
-    .then((data) => data)
-
+  // const { query } = req.body;
+  // test data for
+  nasaIdCall('PIA20506')
+  // nasaIdCall(query)
+    .then((data) => {console.log('data', data); return data; })
     // {console.log(data.data.collection);}
     .then((data) => data.data.collection)
-    .then((data) => res.status(201).send(data))
+    .then((data) => { console.log('data', data); res.status(201).send(data);})
     .catch((err) => {
       console.log('Error EVIDENCE.get', err);
     });
 });
+
+serverRouter.post('/story', (req, res) =>{
+  console.log(req.body);
+  const evidence = new Evidence();
+  evidence.textBody = req.body.textBody;
+  evidence.userName = req.body.userName;
+  evidence.originalEvidence = req.body.originalEvidence;
+
+  evidence.save((err) => {
+    if (err) {res.send(err);}
+  });
+});
+// .then((data) => {
+//   const evidence = new Evidence();
+//   evidence.originalEvidence = data.items[0].href;
+//   // evidence.imageThumb = data.items[]
+//   evidence.save((err) => {
+//     if (err) {
+//       res.send(err);
+//     }
+//     // res.json({ message: 'comment successfylly added' });
+//   });
+//   return data;
+// })
+
 
 serverRouter.post('/search', (req, res) => {
   const { query } = req.body;
