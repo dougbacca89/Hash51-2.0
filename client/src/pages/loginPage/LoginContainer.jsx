@@ -27,8 +27,8 @@ const LoginContainer = (props) => {
   );
 };
 
-LoginContainer.propTypes = {
-  updateUserClick: PropTypes.func.isRequired
-};
+// LoginContainer.propTypes = {
+//   updateUserClick: PropTypes.func.isRequired
+// };
 
 export default LoginContainer;

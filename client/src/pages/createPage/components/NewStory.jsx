@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext }from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,11 +8,18 @@ import {
 } from "@chakra-ui/react";
 
 import PostStory from './PostStory';
+import { EvidenceContext } from '../../../contexts/EvidenceContext';
+
+
 
 
 const Story = (props) => {
   const { user } = props;
   const { userName } = user;
+
+  const { searchImage } = useContext(EvidenceContext);
+  // eslint-disable-next-line no-console
+  console.log(searchImage);
   
   return (
     <div>
@@ -31,11 +38,11 @@ const Story = (props) => {
         Tell your story {userName}
         </Text>
         <Image
-          src="https://images-assets.nasa.gov/image/PIA22081/PIA22081~thumb.jpg"
+          src={searchImage}
           objectFit="cover"
           bg="purple.100"
           w="60vw"
-          h="50vh" 
+          h="40vh" 
         />
         <PostStory />
       </Box>

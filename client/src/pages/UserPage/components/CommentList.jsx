@@ -26,14 +26,14 @@ const CommentList = (props) => {
       >
         Comments
       </Text>
-      {comments.map((comment) => <Comment key={comment.userName}comment={comment}/>)}
+      {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
       <PostComment />
     </Box>
   );
 };
 
-CommentList.propTypes = {
-  comments: PropTypes.isRequired,
-};
+// CommentList.propTypes = {
+//   comments: PropTypes.isRequired,
+// };
 
 export default CommentList;

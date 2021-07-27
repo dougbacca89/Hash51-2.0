@@ -20,7 +20,7 @@ import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
 
 
-const StoryContainer = props => {
+const UserContainer = props => {
   const { user } = props;
 
   // Using Params to Isolate Image
@@ -55,14 +55,14 @@ const StoryContainer = props => {
           },
         }}
       >
-        {conspiracies.map((conspiracy) => <Story key={conspiracy.userName} conspiracy={conspiracy}/>)}
+        {conspiracies.map((conspiracy) => <Story key={conspiracy.text} conspiracy={conspiracy}/>)}
       </Box>
     </Flex>
   );
 };
 
-StoryContainer.propTypes = {
-  user: PropTypes.func.isRequired,
-};
+// UserContainer.propTypes = {
+//   user: PropTypes.isRequired,
+// };
 
-export default StoryContainer;
+export default UserContainer;

@@ -11,7 +11,13 @@ import {
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
-  const { searchResults } = useContext(EvidenceContext);
+  const { searchResults, fetchImage } = useContext(EvidenceContext);
+
+  // eslint-disable-next-line camelcase
+  const handleCLick = (nasa_id) => {
+    fetchImage(nasa_id);
+  };
+ 
 
   return searchResults.length ?
   (
@@ -24,12 +30,14 @@ const SearchResult = () => {
           <div>
             <Link to={`story/${result.nasa_id}`}>
               <Image
-              m={3}
+                m={3}
                 borderRadius="full"
                 boxSize="300px"
                 src={result.thumb}
-                alt={result.title}
+                key={result.title}
                 objectFit="cover"
+                nasa_id={result.nasa_id}
+                onClick={() => handleCLick(result.nasa_id)}
               />
             </Link>
           </div>

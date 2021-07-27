@@ -31,8 +31,8 @@ const CreateContainer = props => {
   );
 };
 
-CreateContainer.propTypes = {
-  user: PropTypes.func.isRequired,
-};
+// CreateContainer.propTypes = {
+//   user: PropTypes.func.isRequired,
+// };
 
 export default CreateContainer;

@@ -47,8 +47,8 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
-  conspiracy: PropTypes.isRequired,
-};
+// Story.propTypes = {
+//   conspiracy: PropTypes.isRequired,
+// };
 
 export default Story;
