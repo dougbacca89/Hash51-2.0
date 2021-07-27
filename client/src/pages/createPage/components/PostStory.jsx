@@ -10,10 +10,13 @@ import {
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const PostComment = () => {
-  const { postStory } = useContext(EvidenceContext);
+  const { postStory, bodyText, handlePostBody } = useContext(EvidenceContext);
 
-  const postClickHandler = () => {
+  let userText;
 
+  const postClickHandler = (textBody) => {
+    // eslint-disable-next-line no-console
+    console.log(bodyText);
   };
 
   return (
@@ -43,6 +46,8 @@ const PostComment = () => {
               backgroundColor: `rgba(0, 0, 0, 0.5)`,
             },
           }}
+          value={bodyText}
+          onChange={handlePostBody}
         />
       </Box>
       <Button 
@@ -50,7 +55,7 @@ const PostComment = () => {
         h="80px"
         borderLeftRadius={0} 
         backgroundColor="#3a2a5e"
-        onClick={postClickHandler}
+        onClick={() => postClickHandler(userText)}
       >
         Post
       </Button>

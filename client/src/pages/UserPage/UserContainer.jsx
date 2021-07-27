@@ -42,7 +42,6 @@ const UserContainer = props => {
         maxH="89vh"
         minW="50vw"
         verticalAlign="top"
-        
         overflowY="scroll"
         sx={{
           '&::-webkit-scrollbar': {

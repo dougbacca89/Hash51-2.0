@@ -11,6 +11,9 @@ function EvidenceContextProvider({ children }){
   const haveEvidence = 'Yes We Do';
   const [ searchResults, setSearchResults ] = useState([]);
   const [ searchImage, setSearchImage ] = useState({});
+  const [ bodyText, setBodyText ] = useState('');
+
+  const handlePostBody = (event) => setBodyText(event.target.value);
 
   const fetchSearch = async(query) => {
     await axios.post('/routes/search', { query })
@@ -40,7 +43,10 @@ function EvidenceContextProvider({ children }){
     fetchSearch,
     searchImage,
     fetchImage,
-    postStory
+    postStory,
+    bodyText, 
+    setBodyText,
+    handlePostBody
   };
 
   return (

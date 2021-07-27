@@ -64,7 +64,8 @@ const Login = props => {
                     type="email"
                     placeholder="email address"
                     value={userLogin}
-                    onChange={handleUserLogin} />
+                    onChange={handleUserLogin} 
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>
