@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
+import GoogleButton from './GoogleButton';
 
 const Login = props => {
   const { createUserClick } = props;
@@ -27,10 +28,8 @@ const Login = props => {
 
   return (
     <Flex
-    flexDirection="column"
-    width="100wh"
-    height="100vh"
-    backgroundColor="gray.200"
+    flexDir="column"
+    mb="2"
     justifyContent="center"
     alignItems="center"
     >
@@ -55,7 +54,10 @@ const Login = props => {
                   <InputLeftElement
                     pointerEvents="none"
                   />
-                  <Input type="email" placeholder="email address" />
+                  <Input 
+                    type="email" 
+                    placeholder="email address" 
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -69,22 +71,29 @@ const Login = props => {
                     placeholder="Password"
                   />
                   <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm">
+                    <Button 
+                      h="1.75rem" 
+                      size="sm">
                       {showPassword ? "Hide" : "Show"}
                     </Button>
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-              <Link to='/Search'>
-              <Button
-                borderRadius={10}
-                type="submit"
-                variant="solid"
-                colorScheme="purple"
+              <Flex
+                justify="space-between"
               >
-                Login
-              </Button>
-              </Link>
+                <Link to='/Search'>
+                  <Button
+                    borderRadius={10}
+                    type="submit"
+                    variant="solid"
+                    colorScheme="purple"
+                  >
+                    Login
+                  </Button>
+                </Link>
+                <GoogleButton />
+              </Flex>
               <Box>
                 Do we know you?{" "}
               </Box>

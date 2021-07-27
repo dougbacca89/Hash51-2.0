@@ -57,6 +57,9 @@ const App = () => {
           <Route exact path="/story/:nasa_id">
             <StoryContainer user={user} />
           </Route>
+          <Route exact path="/userPage">
+            <StoryContainer user={user} />
+          </Route>
           <Route path="/search">
             <SearchContainer user={user}/>
           </Route>
