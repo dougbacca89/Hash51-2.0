@@ -21,7 +21,7 @@ passportRouter.post('/register', (req, res) => {
     } else {
       passport.authenticate('local')(req, res, (error, result) => {
         console.log(user);
-        res.sendStatus(200);
+        res.status(200).redirect('/userLogin');
       });
     }
   });
@@ -37,11 +37,17 @@ passportRouter.post('/login', (req, res) => {
       res.sendStatus(500);
     } else {
       passport.authenticate('local')(req, res, (error, result) => {
-        console.log(user);
-        res.sendStatus(200);
+        console.log(result);
+        res.status(200).send(result);
     });
   }
   });
+});
+
+passportRouter.get('/getUser', (req, res) => {
+  console.log(req);
+  console.log(req.user);
+  res.send(req.user);
 });
 
 passportRouter.get('/logout', (req, res) => {
@@ -52,13 +58,12 @@ passportRouter.get('/logout', (req, res) => {
 // Google Strategy //
 
 passportRouter.get('/auth/google',
-passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => console.log('wagwan'));
+passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
-  // Successful authentication, redirect home.
   res.redirect('/');
 });
 

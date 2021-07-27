@@ -28,7 +28,6 @@ function UserContextProvider({ children }){
 
   const googleLogin = async () => {
     await axios.get('/auth/google')
-    // .then(() => axios.get('routes/passportRoutes/auth/google/home'))
     .then(() => console.log('successful login'))
     .catch((err) => console.log(err));
 
@@ -47,8 +46,10 @@ function UserContextProvider({ children }){
   };
 
   const localLogin = async ( username, password ) => {
-    await axios.post('/login', { username, password })
-    .then(() => console.log('successful login'))
+    await axios.get('/login', { username, password })
+    .then((result) => console.log('successful login', result))
+    .then(() => axios.get('/getUser'))
+    .then((user) => console.log(user))
     .catch((err) => console.log('login error', err));
   };
 
