@@ -4,7 +4,7 @@ import {
   Box,
   Button,
   Flex,
-  Input
+  Textarea
 } from "@chakra-ui/react";
 
 const PostComment = () => (
@@ -12,18 +12,31 @@ const PostComment = () => (
     <Box 
       bg="purple.200" 
       mb="1.25vh" 
-      w="48vw" 
+      w="52vw" 
       ml="2vw" 
       borderLeftRadius={10}
     >
-      <Input 
-        type="comment" 
-        placeholder="comment" 
-        borderRightRadius={0}
+      <Textarea
+        placeholder="Tinfoil hat not included..."
+        fontSize="14px"
+        color="black"
+        overflowY="scroll"
+        h="5px"
+        sx={{
+          '&::-webkit-scrollbar': {
+            width: '16px',
+            borderRadius: '8px',
+            backgroundColor: `rgba(0, 0, 0, 0.05)`,
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: `rgba(0, 0, 0, 0.5)`,
+          },
+        }}
       />
     </Box>
     <Button 
-      w="8vw" 
+      w="4vw" 
+      h="80px"
       borderLeftRadius={0} 
       backgroundColor="#3a2a5e"
     >

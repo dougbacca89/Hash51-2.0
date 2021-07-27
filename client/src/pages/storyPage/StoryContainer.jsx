@@ -40,10 +40,10 @@ const StoryContainer = props => {
         <ConspiratorList conspirators={conspirators}/>
       </Box>
       <Box
-        maxH="80vh"
+        maxH="89vh"
         minW="50vw"
         verticalAlign="top"
-        borderRadius={10}
+        
         overflowY="scroll"
         sx={{
           '&::-webkit-scrollbar': {

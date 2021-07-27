@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import {
   Text,
-  Box
+  Box,
+  Image
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -27,10 +28,12 @@ const Story = (props) => {
       >
         {storyTitle}
       </Text>
-      <Box 
+      <Image
+        src="https://images-assets.nasa.gov/image/PIA22081/PIA22081~thumb.jpg"
+        objectFit="cover"
         bg="purple.100"
         w="60vw"
-        h="30vh" 
+        h="40vh" 
       />
       <Text 
         ml="10px" 

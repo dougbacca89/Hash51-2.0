@@ -16,12 +16,14 @@ const Comment = (props) => {
     mb="1.25vh" 
     w="56vw" 
     ml="2vw" 
-    borderRadius={10}
+    borderRadius={5}
   >
     <Text 
-      ml="10px" 
-      fontSize="12px" 
-      minH="5vh"
+      p={2}
+      ml="10px"  
+      minH="2vh"
+      fontSize="11px"
+      color="black"
     >
       {userName} : {text}
     </Text>
