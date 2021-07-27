@@ -28,14 +28,14 @@ const Story = (props) => {
           fontSize="25px"
           color="white"
         >
-        Tell your story
+        Tell your story {userName}
         </Text>
         <Image
           src="https://images-assets.nasa.gov/image/PIA22081/PIA22081~thumb.jpg"
           objectFit="cover"
           bg="purple.100"
           w="60vw"
-          h="40vh" 
+          h="50vh" 
         />
         <PostStory />
       </Box>
@@ -44,7 +44,7 @@ const Story = (props) => {
 };
 
 Story.propTypes = {
-  conspiracy: PropTypes.isRequired,
+  user: PropTypes.isRequired,
 };
 
 export default Story;

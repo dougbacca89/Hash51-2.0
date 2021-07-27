@@ -11,6 +11,7 @@ function EvidenceContextProvider({ children }){
 
   const haveEvidence = 'Yes We Do';
   const [ searchResults, setSearchResults ] = useState([]);
+  const [ searchImage, setSearchImage ] = useState({});
 
 
   const fetchSearch = async(query) => {
@@ -21,10 +22,21 @@ function EvidenceContextProvider({ children }){
     });
   };
 
+  const fetchImage = async(query) => {
+    await axios.post('/asset', { query })
+    .then(results => {
+      // eslint-disable-next-line no-console
+      console.log(results);
+      setSearchImage(results.data);
+    });
+  };
+
   const evidenceProps = {
     haveEvidence,
     searchResults,
-    fetchSearch
+    fetchSearch,
+    searchImage,
+    fetchImage
   };
 
   return (
