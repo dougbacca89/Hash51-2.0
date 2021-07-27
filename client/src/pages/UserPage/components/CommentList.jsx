@@ -14,10 +14,10 @@ const CommentList = (props) => {
   
   return (
     <Box 
-        bg="purple.400" 
-        mb="7vh" 
-        w="60vw" 
-        borderBottomRadius={10}
+      bg="purple.400" 
+      mb="7vh" 
+      w="60vw" 
+      borderBottomRadius={10}
     >
       <Text 
         ml="10px" 

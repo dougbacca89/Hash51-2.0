@@ -45,6 +45,6 @@ const PostComment = () => (
       Post
     </Button>
   </Flex>
-  );
+);
 
 export default PostComment;
