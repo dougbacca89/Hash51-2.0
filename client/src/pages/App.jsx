@@ -13,7 +13,7 @@ import {
 
 
 import LoginContainer from './loginPage/LoginContainer.jsx';
-import StoryContainer from './storyPage/StoryContainer';
+import UserContainer from './UserPage/UserContainer';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
@@ -41,7 +41,7 @@ const App = () => {
       <Flex
         flexDirection="column"
         width="100wh"
-        minH="91vh"
+        minH="92.75vh"
         backgroundColor="#3a2a5e"
         justifyContent="top"
         alignItems="center"
@@ -49,13 +49,16 @@ const App = () => {
       >
         <Switch>
           <Route exact path="/">
-            <StoryContainer user={user}/>
+            <UserContainer user={user}/>
           </Route>
           <Route path="/userLogin">
             <LoginContainer user={user} updateUserClick={updateUserClick}/>
           </Route>
           <Route exact path="/story/:nasa_id">
-            <StoryContainer user={user} />
+            <UserContainer user={user} />
+          </Route>
+          <Route exact path="/userPage">
+            <UserContainer user={user} />
           </Route>
           <Route path="/search">
             <SearchContainer user={user}/>
