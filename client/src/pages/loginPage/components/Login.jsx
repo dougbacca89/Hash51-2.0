@@ -3,6 +3,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import {
   Flex,
   Heading,
@@ -39,7 +40,7 @@ const Login = props => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="purple.400">We want to believe...</Heading>
+        <Heading color="green.500">We want to believe...</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack

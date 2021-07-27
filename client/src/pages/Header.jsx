@@ -14,7 +14,8 @@ const Header = () => (
       </Heading>
       <Heading as="h3" size="md" m={2} mr="15vw">
         <Link color="green.500" href="/search">Get evidence</Link> {" "}
-        <Link color="green.500" ml="2vw" href="/userStory">Find conspirators</Link>
+        <Link color="green.500" ml="2vw" href="/userPage">Find conspirators</Link> {" "}
+        <Link color="green.500" ml="2vw" href="/userLogin">Join us</Link>
       </Heading>
     </Flex>
     <Box width="full" height="8px" bg="black" />
