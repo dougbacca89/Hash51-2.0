@@ -10,14 +10,16 @@ serverRouter.use(express.json());
 
 const { getImagesFromNasa, nasaIdCall } = require('../helpers/getImages');
 
-serverRouter.get('/', (req, res) =>{
-  res.json({ message: 'API Initialized!'});
+serverRouter.get('/', (req, res) => {
+  res.json({ message: 'API Initialized!' });
 });
 
 serverRouter.get('/comments', (req, res) => {
-  Comment.find((err, comments) => {
-    if(err) { return res.send(err); }
-    return res.json(comments);
+  Comment.find((err, comment) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json(comment);
   });
 });
 
@@ -25,12 +27,46 @@ serverRouter.post('/comments', (req, res) => {
   const comment = new Comment();
   comment.userId = req.body.userId;
   comment.text = req.body.text;
+  comment.author = req.body.author;
+  comment.imageId = req.body.imageId;
 
   comment.save((err) => {
-    if (err) { res.send(err) ;}
-    res.json({ message: 'comment successfylly added'});
+    if (err) {
+      res.send(err);
+    }
+    res.json({ message: 'comment successfylly added' });
   });
 });
+
+serverRouter.put('/comments/:comment_id', (req, res) => {
+  Comment.findById(req.params.comment_id, (err, comment) => {
+    if (err) {
+      return res.send(err);
+    }
+
+    // eslint-disable-next-line no-unused-expressions
+    (req.body.author) ? comment.author = req.body.author : null;
+    // eslint-disable-next-line no-unused-expressions
+    (req.body.text) ? comment.text = req.body.text : null;
+
+    comment.save((error)=> {
+      if (err) { res.send(error); }
+      return res.json({ message: 'comment was updated successfully'});
+
+    });
+  });
+});
+
+
+serverRouter.delete('/comments/:comment_id', (req, res) => {
+  Comment.remove({_id: req.params.comment_id }, (err, comment) => {
+    if (err) {
+      return res.send(err);
+    }
+    return res.json({ message: 'comment was deleted successfully!'});
+  });
+});
+
 
 serverRouter.post('/', (req, res) =>
   getImagesFromNasa('saturn')

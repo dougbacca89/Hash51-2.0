@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema({
-  // imageId: Number,
-  // userId: Number,
+  imageId: Number,
+  userId: Number,
   text: String,
   author: String
 });
