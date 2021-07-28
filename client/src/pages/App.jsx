@@ -11,10 +11,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-
-import LoginContainer from './loginPage/LoginContainer.jsx';
+import CreatePageContainer from './createPage/CreateContainer';
+import LoginContainer from './loginPage/LoginContainer';
 import UserContainer from './UserPage/UserContainer';
-import SearchContainer from './searchPage/SearchContainer.jsx';
+import SearchContainer from './searchPage/SearchContainer';
 import Header from './Header.jsx';
 
 const testStory = {
@@ -55,10 +55,10 @@ const App = () => {
             <LoginContainer user={user} updateUserClick={updateUserClick}/>
           </Route>
           <Route exact path="/story/:nasa_id">
-            <UserContainer user={user} />
+            <CreatePageContainer user={user}/>
           </Route>
           <Route exact path="/userPage">
-            <UserContainer user={user} />
+            <UserContainer user={user}/>
           </Route>
           <Route path="/search">
             <SearchContainer user={user}/>
