@@ -15,7 +15,7 @@ import NewStory from './components/NewStory';
 
 const CreateContainer = props => {
   const { user } = props;
-  const { conspirators, conspiracies } = user;
+  // const { conspirators, conspiracies } = user;
 
   return (
     <Flex>
@@ -25,7 +25,7 @@ const CreateContainer = props => {
         verticalAlign="top"
       >
         <NewStory user={user}/>
-        
+
       </Box>
     </Flex>
   );
