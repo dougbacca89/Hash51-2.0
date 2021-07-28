@@ -10,7 +10,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-import NewStory from './components/NewStory.jsx';
+import NewStory from './components/NewStory';
 
 
 const CreateContainer = props => {
