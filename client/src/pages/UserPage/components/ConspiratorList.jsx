@@ -15,16 +15,15 @@ const ConspiratorList = (props) => {
   <VStack
     divider={<StackDivider borderColor="gray.200" />}
     spacing={1}
-    align="stretch"
   >
     <StackDivider borderColor="gray.200" />
-    {conspirators.map((conspirator) => <Conspirator conspirator={conspirator} />)}
+    {conspirators.map((conspirator) => <Conspirator key={conspirator.userName}conspirator={conspirator} />)}
   </VStack>
   );
 };
 
 ConspiratorList.propTypes = {
-  conspirators: PropTypes.func.isRequired,
+  conspirators: PropTypes.isRequired,
 };
 
 export default ConspiratorList;

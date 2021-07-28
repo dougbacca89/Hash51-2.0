@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions, no-unused-vars, no-console */
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import  { useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -9,17 +9,26 @@ import PropTypes from 'prop-types';
 
 import {
   Flex,
+  Text,
   Box,
+  Square,
+  Heading,
+  Center
 } from "@chakra-ui/react";
+
 
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
+import { DisplayContext } from '../../contexts/DisplayContext';
+
 import { UserContext } from '../../contexts/UserContext';
 
-const StoryContainer = props => {
+const UserContainer = props => {
   const { user } = props;
+  const { conspirators, conspiracies } = user;
 
+  const { stories, fetchStories } = useContext(DisplayContext);
   const { userObj } = useContext(UserContext);
   console.log(userObj);
 
@@ -30,7 +39,7 @@ const StoryContainer = props => {
   //     <Heading>{ nasa_id }</Heading>
   //   </div>
 
-  const { conspirators, conspiracies } = user;
+  useEffect(() => { fetchStories(); }, []);
 
   return (
     <Flex color="white">
@@ -42,7 +51,6 @@ const StoryContainer = props => {
         maxH="89vh"
         minW="50vw"
         verticalAlign="top"
-
         overflowY="scroll"
         sx={{
           '&::-webkit-scrollbar': {
@@ -55,14 +63,15 @@ const StoryContainer = props => {
           },
         }}
       >
-        {conspiracies.map((conspiracy) => <Story key={conspiracy.userName} conspiracy={conspiracy}/>)}
+        {/* eslint-disable-next-line no-underscore-dangle */}
+        {stories.map((story) => <Story key={story._id} story={story}/>)}
       </Box>
     </Flex>
   );
 };
 
-StoryContainer.propTypes = {
-  user: PropTypes.func.isRequired,
+UserContainer.propTypes = {
+  user: PropTypes.isRequired,
 };
 
-export default StoryContainer;
+export default UserContainer;

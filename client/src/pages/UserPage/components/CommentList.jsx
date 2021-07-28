@@ -14,10 +14,10 @@ const CommentList = (props) => {
   
   return (
     <Box 
-        bg="purple.400" 
-        mb="7vh" 
-        w="60vw" 
-        borderBottomRadius={10}
+      bg="purple.400" 
+      mb="7vh" 
+      w="60vw" 
+      borderBottomRadius={10}
     >
       <Text 
         ml="10px" 
@@ -26,7 +26,7 @@ const CommentList = (props) => {
       >
         Comments
       </Text>
-      {comments.map((comment) => <Comment key={comment.userName}comment={comment}/>)}
+        {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
       <PostComment />
     </Box>
   );

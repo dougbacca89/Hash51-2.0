@@ -49,7 +49,11 @@ const CreateUser = () => {
                 <InputLeftElement
                   pointerEvents="none"
                 />
-                <Input type="email" placeholder="email address" value={userReg} onChange={handleUserReg}/>
+                <Input 
+                  type="email" 
+                  placeholder="email address" 
+                  value={userReg} 
+                  onChange={handleUserReg}/>
               </InputGroup>
             </FormControl>
             <FormControl>
