@@ -13,7 +13,7 @@ import {
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 import { DisplayContext } from '../../../contexts/DisplayContext';
 
-const PostComment = () => {
+const PostStory = () => {
   const { postStory, bodyText, handlePostBody } = useContext(EvidenceContext);
   const { fetchStories } = useContext(DisplayContext);
   
@@ -82,4 +82,4 @@ const PostComment = () => {
   );
 };
 
-export default PostComment;
+export default PostStory;
