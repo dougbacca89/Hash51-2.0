@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions, no-console, no-unused-vars */
+/* eslint-disable import/extensions, no-console, no-unused-vars, import/no-unresolved */
 
 import React, { useState } from 'react';
 import {
@@ -11,10 +11,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import CreateContainer from './createPage/CreateContainer.jsx';
-import LoginContainer from './loginPage/LoginContainer.jsx';
-import UserContainer from './userPage/UserContainer.jsx';
-import SearchContainer from './searchPage/SearchContainer.jsx';
+import CreateContainer from './CreatePage/CreateContainer';
+import LoginContainer from './loginPage/LoginContainer';
+import UserContainer from './UserPage/UserContainer';
+import SearchContainer from './searchPage/SearchContainer';
 import Header from './Header.jsx';
 
 const testStory = {
