@@ -1,9 +1,11 @@
-/* eslint-disable import/extensions, no-unused-vars */
+/* eslint-disable import/extensions, no-unused-vars, no-console */
 
 import React, { useState, useContext, useEffect } from 'react';
 import  { useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
+
+
 
 import {
   Flex,
@@ -20,12 +22,22 @@ import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
 import { DisplayContext } from '../../contexts/DisplayContext';
 
+import { UserContext } from '../../contexts/UserContext';
 
 const UserContainer = props => {
   const { user } = props;
   const { conspirators, conspiracies } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
+  const { userObj } = useContext(UserContext);
+  console.log(userObj);
+
+  // Using Params to Isolate Image
+  // const { nasa_id } = useParams();
+  // return (
+  //   <div>
+  //     <Heading>{ nasa_id }</Heading>
+  //   </div>
 
   useEffect(() => fetchStories());
 

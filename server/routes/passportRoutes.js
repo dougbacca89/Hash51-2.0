@@ -1,8 +1,9 @@
 /* eslint-disable no-console  */
-/* eslint-disable no-unused-vars  */
+/* eslint-disable no-unused-vars, no-param-reassign  */
 
 const { Router } = require('express');
 const passport = require('passport');
+const path = require('path');
 const cors = require('cors');
 
 
@@ -14,14 +15,18 @@ const passportRouter = Router();
 // Local Strategy //
 passportRouter.post('/register', (req, res) => {
   const { username, password } = req.body;
-  User.register({ username }, password, (err, user) => {
+  User.register({ username }, password, async (err, user) => {
     if(err){
       console.log(err);
       res.sendStatus(500);
     } else {
-      passport.authenticate('local')(req, res, (error, result) => {
+      passport.authenticate('local')(req, res, async (error, result) => {
         console.log(user);
-        res.sendStatus(200);
+        await User.findOneAndUpdate({ username }, {
+          source: 'local',
+          email: username,
+          profileImage: 'https://insa.or.id/wp-content/uploads/2017/02/profile-default-large.jpg' });
+        res.status(200).redirect('/userLogin');
       });
     }
   });
@@ -37,12 +42,12 @@ passportRouter.post('/login', (req, res) => {
       res.sendStatus(500);
     } else {
       passport.authenticate('local')(req, res, (error, result) => {
-        console.log(user);
-        res.sendStatus(200);
+        res.status(200).send(req.user);
     });
   }
   });
 });
+
 
 passportRouter.get('/logout', (req, res) => {
   req.logout();
@@ -52,16 +57,20 @@ passportRouter.get('/logout', (req, res) => {
 // Google Strategy //
 
 passportRouter.get('/auth/google',
-passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res) => console.log('wagwan'));
+passport.authenticate('google', { scope: ['profile', 'email'] }),
+(req, res) => res.status(200).send(req.user));
 
 
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
-  // Successful authentication, redirect home.
-  res.redirect('/');
+  res.redirect('/userLogin');
 });
 
+passportRouter.get('/getUser', (req, res) => {
+  console.log( 'inside req.user', req.user);
+  res.send(req.user);
+});
 
 
 module.exports = {

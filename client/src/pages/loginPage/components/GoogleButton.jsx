@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 
 import {
@@ -9,12 +8,12 @@ Link
 import { UserContext } from '../../../contexts/UserContext';
 
 const GoogleButton = () => {
-  const { googleLogin } = useContext(UserContext);
+  const { getUser } = useContext(UserContext);
   return (
     <Link href='auth/google'>
-      <Button 
-        type='button' 
-        onClick={ googleLogin }
+      <Button
+        type='button'
+        onClick={ getUser }
         borderRadius={10}
         color="white"
         variant="solid"

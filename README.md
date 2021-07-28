@@ -47,6 +47,7 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](http://www.passportjs.org/packages/passport-google-oauth20/)
 * [Endpoint Docs](https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow#oauth-2.0-endpoints_4)
 * [Facebook Example of OAUTH implementation](https://github.com/passport/express-4.x-facebook-example)
+* [Google Oauth Tutorial](https://dev.to/phyllis_yym/beginner-s-guide-to-google-oauth-with-passport-js-2gh4)
 
 ### - CORS:
 * [Documentation](https://www.npmjs.com/package/cors#configuring-cors)

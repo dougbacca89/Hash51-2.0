@@ -24,9 +24,8 @@ const CreateUser = () => {
     handlePass,
     confirm,
     handleConfirm,
-    localRegister
-  } = useContext(UserContext);
-
+    localRegister,
+   } = useContext(UserContext);
 
   return (
     <Stack
