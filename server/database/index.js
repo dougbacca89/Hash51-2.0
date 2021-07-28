@@ -22,7 +22,6 @@ db.once('open', () => {
 });
 
 
-// Create a mongoose connection to out mongo database
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
