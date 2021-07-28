@@ -11,7 +11,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import CreateContainer from './CreatePage/CreateContainer';
+import CreatePageContainer from './createPage/CreateContainer';
 import LoginContainer from './loginPage/LoginContainer';
 import UserContainer from './UserPage/UserContainer';
 import SearchContainer from './searchPage/SearchContainer';
@@ -55,7 +55,7 @@ const App = () => {
             <LoginContainer user={user} updateUserClick={updateUserClick}/>
           </Route>
           <Route exact path="/story/:nasa_id">
-            <CreateContainer user={user}/>
+            <CreatePageContainer user={user}/>
           </Route>
           <Route exact path="/userPage">
             <UserContainer user={user}/>

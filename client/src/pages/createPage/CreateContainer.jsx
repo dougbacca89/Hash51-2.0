@@ -13,7 +13,7 @@ import {
 import NewStory from './components/NewStory';
 
 
-const CreateContainer = props => {
+const CreatePageContainer = props => {
   const { user } = props;
   const { conspirators, conspiracies } = user;
 
@@ -31,8 +31,8 @@ const CreateContainer = props => {
   );
 };
 
-CreateContainer.propTypes = {
+CreatePageContainer.propTypes = {
   user: PropTypes.func.isRequired,
 };
 
-export default CreateContainer;
+export default CreatePageContainer;
