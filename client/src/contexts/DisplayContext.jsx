@@ -10,12 +10,15 @@ function DisplayContextProvider({ children }){
 
   const [ stories, setStories ] = useState([]);
 
+  
+
   const fetchStories = async() => {
     axios.get('/routes/story')
     .then(result => {
       setStories(result.data);
     });
   };
+
 
   const displayProps = {
     stories,

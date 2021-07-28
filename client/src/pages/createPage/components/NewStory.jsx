@@ -48,8 +48,8 @@ const Story = (props) => {
   );
 };
 
-// Story.propTypes = {
-//   user: PropTypes.isRequired,
-// };
+Story.propTypes = {
+  user: PropTypes.isRequired,
+};
 
 export default Story;

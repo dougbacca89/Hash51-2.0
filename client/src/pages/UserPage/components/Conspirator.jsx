@@ -33,8 +33,8 @@ const Conspirator = (props) => {
   );
 };
 
-// Conspirator.propTypes = {
-//   conspirator: PropTypes.isRequired,
-// };
+Conspirator.propTypes = {
+  conspirator: PropTypes.isRequired,
+};
 
 export default Conspirator;

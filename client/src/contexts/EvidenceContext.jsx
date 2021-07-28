@@ -14,6 +14,8 @@ function EvidenceContextProvider({ children }){
   const [ title, setTitle ] = useState('');
   const [ keyWords, setKeywords ] = useState([]);
 
+  
+
   const handlePostBody = (event) => setBodyText(event.target.value);
 
   const fetchSearch = async(query) => {
@@ -38,6 +40,7 @@ function EvidenceContextProvider({ children }){
       
     });
   };
+
 
   const evidenceProps = {
     haveEvidence,

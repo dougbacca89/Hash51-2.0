@@ -122,8 +122,8 @@ const Login = props => {
   );
 };
 
-// Login.propTypes = {
-//   createUserClick: PropTypes.func.isRequired,
-// };
+Login.propTypes = {
+  createUserClick: PropTypes.func.isRequired,
+};
 
 export default Login;

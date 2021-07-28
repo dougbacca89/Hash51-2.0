@@ -39,7 +39,7 @@ const UserContainer = props => {
   //     <Heading>{ nasa_id }</Heading>
   //   </div>
 
-  useEffect(() => fetchStories());
+  useEffect(() => { fetchStories(); }, []);
 
   return (
     <Flex color="white">
@@ -63,14 +63,15 @@ const UserContainer = props => {
           },
         }}
       >
+        {/* eslint-disable-next-line no-underscore-dangle */}
         {stories.map((story) => <Story key={story._id} story={story}/>)}
       </Box>
     </Flex>
   );
 };
 
-// UserContainer.propTypes = {
-//   user: PropTypes.isRequired,
-// };
+UserContainer.propTypes = {
+  user: PropTypes.isRequired,
+};
 
 export default UserContainer;

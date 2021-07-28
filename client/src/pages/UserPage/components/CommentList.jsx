@@ -10,7 +10,7 @@ import Comment from './Comment';
 import PostComment from './PostComment';
 
 const CommentList = (props) => {
-  const { post_id, comments } = props;
+  const { comments } = props;
   
   return (
     <Box 
@@ -32,8 +32,8 @@ const CommentList = (props) => {
   );
 };
 
-// CommentList.propTypes = {
-//   comments: PropTypes.isRequired,
-// };
+CommentList.propTypes = {
+  comments: PropTypes.isRequired,
+};
 
 export default CommentList;
