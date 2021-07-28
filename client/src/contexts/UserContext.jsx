@@ -31,10 +31,15 @@ function UserContextProvider({ children }){
 
   // const { nasa_id } = useContext(EvidenceContext);
 
-  const getEvidence = async (nasa_id) => {
+  const storeEvidence = async (nasa_id) => {
     const id = userObj['_id'];
 
-    await axios.post('/get/evidence', { id, nasa_id });
+    await axios.post('/store/favorites', { id, nasa_id });
+  };
+
+  const getEvidence = async () => {
+    await axios.get('/get/favorites')
+    .then(({data}) => console.log('here are favorites', data) );
   };
 
   // This isn't used
@@ -103,6 +108,7 @@ function UserContextProvider({ children }){
     passLogin,
     handleUserLogin,
     handlePassLogin,
+    storeEvidence,
     getEvidence,
   };
 

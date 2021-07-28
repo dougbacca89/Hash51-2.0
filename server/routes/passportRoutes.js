@@ -68,7 +68,6 @@ passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error'
 });
 
 passportRouter.get('/getUser', (req, res) => {
-  console.log( 'inside req.user', req.user);
   res.send(req.user);
 });
 
