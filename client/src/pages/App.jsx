@@ -13,7 +13,7 @@ import {
 
 import CreateContainer from './CreatePage/CreateContainer';
 import LoginContainer from './loginPage/LoginContainer.jsx';
-import UserContainer from './UserPage/UserContainer';
+import UserContainer from './UserPage/UserContainer.jsx';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
