@@ -5,7 +5,9 @@ import {
   Box,
   Button,
   Flex,
-  Textarea
+  Textarea,
+  Input,
+  Stack
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
@@ -17,51 +19,66 @@ const PostComment = () => {
   
 
   return (
-    <Flex
-      mt="1.25vh"
-    >
-      <Box 
+    <Stack>
+      <Input
+        placeholder="Your title here"
+        fontSize="14px"
+        color="black"
         bg="purple.200" 
-        mb="1.25vh" 
+        mt="2vh"
         w="52vw" 
-        ml="2vw" 
-        borderLeftRadius={10}
+        ml="2vw"
+        value={bodyText}
+        onChange={handlePostBody}
+      />
+      <Flex
+        mt="1.25vh"
       >
-        <Textarea
-          placeholder="Tinfoil hat not included..."
-          fontSize="14px"
-          color="black"
-          overflowY="scroll"
-          h="5px"
-          sx={{
-            '&::-webkit-scrollbar': {
-              width: '16px',
-              borderRadius: '8px',
-              backgroundColor: `rgba(0, 0, 0, 0.05)`,
-            },
-            '&::-webkit-scrollbar-thumb': {
-              backgroundColor: `rgba(0, 0, 0, 0.5)`,
-            },
-          }}
-          value={bodyText}
-          onChange={handlePostBody}
-        />
-      </Box>
-      <Link to="/userPage">
-        <Button 
-          w="4vw" 
-          h="80px"
-          borderLeftRadius={0} 
-          backgroundColor="#3a2a5e"
-          onClick={() => {
-            postStory();
-            fetchStories();
-          }}
+        <Box 
+          bg="purple.200" 
+          mb="1.25vh" 
+          w="52vw" 
+          ml="2vw" 
+          borderLeftRadius={10}
         >
-          Post
-        </Button>
-      </Link>
-    </Flex>
+          <Textarea
+            placeholder="Tinfoil hat not included..."
+            fontSize="14px"
+            color="black"
+            overflowY="scroll"
+            h="5px"
+            sx={{
+              '&::-webkit-scrollbar': {
+                width: '16px',
+                borderRadius: '8px',
+                backgroundColor: `rgba(0, 0, 0, 0.05)`,
+              },
+              '&::-webkit-scrollbar-thumb': {
+                backgroundColor: `rgba(0, 0, 0, 0.5)`,
+              },
+            }}
+            value={bodyText}
+            onChange={handlePostBody}
+          />
+        </Box>
+        <Link to="/userPage">
+          <Button 
+            w="4vw" 
+            h="80px"
+            color="white"
+            
+            borderLeftRadius={0} 
+            backgroundColor="#3a2a5e"
+            onClick={() => {
+              postStory();
+              fetchStories();
+            }}
+          >
+            Post
+          </Button>
+        </Link>
+      </Flex>
+    </Stack>
   );
 };
 

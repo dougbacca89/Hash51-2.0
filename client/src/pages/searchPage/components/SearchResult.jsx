@@ -11,10 +11,11 @@ import {
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
-  const { searchResults, fetchImage, setNasa_id, setHref, setTitle, setKeywords } = useContext(EvidenceContext);
-
   // eslint-disable-next-line camelcase
+  const { searchResults, fetchImage, setNasa_id, setTitle, setKeywords } = useContext(EvidenceContext);
+
   const handleCLick = (result) => {
+    // eslint-disable-next-line camelcase
     const { nasa_id, title, keywords } = result;
     setNasa_id(nasa_id);
     setTitle(title);

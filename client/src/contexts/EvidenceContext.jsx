@@ -1,5 +1,5 @@
 /* eslint-disable func-style */
-import React, { useContext, createContext, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ function EvidenceContextProvider({ children }){
   const [ searchResults, setSearchResults ] = useState([]);
   const [ bodyText, setBodyText ] = useState('');
   const [ href, setHref ] = useState('');
+  // eslint-disable-next-line camelcase
   const [ nasa_id, setNasa_id ] = useState('');
   const [ title, setTitle ] = useState('');
   const [ keyWords, setKeywords ] = useState([]);
@@ -31,7 +32,7 @@ function EvidenceContextProvider({ children }){
   };
 
   const postStory = async() => {
-    const story = { href, title, nasa_id, keyWords, bodyText, userName: "testUser" };
+    const story = { href, title, nasa_id, keyWords, bodyText, userName: "testUser", comments: [] };
     await axios.post('/routes/story', { story })
     .then(() => {
       

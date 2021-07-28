@@ -6,7 +6,8 @@ const EvidenceSchema = new mongoose.Schema({
   href: String,
   nasa_id: String,
   title: String,
-  keyWords: Array
+  keyWords: Array,
+  comments: Array
 });
 
 const Evidence = mongoose.model('Evidence', EvidenceSchema);

@@ -10,7 +10,7 @@ import Comment from './Comment';
 import PostComment from './PostComment';
 
 const CommentList = (props) => {
-  const { comments } = props;
+  const { post_id, comments } = props;
   
   return (
     <Box 
@@ -26,7 +26,7 @@ const CommentList = (props) => {
       >
         Comments
       </Text>
-      {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
+        {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
       <PostComment />
     </Box>
   );
