@@ -1,9 +1,12 @@
-/*  eslint-disable func-style, no-unused-vars, no-console */
-import React, { createContext, useState, useEffect } from 'react';
+/*  eslint-disable func-style, no-unused-vars, no-console, dot-notation, camelcase */
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 
 import axios from 'axios';
+
+// import { EvidenceContext } from './EvidenceContext'
+
 
 
 const UserContext = createContext();
@@ -26,6 +29,13 @@ function UserContextProvider({ children }){
   const handleUserLogin = (event) => setUserLogin(event.target.value);
   const handlePassLogin = (event) => setPassLogin(event.target.value);
 
+  // const { nasa_id } = useContext(EvidenceContext);
+
+  const getEvidence = async (nasa_id) => {
+    const id = userObj['_id'];
+
+    await axios.post('/get/evidence', { id, nasa_id });
+  };
 
   // This isn't used
   const googleLogin = async () => {
@@ -93,6 +103,7 @@ function UserContextProvider({ children }){
     passLogin,
     handleUserLogin,
     handlePassLogin,
+    getEvidence,
   };
 
 

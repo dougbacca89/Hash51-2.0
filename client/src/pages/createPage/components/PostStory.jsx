@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -12,11 +12,13 @@ import {
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 import { DisplayContext } from '../../../contexts/DisplayContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
-  const { postStory, bodyText, handlePostBody } = useContext(EvidenceContext);
+  const { postStory, bodyText, handlePostBody, nasa_id } = useContext(EvidenceContext);
   const { fetchStories } = useContext(DisplayContext);
-  
+  const { getEvidence } = useContext(UserContext);
+
 
   return (
     <Stack>
@@ -24,9 +26,9 @@ const PostStory = () => {
         placeholder="Your title here"
         fontSize="14px"
         color="black"
-        bg="purple.200" 
+        bg="purple.200"
         mt="2vh"
-        w="52vw" 
+        w="52vw"
         ml="2vw"
         value={bodyText}
         onChange={handlePostBody}
@@ -34,11 +36,11 @@ const PostStory = () => {
       <Flex
         mt="1.25vh"
       >
-        <Box 
-          bg="purple.200" 
-          mb="1.25vh" 
-          w="52vw" 
-          ml="2vw" 
+        <Box
+          bg="purple.200"
+          mb="1.25vh"
+          w="52vw"
+          ml="2vw"
           borderLeftRadius={10}
         >
           <Textarea
@@ -62,15 +64,16 @@ const PostStory = () => {
           />
         </Box>
         <Link to="/userPage">
-          <Button 
-            w="4vw" 
+          <Button
+            w="4vw"
             h="80px"
             color="white"
-            
-            borderLeftRadius={0} 
+
+            borderLeftRadius={0}
             backgroundColor="#3a2a5e"
             onClick={() => {
               postStory();
+              getEvidence(nasa_id);
               fetchStories();
             }}
           >
