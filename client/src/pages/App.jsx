@@ -11,9 +11,9 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import CreateContainer from './CreatePage/CreateContainer.jsx';
+import CreateContainer from './createPage/CreateContainer.jsx';
 import LoginContainer from './loginPage/LoginContainer.jsx';
-import UserContainer from './UserPage/UserContainer.jsx';
+import UserContainer from './userPage/UserContainer.jsx';
 import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
