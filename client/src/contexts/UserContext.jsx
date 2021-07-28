@@ -48,25 +48,18 @@ function UserContextProvider({ children }){
 
   const getUser = () => {
     axios.get('/getUser', { withCredentials: true }).then(res => {
-      // if(res.data){
-      //   setUser(res.data);
-      // }
-      console.log(res.data);
-  }
-  );
-};
-
-  // const getUser = () => {
-  useEffect(() => {
-    axios.get('/getUser', { withCredentials: true }).then(res => {
-      if(res){
+      if(res.data){
         setUserObj(res.data);
       }
-      console.log('this is res', res);
     }
     );
+  };
+
+
+  useEffect(() => {
+    getUser();
   }, []);
-    // };
+
 
   const localLogin = async ( username, password ) => {
     await axios.post('/login', { username, password })

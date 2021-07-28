@@ -1,5 +1,5 @@
 /* eslint-disable no-console  */
-/* eslint-disable no-unused-vars  */
+/* eslint-disable no-unused-vars, no-param-reassign  */
 
 const { Router } = require('express');
 const passport = require('passport');
@@ -15,13 +15,17 @@ const passportRouter = Router();
 // Local Strategy //
 passportRouter.post('/register', (req, res) => {
   const { username, password } = req.body;
-  User.register({ username }, password, (err, user) => {
+  User.register({ username }, password, async (err, user) => {
     if(err){
       console.log(err);
       res.sendStatus(500);
     } else {
-      passport.authenticate('local')(req, res, (error, result) => {
+      passport.authenticate('local')(req, res, async (error, result) => {
         console.log(user);
+        await User.findOneAndUpdate({ username }, {
+          source: 'local',
+          email: username,
+          profileImage: 'https://insa.or.id/wp-content/uploads/2017/02/profile-default-large.jpg' });
         res.status(200).redirect('/userLogin');
       });
     }
