@@ -1,5 +1,5 @@
 /*  eslint-disable func-style, no-unused-vars, no-console */
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -9,10 +9,10 @@ import axios from 'axios';
 const UserContext = createContext();
 
 function UserContextProvider({ children }){
-  const {user, setUser} = useState({});
-  const {conspirators, setConspirators} = useState([]);
-  const {favorites, setFavorites} = useState([]);
-  const isLoggedIn = true;
+  const [userObj, setUserObj] = useState({});
+  const [conspirators, setConspirators] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showPassword] = useState(false);
   const [userReg, setUserReg] = useState('');
   const [pass, setPass] = useState('');
@@ -26,12 +26,12 @@ function UserContextProvider({ children }){
   const handleUserLogin = (event) => setUserLogin(event.target.value);
   const handlePassLogin = (event) => setPassLogin(event.target.value);
 
+
+  // This isn't used
   const googleLogin = async () => {
     await axios.get('/auth/google')
-    // .then(() => axios.get('routes/passportRoutes/auth/google/home'))
-    .then(() => console.log('successful login'))
+    .then((result) => console.log('successful login', result))
     .catch((err) => console.log(err));
-
   };
 
   const localRegister = async (username, password, confirmation) => {
@@ -46,17 +46,40 @@ function UserContextProvider({ children }){
   }
   };
 
+  const getUser = () => {
+    axios.get('/getUser', { withCredentials: true }).then(res => {
+      if(res.data){
+        setUserObj(res.data);
+      }
+    }
+    );
+  };
+
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+
   const localLogin = async ( username, password ) => {
     await axios.post('/login', { username, password })
-    .then(() => console.log('successful login'))
+    .then((result) => console.log('successful login', result.data))
     .catch((err) => console.log('login error', err));
   };
 
+  const localLogout = async () => {
+    await axios.get('/logout')
+    .then(() => console.log('successful logout'));
+  };
+
   const userProps = {
+    userObj,
     isLoggedIn,
     googleLogin,
     localRegister,
     localLogin,
+    localLogout,
+    getUser,
     conspirators,
     setConspirators,
     confirm,
@@ -69,7 +92,7 @@ function UserContextProvider({ children }){
     userLogin,
     passLogin,
     handleUserLogin,
-    handlePassLogin
+    handlePassLogin,
   };
 
 

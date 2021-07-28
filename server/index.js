@@ -2,11 +2,16 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-
 const session = require('express-session');
 const passport = require('passport');
+
+const MongoStore = require('connect-mongo');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
+
+const { mongoUri } = require('./database/index');
+
+// const Store = new MongoStore(session);
 
 // const { User } = require('./database/index');
 // const { Video, Image, Comment } = require('./database');
@@ -29,6 +34,14 @@ const app = express();
     }));
 
 
+
+    app.use(session({
+      secret: process.env.SECRET,
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({ mongoUrl: mongoUri })
+    }));
+
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
@@ -38,11 +51,6 @@ const app = express();
       res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
     });
 
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false,
-}));
 
 // app.get('/api/images', (req, res) =>{
 //   Image.find()

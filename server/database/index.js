@@ -9,7 +9,6 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-
 const mongoUri = 'mongodb://localhost:27017/Hash51';
 
 const db = mongoose.connection;
@@ -36,7 +35,8 @@ const userSchema = mongoose.Schema({
   password: String,
   googleId: {
     type: String,
-    unique: true
+    unique: true,
+    sparse: true
   },
   profileImage: String,
   source: String,
@@ -59,15 +59,12 @@ const User = mongoose.model('User', userSchema);
 
 passport.use(User.createStrategy());
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
+  User.findById(id, (err, user) => done(err, user));
 });
+
 
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
@@ -75,22 +72,21 @@ passport.use(new GoogleStrategy({
   callbackURL: 'http://localhost:3000/auth/google/login',
   // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
   // proxy: true,
-}, (accessToken, refreshToken, profile, cb) => {
+  passReqToCallback: true
+}, (req, accessToken, refreshToken, profile, cb) => {
   // eslint-disable-next-line no-console
-  console.log('within auth');
-  console.log(profile);
   // we can use plain mongoose to satisfy this query as well.
   User.findOrCreate(
-    { googleId: profile.id,
-      username: profile.displayName,
-      email: profile.emails[0].value,
-      profileImage: profile.photos[0].value,
-      source: profile.provider
-    }, (err, user) => cb(err, user)
+    { googleId: profile.id},
+    { username: profile.displayName,
+    email: profile.emails[0].value,
+    profileImage: profile.photos[0].value,
+    source: profile.provider
+  }, (err, user) => cb(err, user)
   );
 }
 ));
 
 
 
-module.exports = { User };
+module.exports = { User, mongoUri };
