@@ -11,10 +11,10 @@ import {
   Flex,
 } from "@chakra-ui/react";
 
-import CreateContainer from './CreatePage/CreateContainer.jsx';
-import LoginContainer from './loginPage/LoginContainer.jsx';
-import UserContainer from './UserPage/UserContainer.jsx';
-import SearchContainer from './searchPage/SearchContainer.jsx';
+import CreateContainer from './CreatePage/CreateContainer';
+import LoginContainer from './loginPage/LoginContainer';
+import UserContainer from './UserPage/UserContainer';
+import SearchContainer from './searchPage/SearchContainer';
 import Header from './Header.jsx';
 
 const testStory = {
