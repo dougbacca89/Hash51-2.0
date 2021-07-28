@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
-const mongoose = require('mongoose');
+
 const MongoStore = require('connect-mongo');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
@@ -34,6 +34,14 @@ const app = express();
     }));
 
 
+
+    app.use(session({
+      secret: process.env.SECRET,
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({ mongoUrl: mongoUri })
+    }));
+
     app.use(passport.initialize());
     app.use(passport.session());
     app.use('/', passportRouter);
@@ -43,12 +51,6 @@ const app = express();
       res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
     });
 
-app.use(session({
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: new MongoStore({ mongoUrl: mongoUri })
-}));
 
 // app.get('/api/images', (req, res) =>{
 //   Image.find()

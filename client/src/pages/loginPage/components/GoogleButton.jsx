@@ -9,12 +9,12 @@ Link
 import { UserContext } from '../../../contexts/UserContext';
 
 const GoogleButton = () => {
-  const { googleLogin } = useContext(UserContext);
+  const { googleLogin, getUser } = useContext(UserContext);
   return (
     <Link href='auth/google'>
       <Button
         type='button'
-        onClick={ () => console.log(Window) }
+        onClick={ getUser }
         borderRadius={10}
         color="white"
         variant="solid"

@@ -17,6 +17,7 @@ import { UserContext } from '../../../contexts/UserContext';
 
 const CreateUser = () => {
   const {
+    userObj,
     showPassword,
     userReg,
     handleUserReg,
@@ -24,10 +25,10 @@ const CreateUser = () => {
     handlePass,
     confirm,
     handleConfirm,
-    localRegister
+    localRegister,
    } = useContext(UserContext);
 
-
+   console.log('Why Undefinded', userObj);
   return (
     <Stack
       flexDir="column"

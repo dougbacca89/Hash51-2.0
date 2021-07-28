@@ -38,18 +38,12 @@ passportRouter.post('/login', (req, res) => {
       res.sendStatus(500);
     } else {
       passport.authenticate('local')(req, res, (error, result) => {
-        // console.log('THIS IS REQ', req);
         res.status(200).send(req.user);
     });
   }
   });
 });
 
-// passportRouter.get('/', (req, res) => {
-//   console.log(req);
-//   console.log(req.user);
-//   res.sendFile(path.resolve(__dirname, '../client/dist/index.html'), { user: req });
-// });
 
 passportRouter.get('/logout', (req, res) => {
   req.logout();
@@ -66,11 +60,13 @@ passport.authenticate('google', { scope: ['profile', 'email'] }),
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
-const user = {...req.user};
-console.log(user);
-res.redirect('/userLogin');
+  res.redirect('/userLogin');
 });
 
+passportRouter.get('/getUser', (req, res) => {
+  console.log( 'inside req.user', req.user);
+  res.send(req.user);
+});
 
 
 module.exports = {

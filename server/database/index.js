@@ -9,9 +9,6 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-// const { CommentSchema, Comment }  = require('./Comment');
-// const { EvidenceSchema, Evidence } = require('./Evidence');
-
 const mongoUri = 'mongodb://localhost:27017/Hash51';
 
 const db = mongoose.connection;
@@ -24,8 +21,6 @@ db.once('open', () => {
   console.log('Database Connection');
 });
 
-// const { Tasks } = require('./db');
-// const { Video, Image } = require('./database');
 
 // Create a mongoose connection to out mongo database
 mongoose.connect(mongoUri, {
@@ -65,15 +60,12 @@ const User = mongoose.model('User', userSchema);
 
 passport.use(User.createStrategy());
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
+passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
-  User.findById(id, (err, user) => {
-    done(err, user);
-  });
+  User.findById(id, (err, user) => done(err, user));
 });
+
 
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,

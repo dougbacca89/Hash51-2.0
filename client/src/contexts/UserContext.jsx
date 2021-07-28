@@ -1,5 +1,5 @@
 /*  eslint-disable func-style, no-unused-vars, no-console */
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -9,9 +9,9 @@ import axios from 'axios';
 const UserContext = createContext();
 
 function UserContextProvider({ children }){
-  const {user, setUser} = useState({});
-  const {conspirators, setConspirators} = useState([]);
-  const {favorites, setFavorites} = useState([]);
+  const [userObj, setUserObj] = useState({});
+  const [conspirators, setConspirators] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [showPassword] = useState(false);
   const [userReg, setUserReg] = useState('');
@@ -46,11 +46,31 @@ function UserContextProvider({ children }){
   }
   };
 
+  const getUser = () => {
+    axios.get('/getUser', { withCredentials: true }).then(res => {
+      // if(res.data){
+      //   setUser(res.data);
+      // }
+      console.log(res.data);
+  }
+  );
+};
+
+  // const getUser = () => {
+  useEffect(() => {
+    axios.get('/getUser', { withCredentials: true }).then(res => {
+      if(res){
+        setUserObj(res.data);
+      }
+      console.log('this is res', res);
+    }
+    );
+  }, []);
+    // };
+
   const localLogin = async ( username, password ) => {
     await axios.post('/login', { username, password })
     .then((result) => console.log('successful login', result.data))
-    // .then(() => axios.get('/getUser'))
-    // .then((user) => console.log(user))
     .catch((err) => console.log('login error', err));
   };
 
@@ -60,11 +80,13 @@ function UserContextProvider({ children }){
   };
 
   const userProps = {
+    userObj,
     isLoggedIn,
     googleLogin,
     localRegister,
     localLogin,
     localLogout,
+    getUser,
     conspirators,
     setConspirators,
     confirm,
@@ -77,7 +99,7 @@ function UserContextProvider({ children }){
     userLogin,
     passLogin,
     handleUserLogin,
-    handlePassLogin
+    handlePassLogin,
   };
 
 
