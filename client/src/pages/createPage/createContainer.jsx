@@ -15,7 +15,7 @@ import NewStory from './components/NewStory';
 
 const CreateContainer = props => {
   const { user } = props;
-  // const { conspirators, conspiracies } = user;
+  const { conspirators, conspiracies } = user;
 
   return (
     <Flex>
