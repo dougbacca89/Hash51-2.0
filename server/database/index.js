@@ -40,15 +40,20 @@ const userSchema = mongoose.Schema({
   },
   profileImage: String,
   source: String,
-  coConspirators: [String],
-  favorites: {
+  coConspirators: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
+  favorites: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Evidence'
-  },
-  comments: {
+  }],
+  comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comment'
-  }
+  }]
 });
 
 userSchema.plugin(passportLocalMongoose);
