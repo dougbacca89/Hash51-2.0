@@ -119,13 +119,8 @@ serverRouter.get('/story', (req, res) => {
 
 
 serverRouter.post('/story', (req, res) =>{
-  const { userName, textBody } = req.body.newStory;
-  const evidence = new Evidence();
-  evidence.textBody = textBody;
-  evidence.userName = userName;
-  evidence.originalEvidence = req.body.originalEvidence;
-
-  evidence.save((err) => {
+  const {story} = req.body;
+  Evidence.create(story, (err) => {
     if (err) {res.send(err);}
     res.json({ message: 'comment successfylly added' });
   });

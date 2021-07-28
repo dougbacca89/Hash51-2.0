@@ -4,34 +4,35 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-const EvidenceContext = createContext();
+const DisplayContext = createContext();
 
 function DisplayContextProvider({ children }){
 
-  const haveEvidence = 'Yes We Do';
-  const [ searchResults, setSearchResults ] = useState([]);
-  const [ searchImage, setSearchImage ] = useState({});
+  const [ stories, setStories ] = useState([]);
 
+  const fetchStories = async() => {
+    axios.get('/routes/story')
+    .then(result => {
+      setStories(result.data);
+    });
+  };
 
-
-  const evidenceProps = {
-    haveEvidence,
-    searchResults,
-    fetchSearch,
-    searchImage,
-    fetchImage
+  const displayProps = {
+    stories,
+    setStories,
+    fetchStories
   };
 
   return (
-    <EvidenceContext.Provider value={evidenceProps}>
+    <DisplayContext.Provider value={displayProps}>
       {children}
-    </EvidenceContext.Provider>
+    </DisplayContext.Provider>
   );
 }
 
-EvidenceContextProvider.propTypes = {
+
+DisplayContextProvider.propTypes = {
   children: PropTypes.element.isRequired
 };
 
-
-export { EvidenceContext, EvidenceContextProvider };
+export { DisplayContext, DisplayContextProvider };

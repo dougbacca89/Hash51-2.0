@@ -17,7 +17,7 @@ const Story = (props) => {
   const { user } = props;
   const { userName } = user;
 
-  const { searchImage } = useContext(EvidenceContext);
+  const { href } = useContext(EvidenceContext);
   
   return (
     <div>
@@ -36,7 +36,7 @@ const Story = (props) => {
         Tell your story {userName}
         </Text>
         <Image
-          src={searchImage}
+          src={href}
           objectFit="cover"
           bg="purple.100"
           w="60vw"

@@ -1,16 +1,12 @@
 /* eslint-disable func-style */
-import React, { createContext, useState } from 'react';
+import React, { useContext, createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-
 const EvidenceContext = createContext();
-
 function EvidenceContextProvider({ children }){
-
   const haveEvidence = 'Yes We Do';
   const [ searchResults, setSearchResults ] = useState([]);
-  const [ searchImage, setSearchImage ] = useState({});
   const [ bodyText, setBodyText ] = useState('');
   const [ href, setHref ] = useState('');
   const [ nasa_id, setNasa_id ] = useState('');
@@ -30,13 +26,13 @@ function EvidenceContextProvider({ children }){
   const fetchImage = async(query) => {
     await axios.post('/routes/asset', { query })
     .then(results => {
-      setSearchImage(results.data.items[0].href);
+      setHref(results.data.items[0].href);
     });
   };
 
-  const postStory = async(story) => {
-    const newStory = { userName: 'testUser', textBody: story };
-    await axios.post('/routes/story', { newStory })
+  const postStory = async() => {
+    const story = { href, title, nasa_id, keyWords, bodyText, userName: "testUser" };
+    await axios.post('/routes/story', { story })
     .then(() => {
       
     });
@@ -46,7 +42,6 @@ function EvidenceContextProvider({ children }){
     haveEvidence,
     searchResults,
     fetchSearch,
-    searchImage,
     fetchImage,
     postStory,
     bodyText, 

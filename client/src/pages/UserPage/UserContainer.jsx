@@ -1,6 +1,6 @@
 /* eslint-disable import/extensions, no-unused-vars */
 
-import React, { useState, useContex } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import  { useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
@@ -18,19 +18,16 @@ import {
 import User from './components/User.jsx';
 import ConspiratorList from './components/ConspiratorList.jsx';
 import Story from './components/Story.jsx';
+import { DisplayContext } from '../../contexts/DisplayContext';
 
 
 const UserContainer = props => {
   const { user } = props;
-
-  // Using Params to Isolate Image
-  // const { nasa_id } = useParams();
-  // return (
-  //   <div>
-  //     <Heading>{ nasa_id }</Heading>
-  //   </div>
-
   const { conspirators, conspiracies } = user;
+
+  const { stories, fetchStories } = useContext(DisplayContext);
+
+  useEffect(() => fetchStories());
 
   return (
     <Flex color="white">
@@ -54,7 +51,7 @@ const UserContainer = props => {
           },
         }}
       >
-        {conspiracies.map((conspiracy) => <Story key={conspiracy.text} conspiracy={conspiracy}/>)}
+        {stories.map((story) => <Story key={story._id} story={story}/>)}
       </Box>
     </Flex>
   );

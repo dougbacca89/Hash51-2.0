@@ -4,15 +4,17 @@ import PropTypes from 'prop-types';
 import {
   Text,
   Box,
-  Image
+  Image,
+  Flex,
+  Heading,
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
 
 
 const Story = (props) => {
-  const { conspiracy } = props;
-  const { userName, storyTitle, comments } = conspiracy;
+  const { story } = props;
+  const { userName, title, href, bodyText } = story;
   
   return (
   <div>
@@ -26,23 +28,33 @@ const Story = (props) => {
         ml="10px" 
         fontSize="15px"
       >
-        {storyTitle}
+        {title}
       </Text>
-      <Image
-        src="https://images-assets.nasa.gov/image/PIA22081/PIA22081~thumb.jpg"
-        objectFit="cover"
-        bg="purple.100"
-        w="60vw"
-        h="40vh" 
-      />
-      <Text 
-        ml="10px" 
-        fontSize="10px"
-      >
-        Created at by {userName}
-      </Text>
+      <Flex>
+        <Image
+          src={href}
+          objectFit="cover"
+          bg="purple.100"
+          w="50vw"
+          h="50vh" 
+
+        />
+        <Box w="17vw">
+          <Heading 
+            ml="10px" 
+            fontSize="10px"
+          >
+            Created at by {userName}
+          </Heading>
+          <Text
+            fontSize="12px"
+          >
+            {bodyText}
+          </Text>
+        </Box>
+      </Flex>
     </Box>
-    <CommentList comments={comments}/>
+    {/* <CommentList comments={comments}/> */}
   </div>
   );
 };

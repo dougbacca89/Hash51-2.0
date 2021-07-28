@@ -11,10 +11,14 @@ import {
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
-  const { searchResults, fetchImage } = useContext(EvidenceContext);
+  const { searchResults, fetchImage, setNasa_id, setHref, setTitle, setKeywords } = useContext(EvidenceContext);
 
   // eslint-disable-next-line camelcase
-  const handleCLick = (nasa_id) => {
+  const handleCLick = (result) => {
+    const { nasa_id, title, keywords } = result;
+    setNasa_id(nasa_id);
+    setTitle(title);
+    setKeywords(keywords);
     fetchImage(nasa_id);
   };
  
@@ -35,12 +39,7 @@ const SearchResult = () => {
                 boxSize="300px"
                 objectFit="cover"
                 src={result.thumb}
-                thumb={result.thumb}
-                key={result.title}
-                nasa_id={result.nasa_id}
-                title={result.title}
-                keyWords={result.keyword}
-                onClick={() => handleCLick(result.nasa_id)}
+                onClick={() => handleCLick(result)}
               />
             </Link>
           </div>

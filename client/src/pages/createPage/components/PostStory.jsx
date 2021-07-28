@@ -9,11 +9,12 @@ import {
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
+import { DisplayContext } from '../../../contexts/DisplayContext';
 
 const PostComment = () => {
   const { postStory, bodyText, handlePostBody } = useContext(EvidenceContext);
-
-  let userText;
+  const { fetchStories } = useContext(DisplayContext);
+  
 
   return (
     <Flex
@@ -52,7 +53,10 @@ const PostComment = () => {
           h="80px"
           borderLeftRadius={0} 
           backgroundColor="#3a2a5e"
-          onClick={() => postStory(bodyText)}
+          onClick={() => {
+            postStory();
+            fetchStories();
+          }}
         >
           Post
         </Button>
