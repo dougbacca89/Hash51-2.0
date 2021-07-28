@@ -26,7 +26,7 @@ import { UserContext } from '../../contexts/UserContext';
 
 const UserContainer = props => {
   const { user } = props;
-  const { conspirators, conspiracies } = user;
+  const { conspirators } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
   const { userObj } = useContext(UserContext);

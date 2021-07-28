@@ -8,6 +8,7 @@ const passport = require('passport');
 const MongoStore = require('connect-mongo');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
+const { userRouter } = require('./routes/userRoutes');
 
 const { mongoUri } = require('./database/index');
 
@@ -46,6 +47,7 @@ const app = express();
     app.use(passport.session());
     app.use('/', passportRouter);
     app.use('/routes', serverRouter);
+    app.use('/', userRouter);
 
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));

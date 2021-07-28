@@ -9,6 +9,9 @@ const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+const { EvidenceSchema } = './Evidence';
+const { CommentSchema } = './Comment';
+
 const mongoUri = 'mongodb://localhost:27017/Hash51';
 
 const db = mongoose.connection;
@@ -40,16 +43,35 @@ const userSchema = mongoose.Schema({
   },
   profileImage: String,
   source: String,
-  coConspirators: [String],
-  favorites: {
+  coConspirators: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
+  favorites: [
+    {
+    // type: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Evidence'
-  },
-  comments: {
+  }
+// }
+],
+  comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comment'
-  }
+  }]
+  // favorites: [EvidenceSchema],
+  // comments: [CommentSchema]
 });
+
+// bodyText: String,
+// userName: String,
+// href: String,
+// nasa_id: String,
+// title: String,
+// keyWords: Array,
+// comments: Array
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);

@@ -1,7 +1,9 @@
 /* eslint-disable func-style */
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+
+import { UserContext } from './UserContext';
 
 const EvidenceContext = createContext();
 function EvidenceContextProvider({ children }){
@@ -14,7 +16,7 @@ function EvidenceContextProvider({ children }){
   const [ title, setTitle ] = useState('');
   const [ keyWords, setKeywords ] = useState([]);
 
-  
+  // const { userObj } = useContext(UserContext);
 
   const handlePostBody = (event) => setBodyText(event.target.value);
 
@@ -33,12 +35,11 @@ function EvidenceContextProvider({ children }){
     });
   };
 
+  // userName: userObj.username
+
   const postStory = async() => {
     const story = { href, title, nasa_id, keyWords, bodyText, userName: "testUser", comments: [] };
-    await axios.post('/routes/story', { story })
-    .then(() => {
-      
-    });
+    await axios.post('/routes/story', { story });
   };
 
 
@@ -48,16 +49,16 @@ function EvidenceContextProvider({ children }){
     fetchSearch,
     fetchImage,
     postStory,
-    bodyText, 
+    bodyText,
     setBodyText,
     handlePostBody,
-    href, 
+    href,
     setHref,
-    nasa_id, 
+    nasa_id,
     setNasa_id,
-    title, 
+    title,
     setTitle,
-    keyWords, 
+    keyWords,
     setKeywords
   };
 
