@@ -34,10 +34,10 @@ const Login = props => {
 
   return (
     <Flex
-    flexDir="column"
-    mb="2"
-    justifyContent="center"
-    alignItems="center"
+      flexDir="column"
+      mb="2"
+      justifyContent="center"
+      alignItems="center"
     >
       <Stack
         flexDir="column"
@@ -64,7 +64,8 @@ const Login = props => {
                     type="email"
                     placeholder="email address"
                     value={userLogin}
-                    onChange={handleUserLogin} />
+                    onChange={handleUserLogin} 
+                  />
                 </InputGroup>
               </FormControl>
               <FormControl>

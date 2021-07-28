@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const EvidenceSchema = new mongoose.Schema({
-  textBody: String,
+  bodyText: String,
   userName: String,
-  originalEvidence: String,
+  href: String,
+  nasa_id: String,
+  title: String,
+  keyWords: Array,
+  comments: Array
 });
 
 const Evidence = mongoose.model('Evidence', EvidenceSchema);

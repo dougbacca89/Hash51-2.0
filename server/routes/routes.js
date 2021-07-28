@@ -85,7 +85,7 @@ serverRouter.post('/asset', (req, res) => {
   .then((data) => {console.log('data', data); return data; })
   // {console.log(data.data.collection);}
     .then((data) => data.data.collection)
-    .then((data) => { console.log('data', data); res.status(201).send(data);})
+    .then((data) => res.status(201).send(data))
     .catch((err) => {
       console.log('Error serverRouter.post /asset', err);
     });
@@ -103,13 +103,8 @@ serverRouter.get('/story', (req, res) => {
 
 
 serverRouter.post('/story', (req, res) =>{
-  console.log(req.body);
-  const evidence = new Evidence();
-  evidence.textBody = req.body.textBody;
-  evidence.userName = req.body.userName;
-  evidence.originalEvidence = req.body.originalEvidence;
-
-  evidence.save((err) => {
+  const {story} = req.body;
+  Evidence.create(story, (err) => {
     if (err) {res.send(err);}
     res.json({ message: 'comment successfylly added' });
   });
