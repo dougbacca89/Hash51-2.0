@@ -17,7 +17,7 @@ import { UserContext } from '../../../contexts/UserContext';
 const PostStory = () => {
   const { postStory, bodyText, handlePostBody, nasa_id } = useContext(EvidenceContext);
   const { fetchStories } = useContext(DisplayContext);
-  const { getEvidence } = useContext(UserContext);
+  const { storeEvidence, getEvidence } = useContext(UserContext);
 
 
   return (
@@ -73,7 +73,8 @@ const PostStory = () => {
             backgroundColor="#3a2a5e"
             onClick={() => {
               postStory();
-              getEvidence(nasa_id);
+              storeEvidence(nasa_id);
+              getEvidence();
               fetchStories();
             }}
           >
