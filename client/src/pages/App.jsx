@@ -18,14 +18,14 @@ import SearchContainer from './searchPage/SearchContainer.jsx';
 import Header from './Header.jsx';
 
 const testStory = {
-  userName: "Bobby",
+  userName: "Bobby Hill",
   storyTitle: "They're out there",
   proof: "html",
   comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
 };
 
 const testUser = {
-  userName: 'Bobby',
+  userName: 'Bobby Hill',
   conspiracies: [testStory,testStory,testStory],
   conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };
