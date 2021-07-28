@@ -13,7 +13,7 @@ import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 
 
-const Story = (props) => {
+const NewStory = (props) => {
   const { user } = props;
   const { userName } = user;
 
@@ -48,8 +48,8 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
+NewStory.propTypes = {
   user: PropTypes.isRequired,
 };
 
-export default Story;
+export default NewStory;
