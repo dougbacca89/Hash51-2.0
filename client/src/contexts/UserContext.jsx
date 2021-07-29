@@ -42,6 +42,8 @@ function UserContextProvider({ children }){
     .then(({data}) => console.log('here are favorites', data) );
   };
 
+
+
   // This isn't used
   const googleLogin = async () => {
     await axios.get('/auth/google')
