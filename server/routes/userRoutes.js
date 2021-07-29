@@ -37,6 +37,21 @@ userRouter.get('/get/favorites', (req, res) => {
 });
 
 
+userRouter.get('/user', (req, res) => {
+  User.find({}, (err, users) => {
+    if(err) { console.log(err); }
+    return res.json(users);
+  });
+});
+
+
+userRouter.get('/user/:id', (req, res) =>{
+  User.findById(req.params.id)
+  .then(user => {
+    if(!user) { return res.sendStatus(404); }
+    return res.status(200).json(user);
+    });
+});
 
 module.exports = {
   userRouter,
