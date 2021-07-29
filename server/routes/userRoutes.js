@@ -71,7 +71,6 @@ userRouter.get('/get/conspirators', (req, res) => {
     const conspirators = user.coConspirators.map( objId => User.findOne({_id: objId }).exec());
     return Promise.all(conspirators);
   }).then((conspirators) => {
-    console.log(conspirators)
   res.status(200).send(conspirators);
 })
 .catch(err => console.log(err));

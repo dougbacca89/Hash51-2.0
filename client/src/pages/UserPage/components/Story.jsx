@@ -73,7 +73,7 @@ const Story = (props) => {
                 Add to favorites
               </Button>
             <Text
-              fontSize="12px"
+              fontSize="10px"
               p={3}
               h="33vh"
               mt={3}

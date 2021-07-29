@@ -3,32 +3,36 @@ import PropTypes from 'prop-types';
 
 import {
   Text,
-  Box
+  Box,
+  Image
 } from "@chakra-ui/react";
 
 const Conspirator = (props) => {
   const { conspirator } = props;
-  const { userName } = conspirator;
+  console.log(conspirator)
+  const { username, profileImage } = conspirator;
   
   return (
     <Box 
       bg="gray.800" 
       mb="1px" 
-      w="10vw" 
+      w="8vw" 
       borderRadius={10}
     >
-      <Box 
+      <Image 
         bg="purple.100" 
-        w="10vw" 
-        h="3vw" 
+        w="8vw" 
+        h="8vw" 
         borderTopRadius={10}
+        objectFit="cover"
+        src={profileImage}
       />
       <Text 
         ml="10px" 
         fontSize="10px"
         color="green.500"
       >
-        {userName}
+        {username}
       </Text>
     </Box>
   );
