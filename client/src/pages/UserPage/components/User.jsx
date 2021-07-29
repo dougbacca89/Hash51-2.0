@@ -9,12 +9,8 @@ import {
 
 import { UserContext } from '../../../contexts/UserContext';
 
-const User = (props) => {
-  const { user } = props;
-  const { userName, conspiracies, conspirators } = user;
-
+const User = () => {
   const { userObj } = useContext(UserContext);
-  console.log(userObj)
   const { username, profileImage, favorites } = userObj;
   
   return (
@@ -44,21 +40,17 @@ const User = (props) => {
         fontSize="12px"
         color="green.500"
       >
-        # of favorites: {favorites}
+        # of favorites: 
       </Text>
       <Text 
         ml="10px" 
         fontSize="12px"
         color="green.500"
       >
-        # of conspirators: {conspirators.length}
+        # of conspirators: 
       </Text>
     </Box>
   );
-};
-
-User.propTypes = {
-  user: PropTypes.isRequired,
 };
 
 export default User;

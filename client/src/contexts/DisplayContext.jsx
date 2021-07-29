@@ -23,8 +23,9 @@ function DisplayContextProvider({ children }){
   };
 
   // eslint-disable-next-line camelcase
-  const postComment = async(post_id, username) => {
-    const comment = { commentBody, post_id, userName: username };
+  const postComment = async(post_id, userObj) => {
+    const { username, profileImage } = userObj;
+    const comment = { commentBody, post_id, userName: username, profileImage };
     await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
   };
 

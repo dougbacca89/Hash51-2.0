@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
+import { DisplayContext } from '../../../contexts/DisplayContext';
 import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {

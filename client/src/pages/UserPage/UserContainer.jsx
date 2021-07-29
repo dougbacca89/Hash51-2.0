@@ -48,8 +48,10 @@ const UserContainer = props => {
   return (
     <Flex color="white">
       <Box w="10vw" mr="10px">
-        <User user={user}/>
-        <ConspiratorList conspirators={conspirators}/>
+        <div>
+          <User user={user}/>
+          <ConspiratorList conspirators={conspirators}/>
+        </div>
       </Box>
       <Box
         maxH="89vh"

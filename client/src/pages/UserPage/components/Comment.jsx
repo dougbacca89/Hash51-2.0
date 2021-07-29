@@ -5,11 +5,12 @@ import {
   Text,
   Box,
   Flex,
+  Image
 } from "@chakra-ui/react";
 
 const Comment = (props) => {
   const { comment } = props;
-  const { commentBody, userName } = comment;
+  const { commentBody, userName, profileImage } = comment;
   
   return (
   <Box  
@@ -22,6 +23,13 @@ const Comment = (props) => {
 
   >
     <Flex>
+      <Image 
+        src={profileImage}
+        borderLeftRadius={5}
+        objectFit="cover"
+        h="8vh"
+        w="8vh"
+      />
       <Text 
         p={1}
         ml="6px"  
