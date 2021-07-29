@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -7,9 +7,13 @@ import {
   Image
 } from "@chakra-ui/react";
 
+import { UserContext } from '../../../contexts/UserContext';
+
 const Conspirator = (props) => {
   const { conspirator } = props;
-  const { username, profileImage } = conspirator;
+  const { username, profileImage, _id } = conspirator;
+
+  const { updateConspirator } = useContext(UserContext);
   
   return (
     <Box 
@@ -30,6 +34,7 @@ const Conspirator = (props) => {
         ml="10px" 
         fontSize="10px"
         color="green.500"
+        onClick={() => updateConspirator(_id)}
       >
         {username}
       </Text>

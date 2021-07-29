@@ -76,6 +76,23 @@ userRouter.get('/get/conspirators', (req, res) => {
 .catch(err => console.log(err));
 }});
 
+userRouter.post('/update/conspirators', (req, res) => {
+  const { _id, conspirator_id } = req.body;
+  User.findOne({ _id }, (err, user) => {
+    if (err) {
+      return res.send(err);
+    }
+    
+    // eslint-disable-next-line no-param-reassign
+    user.coConspirators = user.coConspirators.filter(conspirator => {
+      const  newConspirator = conspirator.toString();
+      return newConspirator !== conspirator_id;
+    });
+    user.save();
+  })
+  ;
+});
+
 userRouter.post('/conspirator/favorites', (req, res) => {
   if(req.user){
   const { friendId } = req.body;

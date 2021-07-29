@@ -87,6 +87,11 @@ function UserContextProvider({ children }){
     }
   };
 
+  const updateConspirator = (conspirator_id) => {
+    const { _id } = userObj;
+    axios.post('/update/conspirators', { conspirator_id, _id});
+  };
+
 
   const fetchConspiratorFavorites = (friendId) => {
     axios.post('/conspirator/favorites', { friendId });
@@ -110,10 +115,6 @@ function UserContextProvider({ children }){
   useEffect(() => {
     getUser();
     getEvidence();
-    
-    // if(userObj){
-    
-    // }
   }, [JSON.stringify(userObj)]);
 
 
@@ -146,6 +147,7 @@ function UserContextProvider({ children }){
     addConspirator,
     fetchConspiratorFavorites,
     getConspirators,
+    updateConspirator
   };
 
 
