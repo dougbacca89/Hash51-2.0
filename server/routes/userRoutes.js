@@ -8,7 +8,6 @@ const userRouter = Router();
 
 userRouter.post('/store/favorites', async (req, res) => {
   const { id, nasa_id } = req.body;
-  // console.log(id, nasa_id);
   await Evidence.findOne({ nasa_id })
     .then(results => { console.log('RESULTS OBJ', results); return results; } )
     .then((data) => User.findOneAndUpdate({_id: id}, { $push: { favorites: data }}, { new: true }))
@@ -43,7 +42,6 @@ userRouter.get('/get/favorites', (req, res) => {
 
 userRouter.post('/add/conspirator', async (req, res) => {
   const { id, friendId } = req.body;
-  // console.log(id, nasa_id);
   if(!id){
   await User.findById(friendId)
     .then(results => results)

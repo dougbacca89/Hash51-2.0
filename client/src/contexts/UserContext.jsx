@@ -70,6 +70,18 @@ function UserContextProvider({ children }){
     );
   };
 
+  const addConspirator = (friendId) => {
+    axios.post('/add/conspirator', { friendId });
+  };
+
+  const getConspirators = () => {
+    axios.get('/get/conspirators');
+  };
+
+  const fetchConspiratorFavorites = (friendId) => {
+    axios.post('/conspirator/favorites', { friendId });
+  };
+
   const localLogin = ( username, password ) => {
     axios.post('/login', { username, password })
     .then((result) => { console.log('successful login', result.data); getUser(); })
@@ -114,6 +126,9 @@ function UserContextProvider({ children }){
     handlePassLogin,
     storeEvidence,
     getEvidence,
+    addConspirator,
+    fetchConspiratorFavorites,
+    getConspirators,
   };
 
 
