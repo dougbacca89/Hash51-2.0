@@ -1,9 +1,7 @@
 /* eslint-disable func-style */
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-
-import { UserContext } from './UserContext';
 
 const EvidenceContext = createContext();
 function EvidenceContextProvider({ children }){
