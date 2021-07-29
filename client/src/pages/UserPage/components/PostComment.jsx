@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
   Box,
@@ -7,7 +7,13 @@ import {
   Textarea
 } from "@chakra-ui/react";
 
-const PostComment = () => (
+import { DisplayContext } from '../../../contexts/DisplayContext';
+
+
+const PostComment = () => {
+  const { fetchStories } = useContext(DisplayContext);
+  
+  return (
   <Flex>
     <Box 
       bg="purple.200" 
@@ -43,6 +49,7 @@ const PostComment = () => (
       Post
     </Button>
   </Flex>
-  );
+  )
+};
 
 export default PostComment;

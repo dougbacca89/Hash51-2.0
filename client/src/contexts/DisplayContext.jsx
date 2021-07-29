@@ -9,13 +9,21 @@ const DisplayContext = createContext();
 function DisplayContextProvider({ children }){
 
   const [ stories, setStories ] = useState([]);
+  const [ commentBody, setCommentBody ] = useState([]);
 
   
 
   const fetchStories = async() => {
-    axios.get('/routes/story')
+    await axios.get('/routes/story')
     .then(result => {
       setStories(result.data.reverse());
+    });
+  };
+
+  const postComment = async() => {
+    await axios.post('/routes/comment')
+    .then(result => {
+      
     });
   };
 
@@ -23,7 +31,8 @@ function DisplayContextProvider({ children }){
   const displayProps = {
     stories,
     setStories,
-    fetchStories
+    fetchStories,
+    postComment
   };
 
   return (
