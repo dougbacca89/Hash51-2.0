@@ -29,7 +29,7 @@ const UserContainer = props => {
   const { conspirators } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
-  const { userObj, favorites, getEvidence } = useContext(UserContext);
+  const { userObj, favorites, getEvidence, getUser } = useContext(UserContext);
   console.log(userObj);
   console.log('HERE ARE FAVORITES', favorites);
 
@@ -41,6 +41,7 @@ const UserContainer = props => {
   //   </div>
 
   useEffect(() => {
+    getUser();
     fetchStories();
     getEvidence();  },
     [JSON.stringify(userObj)]);
