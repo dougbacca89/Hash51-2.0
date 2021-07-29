@@ -16,7 +16,7 @@ const db = mongoose.connection;
 // eslint-disable-next-line no-console
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  // we're connected!
+
   // eslint-disable-next-line no-console
   console.log('Database Connection');
 });
@@ -40,16 +40,24 @@ const userSchema = mongoose.Schema({
   },
   profileImage: String,
   source: String,
-  coConspirators: [String],
-  favorites: {
+  coConspirators: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
+  favorites: [
+    {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Evidence'
-  },
-  comments: {
+  }
+],
+  comments: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Comment'
-  }
+  }]
 });
+
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -70,12 +78,8 @@ passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: 'http://localhost:3000/auth/google/login',
-  // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
-  // proxy: true,
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, cb) => {
-  // eslint-disable-next-line no-console
-  // we can use plain mongoose to satisfy this query as well.
   User.findOrCreate(
     { googleId: profile.id},
     { username: profile.displayName,

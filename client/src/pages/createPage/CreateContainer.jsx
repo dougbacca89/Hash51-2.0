@@ -25,7 +25,7 @@ const CreatePageContainer = props => {
         verticalAlign="top"
       >
         <NewStory user={user}/>
-        
+
       </Box>
     </Flex>
   );

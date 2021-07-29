@@ -1,9 +1,11 @@
-/*  eslint-disable func-style, no-unused-vars, no-console */
-import React, { createContext, useState, useEffect } from 'react';
+/*  eslint-disable func-style, no-console, dot-notation, camelcase */
+import React, { createContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 
 import axios from 'axios';
+
+
 
 
 const UserContext = createContext();
@@ -12,7 +14,7 @@ function UserContextProvider({ children }){
   const [userObj, setUserObj] = useState({});
   const [conspirators, setConspirators] = useState([]);
   const [favorites, setFavorites] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showPassword] = useState(false);
   const [userReg, setUserReg] = useState('');
   const [pass, setPass] = useState('');
@@ -27,7 +29,19 @@ function UserContextProvider({ children }){
   const handlePassLogin = (event) => setPassLogin(event.target.value);
 
 
-  // This isn't used
+  const storeEvidence = async (nasa_id) => {
+    const id = userObj['_id'];
+    await axios.post('/store/favorites', { id, nasa_id });
+  };
+
+
+  const getEvidence = async () => {
+    await axios.get('/get/favorites')
+    .then(({data}) => {
+      setFavorites(data);});
+  };
+
+  // This isn't used --> Remove Eventually
   const googleLogin = async () => {
     await axios.get('/auth/google')
     .then((result) => console.log('successful login', result))
@@ -50,29 +64,34 @@ function UserContextProvider({ children }){
     axios.get('/getUser', { withCredentials: true }).then(res => {
       if(res.data){
         setUserObj(res.data);
+        setIsLoggedIn(true);
       }
     }
     );
   };
 
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-
-  const localLogin = async ( username, password ) => {
-    await axios.post('/login', { username, password })
-    .then((result) => console.log('successful login', result.data))
+  const localLogin = ( username, password ) => {
+    axios.post('/login', { username, password })
+    .then((result) => { console.log('successful login', result.data); getUser(); })
     .catch((err) => console.log('login error', err));
   };
 
-  const localLogout = async () => {
-    await axios.get('/logout')
+  const localLogout = () => {
+    setIsLoggedIn(false);
+    setUserObj({});
+    setFavorites([]);
+    axios.get('/logout')
     .then(() => console.log('successful logout'));
   };
 
+  useEffect(() => {
+    getUser();
+    getEvidence();
+  }, [JSON.stringify(userObj)]);
+
+
   const userProps = {
+    favorites,
     userObj,
     isLoggedIn,
     googleLogin,
@@ -93,6 +112,8 @@ function UserContextProvider({ children }){
     passLogin,
     handleUserLogin,
     handlePassLogin,
+    storeEvidence,
+    getEvidence,
   };
 
 

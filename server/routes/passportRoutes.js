@@ -50,8 +50,9 @@ passportRouter.post('/login', (req, res) => {
 
 
 passportRouter.get('/logout', (req, res) => {
-  req.logout();
-  console.log('user successfully logged out');
+  req.session.destroy((err) => {
+    console.log('user successfully logged out', req.user);
+  });
 });
 
 // Google Strategy //
@@ -68,7 +69,6 @@ passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error'
 });
 
 passportRouter.get('/getUser', (req, res) => {
-  console.log( 'inside req.user', req.user);
   res.send(req.user);
 });
 
