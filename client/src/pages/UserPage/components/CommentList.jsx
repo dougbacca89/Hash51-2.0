@@ -28,6 +28,7 @@ const CommentList = (props) => {
         Comments
       </Text>
         {comments.map((comment) => <Comment key={comment.commentBody}comment={comment}/>)}
+      {/* eslint-disable-next-line camelcase */}
       <PostComment post_id={post_id}/>
     </Box>
   );
@@ -35,6 +36,7 @@ const CommentList = (props) => {
 
 CommentList.propTypes = {
   comments: PropTypes.isRequired,
+  post_id: PropTypes.isRequired
 };
 
 export default CommentList;

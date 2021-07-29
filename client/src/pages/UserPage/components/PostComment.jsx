@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Box,
@@ -11,6 +12,7 @@ import { DisplayContext } from '../../../contexts/DisplayContext';
 
 
 const PostComment = (props) => {
+  // eslint-disable-next-line camelcase
   const { post_id } = props;
   const { fetchStories, handleCommentBody, postComment, commentBody } = useContext(DisplayContext);
 
@@ -55,7 +57,10 @@ const PostComment = (props) => {
       Post
     </Button>
   </Flex>
-  )
+  );
 };
 
+PostComment.propTypes = {
+  post_id: PropTypes.isRequired,
+};
 export default PostComment;

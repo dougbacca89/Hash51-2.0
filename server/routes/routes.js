@@ -104,9 +104,9 @@ serverRouter.post('/story/comment', (req, res) => {
       return res.send(err);
     }
 
-    return story.save((err) => {
-      if (err) {
-        res.send(err);
+    return story.save((error) => {
+      if (error) {
+        res.send(error);
       }
       res.json({ message: 'comment successfylly added' });
     });
