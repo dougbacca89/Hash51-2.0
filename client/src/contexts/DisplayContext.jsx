@@ -15,7 +15,7 @@ function DisplayContextProvider({ children }){
   const fetchStories = async() => {
     axios.get('/routes/story')
     .then(result => {
-      setStories(result.data);
+      setStories(result.data.reverse());
     });
   };
 

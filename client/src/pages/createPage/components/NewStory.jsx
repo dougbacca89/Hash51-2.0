@@ -21,7 +21,7 @@ const NewStory = (props) => {
   
   return (
     <div>
-      <Box 
+      <Box
         bg="purple.400" 
         mb=".5vh" 
         w="60vw" 
