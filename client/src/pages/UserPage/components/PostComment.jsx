@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   Box,
@@ -7,10 +8,18 @@ import {
   Textarea
 } from "@chakra-ui/react";
 
-const PostComment = () => (
+import { DisplayContext } from '../../../contexts/DisplayContext';
+
+
+const PostComment = (props) => {
+  // eslint-disable-next-line camelcase
+  const { post_id } = props;
+  const { fetchStories, handleCommentBody, postComment, commentBody } = useContext(DisplayContext);
+
+  return (
   <Flex>
     <Box 
-      bg="purple.200" 
+      bg="gray.200" 
       mb="1.25vh" 
       w="52vw" 
       ml="2vw" 
@@ -21,7 +30,6 @@ const PostComment = () => (
         fontSize="14px"
         color="black"
         overflowY="scroll"
-        h="5px"
         sx={{
           '&::-webkit-scrollbar': {
             width: '16px',
@@ -31,18 +39,28 @@ const PostComment = () => (
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: `rgba(0, 0, 0, 0.5)`,
           },
-        }}
+        }} 
+        onChange={handleCommentBody}
+        value={commentBody}
       />
     </Box>
     <Button 
       w="4vw" 
       h="80px"
+      colorScheme="green"
       borderLeftRadius={0} 
-      backgroundColor="#3a2a5e"
+      onClick={() => {
+        postComment(post_id);
+        fetchStories();
+      }}
     >
       Post
     </Button>
   </Flex>
   );
+};
 
+PostComment.propTypes = {
+  post_id: PropTypes.isRequired,
+};
 export default PostComment;

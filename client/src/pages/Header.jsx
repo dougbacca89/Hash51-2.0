@@ -16,7 +16,7 @@ const Header = () => {
     <Flex justify="space-between" borderBottom="1px" bg="#201830" p={1}>
     <RouterLink to='/'>
         <Heading as="h3" size="lg" m={1} color="green.500" ml="14.5vw">
-          Hash 51
+          Hash#51
         </Heading>
     </RouterLink>
       <Heading as="h3" size="md" m={2} mr="15vw">

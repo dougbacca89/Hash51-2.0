@@ -13,10 +13,11 @@ const ConspiratorList = (props) => {
   
   return (
   <VStack
-    divider={<StackDivider borderColor="gray.200" />}
-    spacing={1}
+    divider={<StackDivider borderColor="green.500" />}
+    spacing={2}
+    
   >
-    <StackDivider borderColor="gray.200" />
+    <StackDivider borderColor="green.500" />
     {conspirators.map((conspirator) => <Conspirator key={conspirator.userName}conspirator={conspirator} />)}
   </VStack>
   );

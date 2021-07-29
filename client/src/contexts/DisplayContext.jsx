@@ -9,21 +9,34 @@ const DisplayContext = createContext();
 function DisplayContextProvider({ children }){
 
   const [ stories, setStories ] = useState([]);
+  const [ commentBody, setCommentBody ] = useState('');
+
+  const handleCommentBody = (event) => setCommentBody(event.target.value);
 
   
 
   const fetchStories = async() => {
-    axios.get('/routes/story')
+    await axios.get('/routes/story')
     .then(result => {
-      setStories(result.data);
+      setStories(result.data.reverse());
     });
+  };
+
+  // eslint-disable-next-line camelcase
+  const postComment = async(post_id) => {
+    const comment = { commentBody, post_id, userName: "testUser" };
+    await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
   };
 
 
   const displayProps = {
     stories,
     setStories,
-    fetchStories
+    fetchStories,
+    postComment,
+    handleCommentBody,
+    setCommentBody,
+    commentBody
   };
 
   return (

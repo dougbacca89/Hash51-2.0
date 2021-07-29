@@ -10,11 +10,12 @@ import Comment from './Comment';
 import PostComment from './PostComment';
 
 const CommentList = (props) => {
-  const { comments } = props;
+  // eslint-disable-next-line camelcase
+  const { comments, post_id } = props;
   
   return (
     <Box 
-      bg="purple.400" 
+      bg="gray.800" 
       mb="7vh" 
       w="60vw" 
       borderBottomRadius={10}
@@ -26,14 +27,16 @@ const CommentList = (props) => {
       >
         Comments
       </Text>
-        {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
-      <PostComment />
+        {comments.map((comment) => <Comment key={comment.commentBody}comment={comment}/>)}
+      {/* eslint-disable-next-line camelcase */}
+      <PostComment post_id={post_id}/>
     </Box>
   );
 };
 
 CommentList.propTypes = {
   comments: PropTypes.isRequired,
+  post_id: PropTypes.isRequired
 };
 
 export default CommentList;

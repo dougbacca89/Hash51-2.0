@@ -11,12 +11,14 @@ function EvidenceContextProvider({ children }){
   const [ href, setHref ] = useState('');
   // eslint-disable-next-line camelcase
   const [ nasa_id, setNasa_id ] = useState('');
-  const [ title, setTitle ] = useState('');
+  const [ nasaTitle, setNasaTitle ] = useState('');
+  const [ userTitle, setUserTitle ] = useState('');
   const [ keyWords, setKeywords ] = useState([]);
 
   // const { userObj } = useContext(UserContext);
 
   const handlePostBody = (event) => setBodyText(event.target.value);
+  const handlePostTitle = (event) => setUserTitle(event.target.value);
 
   const fetchSearch = async(query) => {
     await axios.post('/routes/search', { query })
@@ -36,7 +38,7 @@ function EvidenceContextProvider({ children }){
   // userName: userObj.username
 
   const postStory = async() => {
-    const story = { href, title, nasa_id, keyWords, bodyText, userName: "testUser", comments: [] };
+    const story = { href, nasaTitle, nasa_id, keyWords, userTitle, bodyText, userName: "testUser", comments: [] };
     await axios.post('/routes/story', { story });
   };
 
@@ -54,10 +56,13 @@ function EvidenceContextProvider({ children }){
     setHref,
     nasa_id,
     setNasa_id,
-    title,
-    setTitle,
-    keyWords,
-    setKeywords
+    nasaTitle, 
+    setNasaTitle,
+    keyWords, 
+    setKeywords,
+    handlePostTitle,
+    userTitle, 
+    setUserTitle
   };
 
   return (

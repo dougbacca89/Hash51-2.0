@@ -12,7 +12,7 @@ const User = (props) => {
   
   return (
     <Box 
-      bg="purple.400" 
+      bg="gray.800" 
       mb="1px" 
       w="10vw" 
       borderRadius={10}
@@ -26,18 +26,21 @@ const User = (props) => {
       <Text 
         ml="10px" 
         fontSize="12px"
+        color="green.500"
       >
         {userName}
       </Text>
       <Text 
         ml="10px" 
         fontSize="12px"
+        color="green.500"
       >
         # of conspiracies: {conspiracies.length}
       </Text>
       <Text 
         ml="10px" 
         fontSize="12px"
+        color="green.500"
       >
         # of conspirators: {conspirators.length}
       </Text>

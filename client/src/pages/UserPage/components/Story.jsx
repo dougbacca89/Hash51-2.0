@@ -7,6 +7,7 @@ import {
   Image,
   Flex,
   Heading,
+  Button
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -14,66 +15,101 @@ import CommentList from './CommentList';
 
 const Story = (props) => {
   const { story } = props;
-  const { userName, title, href, bodyText, comments, _id } = story;
+  const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
   
   return (
-  <div>
-    <Box 
-      bg="purple.400" 
-      mb=".5vh" 
-      w="60vw" 
-      h="54vh"
-      borderTopRadius={10}
-    >
-      <Text 
-        ml="10px" 
-        fontSize="15px"
+    <div>
+      <Box 
+        bg="gray.800" 
+        mb=".5vh" 
+        w="60vw" 
+        h="59vh"
+        borderTopRadius={10}
       >
-        {title}
-      </Text>
-      <Flex>
-        <Image
-          src={href}
-          objectFit="cover"
-          bg="purple.100"
-          w="50vw"
-          h="50vh" 
-
-        />
-        <Box 
-          w="17vw"
+        <Flex>
+          <Image
+            src={href}
+            fit="cover"
+            bg="purple.100"
+            w="45vw"
+            h="55vh" 
+            borderTopLeftRadius={10}
+          />
+          <Box 
+            w="17vw"
+          >
+            <Heading 
+              mt="2vh"
+              p={2}
+              maxH="12vh"
+              fontSize="19px"
+              overflowY="scroll"
+              sx={{
+                '&::-webkit-scrollbar': {
+                  width: '16px',
+                  borderRadius: '8px',
+                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                },
+              }}
+            >
+              {userTitle}
+            </Heading>
+              <Button
+                mt="20px"
+                ml="10px"
+                borderRadius={10}
+                type="submit"
+                variant="solid"
+                colorScheme="green"
+                w="14vw"
+                h="25px"
+              >
+                Add to favorites
+              </Button>
+            <Text
+              fontSize="12px"
+              p={3}
+              h="33vh"
+              mt={3}
+              color="green.500"
+              overflowY="scroll"
+              sx={{
+                '&::-webkit-scrollbar': {
+                  width: '16px',
+                  borderRadius: '8px',
+                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                },
+              }}
+            >
+              {bodyText}
+              <Text
+                ml="10px" 
+                fontSize="10px"
+                mt={1}
+                as="u"
+                color="white"
+              >
+                Created by {userName}
+              </Text>
+            </Text>
+          </Box>
+        </Flex>
+        <Text 
+          ml="10px" 
+          fontSize="10px" 
+          mb="1vh"
         >
-          <Heading 
-            ml="10px" 
-            fontSize="15px"
-            mt={2}
-          >
-            Created at by {userName}
-          </Heading>
-          <Text
-            fontSize="12px"
-            p={3}
-            h="45vh"
-            mt={3}
-            overflowY="scroll"
-            sx={{
-              '&::-webkit-scrollbar': {
-                width: '16px',
-                borderRadius: '8px',
-                backgroundColor: `rgba(0, 0, 0, 0.05)`,
-              },
-              '&::-webkit-scrollbar-thumb': {
-                backgroundColor: `rgba(0, 0, 0, 0.5)`,
-              },
-            }}
-          >
-            {bodyText}
-          </Text>
-        </Box>
-      </Flex>
-    </Box>
-    <CommentList comments={comments} post_id={_id}/>
-  </div>
+          NASA image title: {nasaTitle}
+        </Text>
+      </Box>
+      <CommentList comments={comments} post_id={_id}/>
+    </div>
   );
 };
 

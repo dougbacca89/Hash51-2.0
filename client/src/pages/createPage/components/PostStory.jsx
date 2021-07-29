@@ -17,7 +17,7 @@ import { DisplayContext } from '../../../contexts/DisplayContext';
 import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
-  const { postStory, bodyText, handlePostBody, nasa_id } = useContext(EvidenceContext);
+  const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle, nasa_id } = useContext(EvidenceContext);
   const { fetchStories } = useContext(DisplayContext);
   const { storeEvidence, getEvidence } = useContext(UserContext);
 
@@ -32,8 +32,8 @@ const PostStory = () => {
         mt="2vh"
         w="52vw"
         ml="2vw"
-        value={bodyText}
-        onChange={handlePostBody}
+        value={userTitle}
+        onChange={handlePostTitle}
       />
       <Flex
         mt="1.25vh"

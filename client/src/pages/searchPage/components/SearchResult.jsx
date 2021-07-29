@@ -12,13 +12,13 @@ import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
   // eslint-disable-next-line camelcase
-  const { searchResults, fetchImage, setNasa_id, setTitle, setKeywords } = useContext(EvidenceContext);
+  const { searchResults, fetchImage, setNasa_id, setNasaTitle, setKeywords } = useContext(EvidenceContext);
 
   const handleCLick = (result) => {
     // eslint-disable-next-line camelcase
     const { nasa_id, title, keywords } = result;
     setNasa_id(nasa_id);
-    setTitle(title);
+    setNasaTitle(title);
     setKeywords(keywords);
     fetchImage(nasa_id);
   };
@@ -35,8 +35,8 @@ const SearchResult = () => {
           <div>
             <Link to={`story/${result.nasa_id}`}>
               <Image
-                m={3}
-                borderRadius="full"
+                m={1}
+                borderRadius="50px"
                 boxSize="300px"
                 objectFit="cover"
                 src={result.thumb}
