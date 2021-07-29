@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-
-
-
 const UserContext = createContext();
 
 function UserContextProvider({ children }){
@@ -75,7 +72,8 @@ function UserContextProvider({ children }){
   };
 
   const getConspirators = () => {
-    axios.get('/get/conspirators');
+    axios.get('/get/conspirators')
+    .then(({ data }) => setConspirators(data));
   };
 
   const fetchConspiratorFavorites = (friendId) => {
@@ -92,6 +90,7 @@ function UserContextProvider({ children }){
     setIsLoggedIn(false);
     setUserObj({});
     setFavorites([]);
+    setConspirators([]);
     axios.get('/logout')
     .then(() => console.log('successful logout'));
   };
