@@ -64,7 +64,7 @@ const Login = props => {
                     type="email"
                     placeholder="email address"
                     value={userLogin}
-                    onChange={handleUserLogin} 
+                    onChange={handleUserLogin}
                   />
                 </InputGroup>
               </FormControl>
@@ -89,7 +89,7 @@ const Login = props => {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-                <Link to='/Search'>
+                <Link to='/'>
                   <Button
                     borderRadius={10}
                     type="submit"
