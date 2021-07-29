@@ -8,6 +8,7 @@ const { Router } = require('express');
 const { Evidence } = require('../database/Evidence');
 const { Comment } = require('../database/Comment');
 
+
 const serverRouter = Router();
 serverRouter.use(express.json());
 
@@ -18,6 +19,13 @@ const { getImagesFromNasa, nasaIdCall } = require('../helpers/getImages');
 serverRouter.get('/', (req, res) => {
   res.json({ message: 'API Initialized!' });
 });
+
+// serverRouter.get('/conspirators'), (req, res) =>{
+//   User.find({}, (err, conspirators) => {
+//     if(err) { return res.sendStatus(404); }
+//     return res.status(200).send(conspirators);
+//   });
+// };
 
 
 serverRouter.post('/search', (req, res) => {
