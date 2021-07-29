@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -7,9 +7,12 @@ import {
 } from "@chakra-ui/react";
 
 import Conspirator from './Conspirator';
+import { UserContext } from '../../../contexts/UserContext';
 
-const ConspiratorList = (props) => {
-  const { conspirators } = props;
+const ConspiratorList = () => {
+  const { conspirators } = useContext(UserContext);
+  console.log(conspirators)
+
   
   return (
   <VStack
@@ -18,7 +21,8 @@ const ConspiratorList = (props) => {
     
   >
     <StackDivider borderColor="green.500" />
-    {conspirators.map((conspirator) => <Conspirator key={conspirator.userName}conspirator={conspirator} />)}
+    {/* eslint-disable-next-line no-underscore-dangle */}
+    {conspirators.map((conspirator) => <Conspirator key={conspirator._id}conspirator={conspirator} />)}
   </VStack>
   );
 };

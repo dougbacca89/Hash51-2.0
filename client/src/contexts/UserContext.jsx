@@ -66,15 +66,16 @@ function UserContextProvider({ children }){
     }
     );
   };
-
-  const addConspirator = (userName) => {
-    axios.post('/add/conspirator', { userName });
-  };
-
+  
   const getConspirators = () => {
     axios.get('/get/conspirators')
     .then(({ data }) => setConspirators(data));
   };
+
+  const addConspirator = (userName) => {
+    axios.post('/add/conspirator', { userName }).then(() => getConspirators());
+  };
+
 
   const fetchConspiratorFavorites = (friendId) => {
     axios.post('/conspirator/favorites', { friendId });
