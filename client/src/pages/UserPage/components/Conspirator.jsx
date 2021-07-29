@@ -9,7 +9,6 @@ import {
 
 const Conspirator = (props) => {
   const { conspirator } = props;
-  console.log(conspirator)
   const { username, profileImage } = conspirator;
   
   return (

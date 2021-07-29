@@ -66,14 +66,22 @@ function UserContextProvider({ children }){
     }
     );
   };
-  
+
   const getConspirators = () => {
     axios.get('/get/conspirators')
     .then(({ data }) => setConspirators(data));
   };
 
   const addConspirator = (userName) => {
-    axios.post('/add/conspirator', { userName }).then(() => getConspirators());
+    const conspiratorNames = [];
+    conspirators.forEach((conspirator) => {
+      conspiratorNames.push(conspirator.username);
+    });
+    
+    if(!conspiratorNames.includes(userName)) {
+      axios.post('/add/conspirator', { userName })
+      .then(() => getConspirators());
+    }
   };
 
 
