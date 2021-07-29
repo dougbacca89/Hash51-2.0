@@ -7,6 +7,7 @@ import {
   Image,
   Flex,
   Heading,
+  Stack
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -14,7 +15,7 @@ import CommentList from './CommentList';
 
 const Story = (props) => {
   const { story } = props;
-  const { userName, title, href, bodyText, comments, _id } = story;
+  const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
   
   return (
   <div>
@@ -22,15 +23,25 @@ const Story = (props) => {
       bg="purple.400" 
       mb=".5vh" 
       w="60vw" 
-      h="54vh"
+      h="59vh"
       borderTopRadius={10}
     >
-      <Text 
+      <Stack
         ml="10px" 
-        fontSize="15px"
+        mb="10px"
       >
-        {title}
-      </Text>
+        <Text 
+          
+          fontSize="15px"
+        >
+          {userTitle}
+        </Text>
+        <Text 
+          fontSize="10px"
+        >
+          {nasaTitle}
+        </Text>
+      </Stack>
       <Flex>
         <Image
           src={href}
@@ -53,7 +64,7 @@ const Story = (props) => {
           <Text
             fontSize="12px"
             p={3}
-            h="45vh"
+            h="44vh"
             mt={3}
             overflowY="scroll"
             sx={{
