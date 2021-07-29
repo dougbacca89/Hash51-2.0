@@ -17,7 +17,7 @@ import { DisplayContext } from '../../../contexts/DisplayContext';
 import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
-  const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle } = useContext(EvidenceContext);
+  const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle, nasa_id } = useContext(EvidenceContext);
   const { fetchStories } = useContext(DisplayContext);
   const { storeEvidence, getEvidence } = useContext(UserContext);
 
