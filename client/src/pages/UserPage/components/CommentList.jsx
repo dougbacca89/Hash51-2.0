@@ -10,6 +10,7 @@ import Comment from './Comment';
 import PostComment from './PostComment';
 
 const CommentList = (props) => {
+  // eslint-disable-next-line camelcase
   const { comments, post_id } = props;
   
   return (

@@ -12,7 +12,7 @@ import { DisplayContext } from '../../../contexts/DisplayContext';
 
 const PostComment = (props) => {
   const { post_id } = props;
-  const { fetchStories, handleCommentBody, postComment, setCommentBody, commentBody } = useContext(DisplayContext);
+  const { fetchStories, handleCommentBody, postComment, commentBody } = useContext(DisplayContext);
 
   return (
   <Flex>
