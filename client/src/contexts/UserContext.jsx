@@ -73,14 +73,17 @@ function UserContextProvider({ children }){
   };
 
   const addConspirator = (userName) => {
+    const { username } = userObj;
     const conspiratorNames = [];
     conspirators.forEach((conspirator) => {
       conspiratorNames.push(conspirator.username);
     });
-    
-    if(!conspiratorNames.includes(userName)) {
+
+    if(!conspiratorNames.includes(userName) && userName !== username) {
       axios.post('/add/conspirator', { userName })
       .then(() => getConspirators());
+    } else {
+      getConspirators();
     }
   };
 
@@ -106,10 +109,14 @@ function UserContextProvider({ children }){
 
   useEffect(() => {
     getUser();
-    // if(userObj){
     getEvidence();
+    
+    // if(userObj){
+    
     // }
   }, [JSON.stringify(userObj)]);
+
+
 
 
   const userProps = {
