@@ -38,8 +38,12 @@ function UserContextProvider({ children }){
   };
 
   const getEvidence = async () => {
+    if(userObj.username){
     await axios.get('/get/favorites')
-    .then(({data}) => console.log('here are favorites', data) );
+    .then(({data}) => {
+      console.log('here are favorites', data);
+      setFavorites(data);});
+    }
   };
 
   // This isn't used
@@ -73,6 +77,7 @@ function UserContextProvider({ children }){
 
   useEffect(() => {
     getUser();
+    getEvidence();
   }, []);
 
 
@@ -88,6 +93,7 @@ function UserContextProvider({ children }){
   };
 
   const userProps = {
+    favorites,
     userObj,
     isLoggedIn,
     googleLogin,
