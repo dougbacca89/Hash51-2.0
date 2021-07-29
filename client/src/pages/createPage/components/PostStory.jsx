@@ -13,13 +13,11 @@ import {
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
-import { DisplayContext } from '../../../contexts/DisplayContext';
 import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
   const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle, nasa_id } = useContext(EvidenceContext);
-  const { fetchStories } = useContext(DisplayContext);
-  const { storeEvidence, getEvidence } = useContext(UserContext);
+  const { storeEvidence } = useContext(UserContext);
 
 
   return (
@@ -76,8 +74,6 @@ const PostStory = () => {
             onClick={() => {
               postStory();
               storeEvidence(nasa_id);
-              getEvidence();
-              fetchStories();
             }}
           >
             Post

@@ -29,7 +29,7 @@ const UserContainer = props => {
   const { conspirators } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
-  const { userObj, favorites } = useContext(UserContext);
+  const { userObj, favorites, getEvidence } = useContext(UserContext);
   console.log(userObj);
   console.log('HERE ARE FAVORITES', favorites);
 
@@ -40,7 +40,10 @@ const UserContainer = props => {
   //     <Heading>{ nasa_id }</Heading>
   //   </div>
 
-  useEffect(() => { fetchStories(); }, []);
+  useEffect(() => {
+    fetchStories();
+    getEvidence();  },
+    [JSON.stringify(userObj)]);
 
   return (
     <Flex color="white">

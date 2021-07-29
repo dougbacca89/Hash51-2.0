@@ -97,7 +97,9 @@ function UserContextProvider({ children }){
 
   useEffect(() => {
     getUser();
+    // if(userObj){
     getEvidence();
+    // }
   }, [JSON.stringify(userObj)]);
 
 

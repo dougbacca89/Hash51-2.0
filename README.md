@@ -72,6 +72,8 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Sub-Documents Documentation](https://mongoosejs.com/docs/subdocs.html)
 * [Embedding subDocuments](https://stackoverflow.com/questions/37537493/how-to-create-an-embedded-document-that-follows-a-model-with-mongoose)
 
+### - MongoDB Atlas:
+* [Quick Start Documentation](https://aws-quickstart.s3.amazonaws.com/quickstart-mongodb/doc/MongoDB_on_the_AWS_Cloud.pdf)
 
 ### - AWS:
 * [Creating and managing a Node.js server on AWS](https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171)
