@@ -10,9 +10,10 @@ import {
 import { DisplayContext } from '../../../contexts/DisplayContext';
 
 
-const PostComment = () => {
-  const { fetchStories } = useContext(DisplayContext);
-  
+const PostComment = (props) => {
+  const { post_id } = props;
+  const { fetchStories, handleCommentBody, postComment } = useContext(DisplayContext);
+
   return (
   <Flex>
     <Box 
@@ -38,6 +39,7 @@ const PostComment = () => {
             backgroundColor: `rgba(0, 0, 0, 0.5)`,
           },
         }}
+        onChange={handleCommentBody}
       />
     </Box>
     <Button 
@@ -45,6 +47,7 @@ const PostComment = () => {
       h="80px"
       borderLeftRadius={0} 
       backgroundColor="#3a2a5e"
+      onClick={() => postComment(post_id)}
     >
       Post
     </Button>

@@ -9,7 +9,9 @@ const DisplayContext = createContext();
 function DisplayContextProvider({ children }){
 
   const [ stories, setStories ] = useState([]);
-  const [ commentBody, setCommentBody ] = useState([]);
+  const [ commentBody, setCommentBody ] = useState('');
+
+  const handleCommentBody = (event) => setCommentBody(event.target.value);
 
   
 
@@ -20,11 +22,9 @@ function DisplayContextProvider({ children }){
     });
   };
 
-  const postComment = async() => {
-    await axios.post('/routes/comment')
-    .then(result => {
-      
-    });
+  const postComment = async(post_id) => {
+    const comment = { commentBody, post_id, userName: "testUser" };
+    await axios.post('/routes/story/comment', comment);
   };
 
 
@@ -32,7 +32,8 @@ function DisplayContextProvider({ children }){
     stories,
     setStories,
     fetchStories,
-    postComment
+    postComment,
+    handleCommentBody
   };
 
   return (

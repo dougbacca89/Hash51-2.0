@@ -97,19 +97,29 @@ serverRouter.get('/story/comments', (req, res) => {
 });
 
 
-serverRouter.post('/story/comments', (req, res) => {
-  const comment = new Comment();
-  comment.userId = req.body.userId;
-  comment.text = req.body.text;
-  comment.author = req.body.author;
-  comment.imageId = req.body.imageId;
-
-  comment.save((err) => {
+serverRouter.post('/story/comment', (req, res) => {
+  const comment = req.body;
+  console.log(comment);
+  Evidence.findOneAndUpdate({_id: comment.post_id}, { $push: { comments: comment  } }, (err, story) => {
     if (err) {
-      res.send(err);
+      return res.send(err);
     }
-    res.json({ message: 'comment successfylly added' });
+
+    return story.save((err) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json({ message: 'comment successfylly added' });
+    });
   });
+
+  // const comment = new Comment();
+  // comment.userId = req.body.userId;
+  // comment.text = req.body.text;
+  // comment.author = req.body.author;
+  // comment.imageId = req.body.imageId;
+
+  
 });
 
 
