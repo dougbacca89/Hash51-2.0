@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-
-
-
 const UserContext = createContext();
 
 function UserContextProvider({ children }){
@@ -70,6 +67,19 @@ function UserContextProvider({ children }){
     );
   };
 
+  const addConspirator = (friendId) => {
+    axios.post('/add/conspirator', { friendId });
+  };
+
+  const getConspirators = () => {
+    axios.get('/get/conspirators')
+    .then(({ data }) => setConspirators(data));
+  };
+
+  const fetchConspiratorFavorites = (friendId) => {
+    axios.post('/conspirator/favorites', { friendId });
+  };
+
   const localLogin = ( username, password ) => {
     axios.post('/login', { username, password })
     .then((result) => { console.log('successful login', result.data); getUser(); })
@@ -80,6 +90,7 @@ function UserContextProvider({ children }){
     setIsLoggedIn(false);
     setUserObj({});
     setFavorites([]);
+    setConspirators([]);
     axios.get('/logout')
     .then(() => console.log('successful logout'));
   };
@@ -114,6 +125,9 @@ function UserContextProvider({ children }){
     handlePassLogin,
     storeEvidence,
     getEvidence,
+    addConspirator,
+    fetchConspiratorFavorites,
+    getConspirators,
   };
 
 
