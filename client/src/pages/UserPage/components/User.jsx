@@ -9,9 +9,11 @@ import {
 
 import { UserContext } from '../../../contexts/UserContext';
 
+
 const User = () => {
   const { userObj } = useContext(UserContext);
   const { username, profileImage, favorites } = userObj;
+  
   
   return (
     <Box 

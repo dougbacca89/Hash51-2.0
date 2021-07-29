@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -11,11 +11,14 @@ import {
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
+import { DisplayContext } from '../../../contexts/DisplayContext';
 
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
+
+  const { favoriteClick } = useContext(DisplayContext);
   
   return (
     <div>
@@ -94,6 +97,7 @@ const Story = (props) => {
                 mt={1}
                 as="u"
                 color="white"
+                onClick={() => favoriteClick()}
               >
                 Created by {userName}
               </Text>

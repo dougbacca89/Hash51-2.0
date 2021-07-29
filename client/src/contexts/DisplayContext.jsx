@@ -29,6 +29,10 @@ function DisplayContextProvider({ children }){
     await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
   };
 
+  const favoriteClick = () => {
+    console.log('clicked')
+  };
+
   const displayProps = {
     stories,
     setStories,
@@ -36,7 +40,8 @@ function DisplayContextProvider({ children }){
     postComment,
     handleCommentBody,
     setCommentBody,
-    commentBody
+    commentBody,
+    favoriteClick
   };
 
   return (

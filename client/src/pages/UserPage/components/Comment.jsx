@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,9 +8,13 @@ import {
   Image
 } from "@chakra-ui/react";
 
+import { DisplayContext } from '../../../contexts/DisplayContext';
+
 const Comment = (props) => {
   const { comment } = props;
   const { commentBody, userName, profileImage } = comment;
+
+  const { favoriteClick } = useContext(DisplayContext);
   
   return (
   <Box  
@@ -35,6 +39,7 @@ const Comment = (props) => {
         ml="6px"  
         minH="2vh"
         fontSize="15px"
+        onClick={() => favoriteClick()}
       >
         {userName}:  
           <Text 
