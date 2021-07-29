@@ -35,8 +35,8 @@ const SearchResult = () => {
           <div>
             <Link to={`story/${result.nasa_id}`}>
               <Image
-                m={3}
-                borderRadius="full"
+                m={1}
+                borderRadius="50px"
                 boxSize="300px"
                 objectFit="cover"
                 src={result.thumb}

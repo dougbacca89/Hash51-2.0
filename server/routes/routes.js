@@ -99,7 +99,6 @@ serverRouter.get('/story/comments', (req, res) => {
 
 serverRouter.post('/story/comment', (req, res) => {
   const comment = req.body;
-  console.log(comment);
   Evidence.findOneAndUpdate({_id: comment.post_id}, { $push: { comments: comment  } }, (err, story) => {
     if (err) {
       return res.send(err);

@@ -12,7 +12,7 @@ const Conspirator = (props) => {
   
   return (
     <Box 
-      bg="purple.400" 
+      bg="gray.800" 
       mb="1px" 
       w="10vw" 
       borderRadius={10}
@@ -26,6 +26,7 @@ const Conspirator = (props) => {
       <Text 
         ml="10px" 
         fontSize="10px"
+        color="green.500"
       >
         {userName}
       </Text>

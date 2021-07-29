@@ -36,6 +36,7 @@ const Search = () => {
             h="1.75rem" 
             size="sm" 
             onClick={() => fetchSearch(value)}
+            colorScheme="green"
           >
             Search
           </Button>

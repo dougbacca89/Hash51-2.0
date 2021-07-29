@@ -22,7 +22,7 @@ const NewStory = (props) => {
   return (
     <div>
       <Box
-        bg="purple.400" 
+        bg="gray.800" 
         mb=".5vh" 
         w="60vw" 
         borderTopRadius={10}
@@ -31,16 +31,16 @@ const NewStory = (props) => {
           ml="10px" 
           mb="10px"
           fontSize="25px"
-          color="white"
+          color="green.500"
         >
         Tell your story {userName}
         </Text>
         <Image
           src={href}
-          objectFit="cover"
-          bg="purple.100"
+          objectFit="contain"
           w="60vw"
           h="60vh" 
+          bg="gray.800" 
         />
         <PostStory />
       </Box>

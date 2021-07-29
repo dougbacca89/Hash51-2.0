@@ -24,7 +24,7 @@ function DisplayContextProvider({ children }){
 
   const postComment = async(post_id) => {
     const comment = { commentBody, post_id, userName: "testUser" };
-    await axios.post('/routes/story/comment', comment);
+    await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
   };
 
 
@@ -33,7 +33,9 @@ function DisplayContextProvider({ children }){
     setStories,
     fetchStories,
     postComment,
-    handleCommentBody
+    handleCommentBody,
+    setCommentBody,
+    commentBody
   };
 
   return (

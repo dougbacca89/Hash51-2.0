@@ -14,7 +14,7 @@ const CommentList = (props) => {
   
   return (
     <Box 
-      bg="purple.400" 
+      bg="gray.800" 
       mb="7vh" 
       w="60vw" 
       borderBottomRadius={10}
@@ -26,7 +26,7 @@ const CommentList = (props) => {
       >
         Comments
       </Text>
-        {comments.map((comment) => <Comment key={comment.text}comment={comment}/>)}
+        {comments.map((comment) => <Comment key={comment.commentBody}comment={comment}/>)}
       <PostComment post_id={post_id}/>
     </Box>
   );
