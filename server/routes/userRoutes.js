@@ -41,9 +41,10 @@ userRouter.get('/get/favorites', (req, res) => {
 // co-conspirators routes
 
 userRouter.post('/add/conspirator', async (req, res) => {
-  const { id, friendId } = req.body;
-  if(!id){
-  await User.findById(friendId)
+  const { userName } = req.body;
+  console.log(req.user.id);
+  // if(!id){
+  await User.findOne({username: userName})
     .then(results => results)
     .then((data) => User.findOneAndUpdate({ _id: req.user.id }, { $push: { coConspirators: data }}, { new: true }))
     .then((data) => res.status(200).send(data))
@@ -51,16 +52,16 @@ userRouter.post('/add/conspirator', async (req, res) => {
       console.log('Evidence Error', err);
       res.sendStatus(500);
     });
-  } else if (id) {
-    await User.findById(friendId)
-    .then(results => results)
-    .then((data) => User.findOneAndUpdate({ _id: id }, { $push: { coConspirators: data }}, { new: true }))
-    .then((data) => res.status(200).send(data))
-    .catch(err => {
-      console.log('Evidence Error', err);
-      res.sendStatus(500);
-    });
-  }
+  // } else if (id) {
+  //   await User.findById(friendId)
+  //   .then(results => results)
+  //   .then((data) => User.findOneAndUpdate({ _id: id }, { $push: { coConspirators: data }}, { new: true }))
+  //   .then((data) => res.status(200).send(data))
+  //   .catch(err => {
+  //     console.log('Evidence Error', err);
+  //     res.sendStatus(500);
+  //   });
+  // }
 });
 
 userRouter.get('/get/conspirators', (req, res) => {

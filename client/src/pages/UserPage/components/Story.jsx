@@ -11,14 +11,14 @@ import {
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
-import { DisplayContext } from '../../../contexts/DisplayContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
-  const { favoriteClick } = useContext(DisplayContext);
+  const { addConspirator } = useContext(UserContext);
   
   return (
     <div>
@@ -97,7 +97,7 @@ const Story = (props) => {
                 mt={1}
                 as="u"
                 color="white"
-                onClick={() => favoriteClick()}
+                onClick={() => addConspirator(userName)}
               >
                 Created by {userName}
               </Text>

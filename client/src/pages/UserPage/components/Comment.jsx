@@ -8,13 +8,13 @@ import {
   Image
 } from "@chakra-ui/react";
 
-import { DisplayContext } from '../../../contexts/DisplayContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 const Comment = (props) => {
   const { comment } = props;
   const { commentBody, userName, profileImage } = comment;
 
-  const { favoriteClick } = useContext(DisplayContext);
+  const { addConspirator } = useContext(UserContext);
   
   return (
   <Box  
@@ -39,7 +39,7 @@ const Comment = (props) => {
         ml="6px"  
         minH="2vh"
         fontSize="15px"
-        onClick={() => favoriteClick()}
+        onClick={() => addConspirator(userName)}
       >
         {userName}:  
           <Text 

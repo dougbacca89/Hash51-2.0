@@ -67,8 +67,8 @@ function UserContextProvider({ children }){
     );
   };
 
-  const addConspirator = (friendId) => {
-    axios.post('/add/conspirator', { friendId });
+  const addConspirator = (userName) => {
+    axios.post('/add/conspirator', { userName });
   };
 
   const getConspirators = () => {
