@@ -1,4 +1,4 @@
-/* eslint-disable import/extensions, no-console, no-unused-vars */
+/* eslint-disable import/extensions, no-console, no-unused-vars, import/no-unresolved */
 
 import React, { useState } from 'react';
 import {
@@ -18,14 +18,14 @@ import SearchContainer from './searchPage/SearchContainer';
 import Header from './Header.jsx';
 
 const testStory = {
-  userName: "Bobby",
+  userName: "Bobby Hill",
   storyTitle: "They're out there",
   proof: "html",
   comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
 };
 
 const testUser = {
-  userName: 'Bobby',
+  userName: 'Bobby Hill',
   conspiracies: [testStory,testStory,testStory],
   conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
 };

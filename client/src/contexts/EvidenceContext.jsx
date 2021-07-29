@@ -15,6 +15,8 @@ function EvidenceContextProvider({ children }){
   const [ userTitle, setUserTitle ] = useState('');
   const [ keyWords, setKeywords ] = useState([]);
 
+  // const { userObj } = useContext(UserContext);
+
   const handlePostBody = (event) => setBodyText(event.target.value);
   const handlePostTitle = (event) => setUserTitle(event.target.value);
 
@@ -33,12 +35,11 @@ function EvidenceContextProvider({ children }){
     });
   };
 
+  // userName: userObj.username
+
   const postStory = async() => {
     const story = { href, nasaTitle, nasa_id, keyWords, userTitle, bodyText, userName: "testUser", comments: [] };
-    await axios.post('/routes/story', { story })
-    .then(() => {
-      
-    });
+    await axios.post('/routes/story', { story });
   };
 
 
@@ -48,12 +49,12 @@ function EvidenceContextProvider({ children }){
     fetchSearch,
     fetchImage,
     postStory,
-    bodyText, 
+    bodyText,
     setBodyText,
     handlePostBody,
-    href, 
+    href,
     setHref,
-    nasa_id, 
+    nasa_id,
     setNasa_id,
     nasaTitle, 
     setNasaTitle,

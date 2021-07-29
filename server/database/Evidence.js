@@ -5,7 +5,8 @@ const EvidenceSchema = new mongoose.Schema({
   userName: String,
   href: String,
   nasa_id: String,
-  title: String,
+  nasaTitle: String,
+  userTitle: String,
   keyWords: Array,
   comments: Array
 });

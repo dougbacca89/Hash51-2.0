@@ -30,19 +30,21 @@ serverRouter.get('/comments', (req, res) => {
 });
 
 
-serverRouter.post('/comments', (req, res) => {
-  const comment = new Comment();
-  comment.userId = req.body.userId;
-  comment.text = req.body.text;
-  comment.author = req.body.author;
-  comment.imageId = req.body.imageId;
+serverRouter.post('/comment', (req, res) => {
 
-  comment.save((err) => {
-    if (err) {
-      res.send(err);
-    }
-    res.json({ message: 'comment successfylly added' });
-  });
+
+  // const comment = new Comment();
+  // comment.userId = req.body.userId;
+  // comment.text = req.body.text;
+  // comment.author = req.body.author;
+  // comment.imageId = req.body.imageId;
+
+  // comment.save((err) => {
+  //   if (err) {
+  //     res.send(err);
+  //   }
+  //   res.json({ message: 'comment successfylly added' });
+  // });
 });
 
 
