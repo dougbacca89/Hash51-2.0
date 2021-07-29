@@ -28,7 +28,6 @@ function DisplayContextProvider({ children }){
     await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
   };
 
-
   const displayProps = {
     stories,
     setStories,
