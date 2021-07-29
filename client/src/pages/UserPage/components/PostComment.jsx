@@ -9,12 +9,16 @@ import {
 } from "@chakra-ui/react";
 
 import { DisplayContext } from '../../../contexts/DisplayContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 
 const PostComment = (props) => {
   // eslint-disable-next-line camelcase
   const { post_id } = props;
   const { fetchStories, handleCommentBody, postComment, commentBody } = useContext(DisplayContext);
+  const { userObj } = useContext(UserContext);
+
+  const { username } = userObj;
 
   return (
   <Flex>
@@ -50,7 +54,7 @@ const PostComment = (props) => {
       colorScheme="green"
       borderLeftRadius={0} 
       onClick={() => {
-        postComment(post_id);
+        postComment(post_id, username);
         fetchStories();
       }}
     >
