@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
@@ -31,7 +32,7 @@ const CommentList = (props) => {
         Comments
       </Text>
       {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} />)}
-      {/* eslint-disable-next-line camelcase */}
+      {}
       {userObj.username ? (
         <PostComment post_id={post_id} />
       ) : (
