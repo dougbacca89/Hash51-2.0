@@ -9,6 +9,7 @@ import {
 
 import PostStory from './PostStory';
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
+import { UserContext } from '../../../contexts/UserContext';
 
 
 
@@ -18,6 +19,7 @@ const NewStory = (props) => {
   const { userName } = user;
 
   const { href } = useContext(EvidenceContext);
+  const { userObj } = useContext(UserContext);
   
   return (
     <div>
@@ -42,7 +44,12 @@ const NewStory = (props) => {
           h="60vh" 
           bg="gray.800" 
         />
-        <PostStory />
+        { userObj.username ? (
+          <PostStory />
+        ) : (
+          <div />
+        )}
+        
       </Box>
     </div>
   );

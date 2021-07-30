@@ -41,6 +41,7 @@ const SearchResult = () => {
                 objectFit="cover"
                 src={result.thumb}
                 onClick={() => handleCLick(result)}
+                boxShadow="2xl"
               />
             </Link>
           </div>
