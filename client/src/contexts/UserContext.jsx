@@ -2,7 +2,6 @@
 import React, { createContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
-
 import axios from 'axios';
 
 const UserContext = createContext();
@@ -25,12 +24,10 @@ function UserContextProvider({ children }){
   const handleUserLogin = (event) => setUserLogin(event.target.value);
   const handlePassLogin = (event) => setPassLogin(event.target.value);
 
-
   const storeEvidence = async (nasa_id) => {
     const id = userObj['_id'];
     await axios.post('/store/favorites', { id, nasa_id });
   };
-
 
   const getEvidence = async () => {
     if(Object.keys(userObj).length){
@@ -97,7 +94,6 @@ function UserContextProvider({ children }){
     });
   };
 
-
   const fetchConspiratorFavorites = (friendId) => {
     axios.post('/conspirator/favorites', { friendId });
   };
@@ -121,9 +117,6 @@ function UserContextProvider({ children }){
     getUser();
     getEvidence();
   }, [JSON.stringify(userObj)]);
-
-
-
 
   const userProps = {
     favorites,
@@ -154,7 +147,6 @@ function UserContextProvider({ children }){
     getConspirators,
     updateConspirator
   };
-
 
   return (
     <UserContext.Provider value={userProps}>

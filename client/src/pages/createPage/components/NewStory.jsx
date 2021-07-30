@@ -1,5 +1,4 @@
 import React, { useContext }from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Text,
@@ -7,22 +6,17 @@ import {
   Image
 } from "@chakra-ui/react";
 
-import PostStory from './PostStory';
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 import { UserContext } from '../../../contexts/UserContext';
 
+import PostStory from './PostStory';
 
-
-
-const NewStory = (props) => {
-  const { user } = props;
-  const { userName } = user;
-
+const NewStory = () => {
   const { href } = useContext(EvidenceContext);
   const { userObj } = useContext(UserContext);
   
   return (
-    <div>
+    <div>  
       <Box
         bg="gray.800" 
         mb=".5vh" 
@@ -35,7 +29,7 @@ const NewStory = (props) => {
           fontSize="25px"
           color="green.500"
         >
-        Tell your story {userName}
+        Tell your story {userObj.username}
         </Text>
         <Image
           src={href}
@@ -53,10 +47,6 @@ const NewStory = (props) => {
       </Box>
     </div>
   );
-};
-
-NewStory.propTypes = {
-  user: PropTypes.isRequired,
 };
 
 export default NewStory;

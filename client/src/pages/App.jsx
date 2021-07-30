@@ -1,24 +1,25 @@
-/* eslint-disable import/extensions, no-console, no-unused-vars, import/no-unresolved */
 
-import React, { useState } from 'react';
+import React, 
+  { useState } from 'react';
+
 import {
-  // BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 
 import {
-  Flex,
+  Flex
 } from "@chakra-ui/react";
 
+// eslint-disable-next-line import/no-unresolved
 import CreatePageContainer from './createPage/CreateContainer';
 import LoginContainer from './loginPage/LoginContainer';
 import UserContainer from './UserPage/UserContainer';
 import SearchContainer from './searchPage/SearchContainer';
-import Header from './Header.jsx';
+import Header from './Header';
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [ user ] = useState({});
 
   return (
     <div>

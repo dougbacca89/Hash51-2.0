@@ -9,6 +9,7 @@ import { UserContext } from '../../../contexts/UserContext';
 
 const GoogleButton = () => {
   const { getUser } = useContext(UserContext);
+  
   return (
     <Link href='auth/google'>
       <Button
