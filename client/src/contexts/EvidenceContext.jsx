@@ -37,8 +37,8 @@ function EvidenceContextProvider({ children }){
 
   // userName: userObj.username
 
-  const postStory = async() => {
-    const story = { href, nasaTitle, nasa_id, keyWords, userTitle, bodyText, userName: "testUser", comments: [] };
+  const postStory = async(username) => {
+    const story = { href, nasaTitle, nasa_id, keyWords, userTitle, bodyText, userName: username, comments: [] };
     await axios.post('/routes/story', { story });
   };
 

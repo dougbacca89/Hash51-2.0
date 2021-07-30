@@ -29,9 +29,8 @@ const UserContainer = props => {
   const { conspirators } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
-  const { userObj, favorites } = useContext(UserContext);
-  console.log(userObj);
-  console.log('HERE ARE FAVORITES', favorites);
+  const { userObj, favorites, getEvidence, getConspirators } = useContext(UserContext);
+  // console.log('HERE ARE FAVORITES', favorites);
 
   // Using Params to Isolate Image
   // const { nasa_id } = useParams();
@@ -40,13 +39,19 @@ const UserContainer = props => {
   //     <Heading>{ nasa_id }</Heading>
   //   </div>
 
-  useEffect(() => { fetchStories(); }, []);
+  useEffect(() => {
+    fetchStories();
+    getEvidence();
+    getConspirators();  },
+    [JSON.stringify(userObj)]);
 
   return (
     <Flex color="white">
       <Box w="10vw" mr="10px">
-        <User user={user}/>
-        <ConspiratorList conspirators={conspirators}/>
+        <div>
+          <User user={user}/>
+          <ConspiratorList conspirators={conspirators}/>
+        </div>
       </Box>
       <Box
         maxH="89vh"

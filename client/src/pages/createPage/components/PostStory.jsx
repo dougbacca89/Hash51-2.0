@@ -13,13 +13,12 @@ import {
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
-import { DisplayContext } from '../../../contexts/DisplayContext';
 import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
   const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle, nasa_id } = useContext(EvidenceContext);
-  const { fetchStories } = useContext(DisplayContext);
-  const { storeEvidence, getEvidence } = useContext(UserContext);
+  const { storeEvidence, userObj } = useContext(UserContext);
+  const { username } = userObj;
 
 
   return (
@@ -74,10 +73,8 @@ const PostStory = () => {
             borderLeftRadius={0}
             backgroundColor="#3a2a5e"
             onClick={() => {
-              postStory();
+              postStory(username);
               storeEvidence(nasa_id);
-              getEvidence();
-              fetchStories();
             }}
           >
             Post

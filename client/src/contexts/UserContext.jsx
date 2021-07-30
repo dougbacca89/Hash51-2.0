@@ -67,14 +67,34 @@ function UserContextProvider({ children }){
     );
   };
 
-  const addConspirator = (friendId) => {
-    axios.post('/add/conspirator', { friendId });
-  };
-
   const getConspirators = () => {
     axios.get('/get/conspirators')
     .then(({ data }) => setConspirators(data));
   };
+
+  const addConspirator = (userName) => {
+    const { username } = userObj;
+    const conspiratorNames = [];
+    conspirators.forEach((conspirator) => {
+      conspiratorNames.push(conspirator.username);
+    });
+
+    if(!conspiratorNames.includes(userName) && userName !== username) {
+      axios.post('/add/conspirator', { userName })
+      .then(() => getConspirators());
+    } else {
+      getConspirators();
+    }
+  };
+
+  const updateConspirator = (conspirator_id) => {
+    const { _id } = userObj;
+    axios.post('/update/conspirators', { conspirator_id, _id})
+    .then(() => {
+      getConspirators();
+    });
+  };
+
 
   const fetchConspiratorFavorites = (friendId) => {
     axios.post('/conspirator/favorites', { friendId });
@@ -99,6 +119,8 @@ function UserContextProvider({ children }){
     getUser();
     getEvidence();
   }, [JSON.stringify(userObj)]);
+
+
 
 
   const userProps = {
@@ -128,6 +150,7 @@ function UserContextProvider({ children }){
     addConspirator,
     fetchConspiratorFavorites,
     getConspirators,
+    updateConspirator
   };
 
 
