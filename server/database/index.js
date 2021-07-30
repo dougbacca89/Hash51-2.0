@@ -80,7 +80,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: 'localhost:3000/auth/google/login',
+  callbackURL: 'http://localhost:3000/auth/google/login',
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, cb) => {
   User.findOrCreate(
