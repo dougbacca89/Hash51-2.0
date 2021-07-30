@@ -14,7 +14,7 @@ const Comment = (props) => {
   const { comment } = props;
   const { commentBody, userName, profileImage } = comment;
 
-  const { addConspirator } = useContext(UserContext);
+  const { addConspirator, userObj } = useContext(UserContext);
   
   return (
   <Box  
@@ -26,7 +26,9 @@ const Comment = (props) => {
     
 
   >
-    <Flex>
+    <Flex
+
+    >
       <Image 
         src={profileImage}
         borderLeftRadius={5}
@@ -39,7 +41,12 @@ const Comment = (props) => {
         ml="6px"  
         minH="2vh"
         fontSize="15px"
-        onClick={() => addConspirator(userName)}
+        // eslint-disable-next-line consistent-return
+        onClick={() => {
+          if(userObj.username) {
+            return addConspirator(userName);
+          }
+        }}
       >
         {userName}:  
           <Text 

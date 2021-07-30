@@ -11,9 +11,7 @@ import {
   Flex,
   Text,
   Box,
-  Square,
-  Heading,
-  Center
+ 
 } from "@chakra-ui/react";
 
 
@@ -56,14 +54,7 @@ const UserContainer = props => {
           <ConspiratorList conspirators={conspirators}/>
         </div>
       </Box>) : (
-        <Text
-        fontSize="19px"
-        mr="6px"
-        w="8vw"
-        color="green.500"
-        >
-          login to find conspirators.
-        </Text>
+        <div />
       )}
       <Box
         maxH="89vh"

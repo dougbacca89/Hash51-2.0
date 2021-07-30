@@ -17,7 +17,7 @@ const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
-  const { addConspirator } = useContext(UserContext);
+  const { addConspirator, userObj } = useContext(UserContext);
   
   return (
     <div>
@@ -85,7 +85,12 @@ const Story = (props) => {
                 mt={1}
                 as="u"
                 color="white"
-                onClick={() => addConspirator(userName)}
+                // eslint-disable-next-line consistent-return
+                onClick={() => {
+                  if(userObj.username) {
+                    return addConspirator(userName);
+                  }
+                }}
               >
                 Created by {userName}
               </Text>
