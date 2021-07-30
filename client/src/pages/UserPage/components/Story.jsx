@@ -63,7 +63,7 @@ const Story = (props) => {
             <Text
               fontSize="10px"
               p={3}
-              h="33vh"
+              h="38vh"
               mt={3}
               color="green.500"
               overflowY="scroll"

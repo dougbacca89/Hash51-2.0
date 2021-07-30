@@ -46,13 +46,25 @@ const UserContainer = props => {
     [JSON.stringify(userObj)]);
 
   return (
-    <Flex color="white">
-      <Box w="10vw" mr="10px">
+    <div>
+    
+      <Flex color="white">
+      {userObj.username ? 
+      (<Box w="10vw" mr="10px">
         <div>
           <User user={user}/>
           <ConspiratorList conspirators={conspirators}/>
         </div>
-      </Box>
+      </Box>) : (
+        <Text
+        fontSize="19px"
+        mr="6px"
+        w="8vw"
+        color="green.500"
+        >
+          login to find conspirators.
+        </Text>
+      )}
       <Box
         maxH="89vh"
         minW="50vw"
@@ -73,6 +85,7 @@ const UserContainer = props => {
         {stories.map((story) => <Story key={story._id} story={story}/>)}
       </Box>
     </Flex>
+    </div>
   );
 };
 
