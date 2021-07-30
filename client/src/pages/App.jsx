@@ -17,23 +17,8 @@ import UserContainer from './UserPage/UserContainer';
 import SearchContainer from './searchPage/SearchContainer';
 import Header from './Header.jsx';
 
-const testStory = {
-  userName: "Bobby Hill",
-  storyTitle: "They're out there",
-  proof: "html",
-  comments: [{text: "Fake news", userName: 'Bill'},{text: "The truth is out there!!!", userName: 'Connie'}]
-};
-
-const testUser = {
-  userName: 'Bobby Hill',
-  conspiracies: [testStory,testStory,testStory],
-  conspirators: [{userName:"Dale"},{userName: "Joseph"},{userName: "Hank"},{userName: "Connie"},{userName: "Bill"}]
-};
-
-const updateUserClick = () => console.log('click');
-
 const App = () => {
-  const [user, setUser] = useState(testUser);
+  const [user, setUser] = useState({});
 
   return (
     <div>
@@ -52,7 +37,7 @@ const App = () => {
             <UserContainer user={user}/>
           </Route>
           <Route path="/userLogin">
-            <LoginContainer user={user} updateUserClick={updateUserClick}/>
+            <LoginContainer user={user} />
           </Route>
           <Route exact path="/story/:nasa_id">
             <CreatePageContainer user={user}/>

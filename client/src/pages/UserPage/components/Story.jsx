@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -6,16 +6,18 @@ import {
   Box,
   Image,
   Flex,
-  Heading,
-  Button
+  Heading  
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
+import { UserContext } from '../../../contexts/UserContext';
 
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
+
+  const { addConspirator } = useContext(UserContext);
   
   return (
     <div>
@@ -57,20 +59,9 @@ const Story = (props) => {
             >
               {userTitle}
             </Heading>
-              <Button
-                mt="20px"
-                ml="10px"
-                borderRadius={10}
-                type="submit"
-                variant="solid"
-                colorScheme="green"
-                w="14vw"
-                h="25px"
-              >
-                Add to favorites
-              </Button>
+              
             <Text
-              fontSize="12px"
+              fontSize="10px"
               p={3}
               h="33vh"
               mt={3}
@@ -94,6 +85,7 @@ const Story = (props) => {
                 mt={1}
                 as="u"
                 color="white"
+                onClick={() => addConspirator(userName)}
               >
                 Created by {userName}
               </Text>

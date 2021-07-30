@@ -17,7 +17,8 @@ import { UserContext } from '../../../contexts/UserContext';
 
 const PostStory = () => {
   const { postStory, bodyText, handlePostTitle, handlePostBody, userTitle, nasa_id } = useContext(EvidenceContext);
-  const { storeEvidence } = useContext(UserContext);
+  const { storeEvidence, userObj } = useContext(UserContext);
+  const { username } = userObj;
 
 
   return (
@@ -72,7 +73,7 @@ const PostStory = () => {
             borderLeftRadius={0}
             backgroundColor="#3a2a5e"
             onClick={() => {
-              postStory();
+              postStory(username);
               storeEvidence(nasa_id);
             }}
           >
