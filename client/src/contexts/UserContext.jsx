@@ -89,7 +89,10 @@ function UserContextProvider({ children }){
 
   const updateConspirator = (conspirator_id) => {
     const { _id } = userObj;
-    axios.post('/update/conspirators', { conspirator_id, _id});
+    axios.post('/update/conspirators', { conspirator_id, _id})
+    .then(() => {
+      getConspirators();
+    });
   };
 
 

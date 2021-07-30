@@ -60,18 +60,7 @@ const Story = (props) => {
             >
               {userTitle}
             </Heading>
-              <Button
-                mt="20px"
-                ml="10px"
-                borderRadius={10}
-                type="submit"
-                variant="solid"
-                colorScheme="green"
-                w="14vw"
-                h="25px"
-              >
-                Add to favorites
-              </Button>
+              
             <Text
               fontSize="10px"
               p={3}

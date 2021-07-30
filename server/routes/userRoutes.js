@@ -82,15 +82,15 @@ userRouter.post('/update/conspirators', (req, res) => {
     if (err) {
       return res.send(err);
     }
-    
     // eslint-disable-next-line no-param-reassign
     user.coConspirators = user.coConspirators.filter(conspirator => {
       const  newConspirator = conspirator.toString();
       return newConspirator !== conspirator_id;
     });
-    user.save();
-  })
-  ;
+    return user.save();
+  }).then(user => {
+    res.status(200).send(user);
+  });
 });
 
 userRouter.post('/conspirator/favorites', (req, res) => {
