@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 
 import {
  VStack,
- StackDivider,
- Box
+ StackDivider 
 } from "@chakra-ui/react";
 
 import Conspirator from './Conspirator';
@@ -39,8 +37,5 @@ const ConspiratorList = () => {
   );
 };
 
-ConspiratorList.propTypes = {
-  conspirators: PropTypes.isRequired,
-};
 
 export default ConspiratorList;

@@ -6,8 +6,7 @@ import {
   Box,
   Image,
   Flex,
-  Heading,
-  Button
+  Heading  
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';

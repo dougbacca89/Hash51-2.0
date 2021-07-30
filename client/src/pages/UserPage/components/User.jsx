@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 
 import {
   Text,
@@ -12,7 +11,7 @@ import { UserContext } from '../../../contexts/UserContext';
 
 const User = () => {
   const { userObj } = useContext(UserContext);
-  const { username, profileImage, favorites } = userObj;
+  const { username, profileImage } = userObj;
   
   
   return (
