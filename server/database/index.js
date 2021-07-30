@@ -1,18 +1,16 @@
 /* eslint-disable no-console */
-
-require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-require('dotenv').config();
 
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const { CLIENT_ID, CLIENT_SECRET, MONGO_PASS } = require('../config');
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
-const atlasUri = `mongodb+srv://SpaceExecs:${process.env.MONGO_PASS}@hash51.wtbes.mongodb.net/HashDB?retryWrites=true&w=majority`;
+const atlasUri = `mongodb+srv://SpaceExecs:${MONGO_PASS}@hash51.wtbes.mongodb.net/HashDB?retryWrites=true&w=majority`;
 
 
 const db = mongoose.connection;
@@ -80,8 +78,8 @@ passport.deserializeUser((id, done) => {
 
 
 passport.use(new GoogleStrategy({
-  clientID: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
+  clientID: CLIENT_ID,
+  clientSecret: CLIENT_SECRET,
   callbackURL: 'http://localhost:3000/auth/google/login',
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, cb) => {
