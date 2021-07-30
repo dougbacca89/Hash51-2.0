@@ -13,6 +13,18 @@ module.exports = {
       SECRET: process.env.SECRET,
       PORT: process.env.PORT,
     }
+  },
+    {
+      name: 'Webpack',
+      script: 'npm run dev',
+      watch: '.',
+      env_production: {
+        CLIENT_ID: process.env.CLIENT_ID,
+        CLIENT_SECRET: process.env.CLIENT_SECRET,
+        MONGO_PASS: process.env.MONGO_PASS,
+        SECRET: process.env.SECRET,
+        PORT: process.env.PORT,
+      }
   }],
 
   deploy : {
