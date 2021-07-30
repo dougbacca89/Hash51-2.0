@@ -27,15 +27,9 @@ const UserContainer = props => {
   const { conspirators } = user;
 
   const { stories, fetchStories } = useContext(DisplayContext);
-  const { userObj, favorites, getEvidence, getConspirators } = useContext(UserContext);
+  const { userObj, getEvidence, getConspirators, getUser } = useContext(UserContext);
   // console.log('HERE ARE FAVORITES', favorites);
 
-  // Using Params to Isolate Image
-  // const { nasa_id } = useParams();
-  // return (
-  //   <div>
-  //     <Heading>{ nasa_id }</Heading>
-  //   </div>
 
   useEffect(() => {
     getUser();

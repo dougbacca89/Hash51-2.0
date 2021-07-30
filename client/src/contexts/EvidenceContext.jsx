@@ -56,12 +56,12 @@ function EvidenceContextProvider({ children }){
     setHref,
     nasa_id,
     setNasa_id,
-    nasaTitle, 
+    nasaTitle,
     setNasaTitle,
-    keyWords, 
+    keyWords,
     setKeywords,
     handlePostTitle,
-    userTitle, 
+    userTitle,
     setUserTitle
   };
 
