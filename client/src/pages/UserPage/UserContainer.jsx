@@ -11,9 +11,7 @@ import {
   Flex,
   Text,
   Box,
-  Square,
-  Heading,
-  Center
+ 
 } from "@chakra-ui/react";
 
 
@@ -41,13 +39,18 @@ const UserContainer = props => {
     [JSON.stringify(userObj)]);
 
   return (
-    <Flex color="white">
-      <Box w="10vw" mr="10px">
+    <div>
+    
+      <Flex color="white">
+      {userObj.username ? 
+      (<Box w="10vw" mr="10px">
         <div>
           <User user={user}/>
           <ConspiratorList conspirators={conspirators}/>
         </div>
-      </Box>
+      </Box>) : (
+        <div />
+      )}
       <Box
         maxH="89vh"
         minW="50vw"
@@ -68,6 +71,7 @@ const UserContainer = props => {
         {stories.map((story) => <Story key={story._id} story={story}/>)}
       </Box>
     </Flex>
+    </div>
   );
 };
 
