@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
+
 import GoogleButton from './GoogleButton';
 
 const Login = props => {
@@ -25,11 +26,12 @@ const Login = props => {
   const [showPassword] = useState(false);
 
   const {
-          userLogin,
-          passLogin,
-          handleUserLogin,
-          handlePassLogin,
-          localLogin } = useContext(UserContext);
+    userLogin,
+    passLogin,
+    handleUserLogin,
+    handlePassLogin,
+    localLogin 
+  } = useContext(UserContext);
 
 
   return (
@@ -100,6 +102,7 @@ const Login = props => {
                     Login
                   </Button>
                 </Link>
+                
                 <GoogleButton />
 
               <Box>

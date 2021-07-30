@@ -16,38 +16,34 @@ const port = process.env.PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
+app.use(express.static(distPath));
 
-    app.use(express.static(distPath));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: "Content-Type, Authorization",
+  credentials: true
+}));
 
-      app.use(cors({
-        origin: '*',
-        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-        allowedHeaders: "Content-Type, Authorization",
-        credentials: true
-    }));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false,
+  // store: MongoStore.create({ mongoUrl: mongoUri })
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/', passportRouter);
+app.use('/routes', serverRouter);
+app.use('/', userRouter);
 
-
-    app.use(session({
-      secret: process.env.SECRET,
-      resave: false,
-      saveUninitialized: false,
-      // store: MongoStore.create({ mongoUrl: mongoUri })
-    }));
-
-    app.use(passport.initialize());
-    app.use(passport.session());
-    app.use('/', passportRouter);
-    app.use('/routes', serverRouter);
-    app.use('/', userRouter);
-
-    app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
-    });
-
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
+});
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

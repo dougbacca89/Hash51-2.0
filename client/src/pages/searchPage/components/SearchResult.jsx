@@ -23,14 +23,13 @@ const SearchResult = () => {
     fetchImage(nasa_id);
   };
  
-
   return searchResults.length ?
   (
     <Flex
       pt="20px"
-      
     >
       <SimpleGrid columns={4} spacing={10}>
+
         { searchResults.map(result => (
           <div>
             <Link to={`story/${result.nasa_id}`}>
@@ -45,8 +44,7 @@ const SearchResult = () => {
               />
             </Link>
           </div>
-          )
-        )
+        ))
       }
       </SimpleGrid>
     </Flex>

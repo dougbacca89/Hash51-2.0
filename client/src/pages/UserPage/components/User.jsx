@@ -36,20 +36,6 @@ const User = () => {
       >
         {username}
       </Text>
-      <Text 
-        ml="10px" 
-        fontSize="12px"
-        color="green.500"
-      >
-        # of favorites: 
-      </Text>
-      <Text 
-        ml="10px" 
-        fontSize="12px"
-        color="green.500"
-      >
-        # of conspirators: 
-      </Text>
     </Box>
   );
 };

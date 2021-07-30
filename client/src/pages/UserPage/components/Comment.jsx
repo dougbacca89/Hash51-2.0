@@ -18,23 +18,19 @@ const Comment = (props) => {
   
   return (
   <Box  
+    w="56vw" 
     bg="gray.700" 
     mb="1.25vh" 
-    w="56vw" 
     ml="2vw" 
     borderRadius={5}
-    
-
   >
-    <Flex
-
-    >
+    <Flex>
       <Image 
         src={profileImage}
-        borderLeftRadius={5}
-        objectFit="cover"
         h="8vh"
         w="8vh"
+        borderLeftRadius={5}
+        objectFit="cover"
       />
       <Text 
         p={1}
@@ -59,7 +55,6 @@ const Comment = (props) => {
           {commentBody}
         </Text> 
       </Text>
-    
     </Flex>
   </Box>
   );

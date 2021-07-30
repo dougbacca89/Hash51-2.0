@@ -22,19 +22,19 @@ const Story = (props) => {
   return (
     <div>
       <Box 
+        h="59vh"
+        w="60vw" 
         bg="gray.800" 
         mb=".5vh" 
-        w="60vw" 
-        h="59vh"
         borderTopRadius={10}
       >
         <Flex>
           <Image
             src={href}
-            fit="cover"
-            bg="purple.100"
-            w="45vw"
             h="55vh" 
+            w="45vw"
+            bg="purple.100"
+            fit="cover"
             borderTopLeftRadius={10}
           />
           <Box 
@@ -111,7 +111,7 @@ const Story = (props) => {
 };
 
 Story.propTypes = {
-  story: PropTypes.isRequired,
+  story: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Story;
