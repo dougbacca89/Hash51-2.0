@@ -33,9 +33,11 @@ function UserContextProvider({ children }){
 
 
   const getEvidence = async () => {
+    if(Object.keys(userObj).length){
     await axios.get('/get/favorites')
     .then(({data}) => {
       setFavorites(data);});
+    }
   };
 
   // This isn't used --> Remove Eventually
@@ -115,7 +117,7 @@ function UserContextProvider({ children }){
     .then(() => console.log('successful logout'));
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     getUser();
     getEvidence();
   }, [JSON.stringify(userObj)]);

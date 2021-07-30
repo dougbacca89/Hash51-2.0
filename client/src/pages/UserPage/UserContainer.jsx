@@ -38,6 +38,7 @@ const UserContainer = props => {
   //   </div>
 
   useEffect(() => {
+    getUser();
     fetchStories();
     getEvidence();
     getConspirators();  },
