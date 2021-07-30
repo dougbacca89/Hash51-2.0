@@ -4,12 +4,16 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
+require('dotenv').config();
+
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
+const atlasUri = `mongodb+srv://SpaceExecs:${process.env.MONGO_PASS}@hash51.wtbes.mongodb.net/HashDB?retryWrites=true&w=majority`;
+
 
 const db = mongoose.connection;
 
@@ -22,7 +26,8 @@ db.once('open', () => {
 });
 
 
-mongoose.connect(mongoUri, {
+
+mongoose.connect(atlasUri || mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
