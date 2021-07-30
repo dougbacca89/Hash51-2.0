@@ -1,4 +1,3 @@
-require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
@@ -9,10 +8,11 @@ const passport = require('passport');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 const { userRouter } = require('./routes/userRoutes');
+const { SECRET, PORT } = require('./config');
 
 // const { mongoUri } = require('./database/index');
 
-const port = process.env.PORT || 3000;
+const port = PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
 const app = express();
 
@@ -32,7 +32,7 @@ const app = express();
 
 
     app.use(session({
-      secret: process.env.SECRET,
+      secret: SECRET,
       resave: false,
       saveUninitialized: false,
       // store: MongoStore.create({ mongoUrl: mongoUri })
