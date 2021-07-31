@@ -93,8 +93,11 @@ function UserContextProvider({ children }){
 
   const localLogin = ( username, password ) => {
     axios.post('/login', { username, password })
-    .then((result) => { console.log('successful login', result.data); getUser(); })
-    .catch((err) => console.log('login error', err));
+    .then(getUser)
+    .catch((err) => {
+      console.log('login error', err);
+      alert('User Not Found');
+  });
   };
 
   const localLogout = () => {

@@ -203,3 +203,8 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
   a part of the original vision of this project. The implementation was not
   finalized but the Video Schema is still extant.
 
+### - Home Page:
+* If a database is not connected the Home Page Renders as Blank as there is
+  no dummy data that populates it automatically.
+
+
