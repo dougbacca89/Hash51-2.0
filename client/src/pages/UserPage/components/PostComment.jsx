@@ -21,10 +21,10 @@ const PostComment = (props) => {
   return (
     <Flex>
       <Box 
-        bg="gray.200" 
-        mb="1.25vh" 
         w="52vw" 
+        mb="1.25vh" 
         ml="2vw" 
+        bg="gray.200" 
         borderLeftRadius={10}
       >
         <Textarea
@@ -47,8 +47,8 @@ const PostComment = (props) => {
         />
       </Box>
       <Button 
-        w="4vw" 
         h="80px"
+        w="4vw" 
         colorScheme="green"
         borderLeftRadius={0} 
         onClick={() => {

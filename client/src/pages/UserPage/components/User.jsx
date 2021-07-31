@@ -36,20 +36,6 @@ const User = () => {
       >
         {username}
       </Text>
-      <Text
-        ml="10px"
-        fontSize="12px"
-        color="green.500"
-      >
-        Evidence Gathered: {userObj.favorites.length}
-      </Text>
-      <Text
-        ml="10px"
-        fontSize="12px"
-        color="green.500"
-      >
-        Compatriots:  {userObj.coConspirators.length}
-      </Text>
     </Box>
   );
 };

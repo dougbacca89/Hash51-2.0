@@ -1,14 +1,11 @@
 /* eslint-disable no-console  */
 /* eslint-disable no-unused-vars, no-param-reassign  */
-
 const { Router } = require('express');
 const passport = require('passport');
 const path = require('path');
 const cors = require('cors');
 
-
 const { User } = require('../database/index');
-
 
 const passportRouter = Router();
 
@@ -21,7 +18,6 @@ passportRouter.post('/register', (req, res) => {
       res.sendStatus(500);
     } else {
       passport.authenticate('local')(req, res, async (error, result) => {
-        console.log(user);
         await User.findOneAndUpdate({ username }, {
           source: 'local',
           email: username,
@@ -34,7 +30,6 @@ passportRouter.post('/register', (req, res) => {
 
 passportRouter.post('/login', (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
   const user = new User({ username, password });
   req.login(user, err => {
     if(err){
@@ -48,7 +43,6 @@ passportRouter.post('/login', (req, res) => {
   });
 });
 
-
 passportRouter.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     console.log('user successfully logged out', req.user);
@@ -56,11 +50,9 @@ passportRouter.get('/logout', (req, res) => {
 });
 
 // Google Strategy //
-
 passportRouter.get('/auth/google',
 passport.authenticate('google', { scope: ['profile', 'email'] }),
 (req, res) => res.status(200).send(req.user));
-
 
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
@@ -71,7 +63,6 @@ passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error'
 passportRouter.get('/getUser', (req, res) => {
   res.send(req.user);
 });
-
 
 module.exports = {
   passportRouter,

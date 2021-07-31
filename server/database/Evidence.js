@@ -13,5 +13,4 @@ const EvidenceSchema = new mongoose.Schema({
 
 const Evidence = mongoose.model('Evidence', EvidenceSchema);
 
-
 module.exports = { Evidence, EvidenceSchema };

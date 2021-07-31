@@ -16,10 +16,6 @@ const Search = () => {
   const handleChange = (event) => setValue(event.target.value);
 
   return (
-  // <div>
-  //   <h1>search</h1>
-  //   <button type='button' onClick={fetchSearch}>Search</button>
-  // </div>);
     <Flex
       w="25vw"
       bg="white"

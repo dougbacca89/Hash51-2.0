@@ -43,8 +43,7 @@ userRouter.get('/get/favorites', (req, res) => {
 
 userRouter.post('/add/conspirator', async (req, res) => {
   const { userName } = req.body;
-  console.log(req.user.id);
-  // if(!id){
+
   await User.findOne({username: userName})
     .then(results => results)
     .then((data) => User.findOneAndUpdate({ _id: req.user.id }, { $push: { coConspirators: data }}, { new: true }))
@@ -53,16 +52,6 @@ userRouter.post('/add/conspirator', async (req, res) => {
       console.log('Evidence Error', err);
       res.sendStatus(500);
     });
-  // } else if (id) {
-  //   await User.findById(friendId)
-  //   .then(results => results)
-  //   .then((data) => User.findOneAndUpdate({ _id: id }, { $push: { coConspirators: data }}, { new: true }))
-  //   .then((data) => res.status(200).send(data))
-  //   .catch(err => {
-  //     console.log('Evidence Error', err);
-  //     res.sendStatus(500);
-  //   });
-  // }
 });
 
 userRouter.get('/get/conspirators', (req, res) => {
@@ -73,9 +62,9 @@ userRouter.get('/get/conspirators', (req, res) => {
     return Promise.all(conspirators);
   }).then((conspirators) => {
   res.status(200).send(conspirators);
-})
-.catch(err => console.log(err));
-}});
+  })
+  .catch(err => console.log(err));
+  }});
 
 userRouter.post('/update/conspirators', (req, res) => {
   const { _id, conspirator_id } = req.body;
@@ -107,16 +96,12 @@ userRouter.post('/conspirator/favorites', (req, res) => {
 .catch(err => console.log(err));
 }});
 
-
-
-
 userRouter.get('/user', (req, res) => {
   User.find({}, (err, users) => {
     if(err) { console.log(err); }
     return res.status(200).send(users);
   });
 });
-
 
 userRouter.get('/user/:id', (req, res) =>{
   User.findById(req.params.id)
