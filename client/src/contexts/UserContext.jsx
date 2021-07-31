@@ -1,4 +1,4 @@
-/*  eslint-disable func-style, no-console, dot-notation, camelcase */
+/*  eslint-disable func-style, no-console, dot-notation, camelcase, no-alert */
 import React, { createContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
@@ -38,13 +38,6 @@ function UserContextProvider({ children }){
     .then(({data}) => {
       setFavorites(data);});
     }
-  };
-
-  // This isn't used --> Remove Eventually
-  const googleLogin = async () => {
-    await axios.get('/auth/google')
-    .then((result) => console.log('successful login', result))
-    .catch((err) => console.log(err));
   };
 
   const localRegister = async (username, password, confirmation) => {
@@ -129,7 +122,6 @@ function UserContextProvider({ children }){
     favorites,
     userObj,
     isLoggedIn,
-    googleLogin,
     localRegister,
     localLogin,
     localLogout,

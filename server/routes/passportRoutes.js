@@ -65,7 +65,7 @@ passport.authenticate('google', { scope: ['profile', 'email'] }),
 passportRouter.get('/auth/google/login',
 passport.authenticate('google', { failureRedirect: 'http://localhost:3000/error' }),
 (req, res) => {
-  res.redirect('/userLogin');
+  res.redirect('/');
 });
 
 passportRouter.get('/getUser', (req, res) => {

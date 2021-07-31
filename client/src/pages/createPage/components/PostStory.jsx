@@ -72,8 +72,8 @@ const PostStory = () => {
 
             borderLeftRadius={0}
             backgroundColor="#3a2a5e"
-            onClick={() => {
-              postStory(username);
+            onClick={async () => {
+              await postStory(username);
               storeEvidence(nasa_id);
             }}
           >
