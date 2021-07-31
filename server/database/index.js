@@ -15,10 +15,9 @@ const atlasUri = `mongodb+srv://SpaceExecs:${MONGO_PASS}@hash51.wtbes.mongodb.ne
 
 const db = mongoose.connection;
 
-// eslint-disable-next-line no-console
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  // eslint-disable-next-line no-console
+
   console.log('Database Connection');
 });
 
