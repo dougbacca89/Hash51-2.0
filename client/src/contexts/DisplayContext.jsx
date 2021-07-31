@@ -22,7 +22,7 @@ function DisplayContextProvider({ children }){
   const postComment = async(post_id, userObj) => {
     const { username, profileImage } = userObj;
     const comment = { commentBody, post_id, userName: username, profileImage };
-    await axios.post('/routes/story/comment', comment).then(() => setCommentBody(''));
+    await axios.post('/routes/story/comment', comment).then(() => setCommentBody('')).then(() => fetchStories());
   };
 
   const displayProps = {
