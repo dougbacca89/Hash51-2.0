@@ -8,7 +8,7 @@ const passport = require('passport');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 const { userRouter } = require('./routes/userRoutes');
-const { SECRET, PORT } = require('./config');
+const { PORT } = require('./config');
 
 // const { mongoUri } = require('./database/index');
 
