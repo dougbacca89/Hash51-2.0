@@ -1,7 +1,7 @@
 <!-- eslint-disable -->
 # `Hash51`
 ## `Introduction`
-We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots. 
+We want to believe. Hash51 is an app for the free exchange of ideas for connecting the dots.
 
 ---
 # `Folder structure`
@@ -18,7 +18,7 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
   - ## `createPage`
 
     - ## NewStory
-    
+
     - ## PostStory
 
     - ## CreateContainer
@@ -37,14 +37,14 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
     - ## Search
 
-    - ## SearchResult 
+    - ## SearchResult
 
     - ## SearchContainer
 
   - ## `commentPage`
 
     - ## Comment
-      
+
     - ## CommentList
 
     - ## Conspirator
@@ -89,21 +89,23 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
   - ## index
   ---
 # `Available scripts`
-### - npm build:
+### - npm dev:
+* Builds Webpack
 
 ### - npm start:
-
-### - npm run dev:
-
-### - npm build:prod:
+* Runs Server
 
 ### - npm restart:
+* PM2 restart
 
 ### - npm deploy:
+* Deploys with PM2
 
 ### - npm lint:
+* Linter
 
 ### - npm lint:fix:
+* Fixes Lint Issues
 ---
 # `Resources`
 
@@ -121,7 +123,6 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Different Routers in React-Router](https://learnwithparam.com/blog/different-types-of-router-in-react-router/)
 * [ReactRouter - BrowserHistory in production](https://www.youtube.com/watch?v=cdUyEou0LHg)
 * [Different types of routers in react](https://learnwithparam.com/blog/different-types-of-router-in-react-router/)
-* [Add docs]()
 
 ### - PropTypes in React:
 * [Documentation](https://reactjs.org/docs/typechecking-with-proptypes.html)
@@ -155,13 +156,6 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 ### - Axios:
 * [Documentation](https://axios-http.com/docs/intro)
 
-
-### - APIs:
-- YouTube API:
-* [Add docs]()
-- NASA API:
-* [Add docs]()
-
 ### - Mongo:
 * [Documentation](https://docs.mongodb.com/manual/)
 
@@ -178,8 +172,6 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 ### - AWS:
 * [Creating and managing a Node.js server on AWS](https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171)
 * [mongodb security on aws](https://docs.aws.amazon.com/quickstart/latest/mongodb/security.html)
-* [Add docs]()
-* [Add docs]()
 
 
 ### - Github Actions:
@@ -192,5 +184,27 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 * [Documentation](https://github.com/motdotla/dotenv#readme)
 
 ### - lodash:
-* [Add docs](https://lodash.com/docs/)
+* [Documentation](https://lodash.com/docs/)
+
+### - PM2:
+* [Documentation](https://pm2.keymetrics.io/docs/usage/deployment/)
+
+# `Known Bugs and Unused Assets`
+
+### - Favorites:
+* Implementation for making adding evidence is present on the Schema,
+  Frontend and Backend by way of the favorites feature. This feature
+  may be used to create custom feeds. The feature is hitherto unfinished
+  as favorites are occasionally saved as null to the db in the current
+  implementation.
+
+### - Videos:
+* Adding related videos to accompany Evidence using the Youtube API is
+  a part of the original vision of this project. The implementation was not
+  finalized but the Video Schema is still extant.
+
+### - Home Page:
+* If a database is not connected the Home Page Renders as Blank as there is
+  no dummy data that populates it automatically.
+
 

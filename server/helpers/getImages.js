@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const axios = require('axios');
 
 const getImagesFromNasa = (query) => {
@@ -11,7 +13,6 @@ const getImagesFromNasa = (query) => {
   return axios(options)
     .then((response) => response)
     .catch((error) =>{
-      // eslint-disable-next-line no-console
       console.log(error);
     });
 };
@@ -27,7 +28,6 @@ const nasaIdCall = (nasaId) => {
   return axios(options)
     .then((response) => response)
     .catch((error) =>{
-      // eslint-disable-next-line no-console
       console.log(error);
     });
 };

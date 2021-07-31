@@ -4,13 +4,11 @@ const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
 
-// const MongoStore = require('connect-mongo');
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
 const { userRouter } = require('./routes/userRoutes');
 const { PORT } = require('./config');
 
-// const { mongoUri } = require('./database/index');
 
 const port = PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
@@ -32,7 +30,6 @@ app.use(session({
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
-  // store: MongoStore.create({ mongoUrl: mongoUri })
 }));
 
 app.use(passport.initialize());

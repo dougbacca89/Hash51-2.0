@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const EvidenceContext = createContext();
 function EvidenceContextProvider({ children }){
-  const haveEvidence = 'Yes We Do';
   const [ searchResults, setSearchResults ] = useState([]);
   const [ bodyText, setBodyText ] = useState('');
   const [ href, setHref ] = useState('');
@@ -38,7 +37,6 @@ function EvidenceContextProvider({ children }){
   };
 
   const evidenceProps = {
-    haveEvidence,
     searchResults,
     fetchSearch,
     fetchImage,

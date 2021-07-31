@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
+/* eslint-disable no-unused-expressions, no-param-reassign, no-unused-vars, no-console, consistent-return  */
+
 const express = require('express');
 const { Router } = require('express');
 
@@ -95,7 +93,6 @@ serverRouter.post('/story/comment', (req, res) => {
 });
 
 serverRouter.put('/story/comments/:comment_id', (req, res) => {
-  // eslint-disable-next-line consistent-return
   Comment.findById(req.params.comment_id, (err, comment) => {
     if (err) {
       return res.send(err);
@@ -121,13 +118,11 @@ serverRouter.delete('/story/comments/:comment_id', (req, res) => {
 });
 
 serverRouter.put('/story/:evidence_id', (req, res) => {
-  // eslint-disable-next-line consistent-return
   Evidence.findById(req.params.evidence_id, (err, evidence) => {
     if (err) {
       return res.send(err);
     }
 
-    // eslint-disable-next-line no-param-reassign
     (req.body.textBody) ? evidence.textBody = req.body.textBody : null;
     (req.body.userName) ? evidence.userName = req.body.userName : null;
     (req.body.originalEvidence) ? evidence.originalEvidence = req.body.originalEvidence : null;
