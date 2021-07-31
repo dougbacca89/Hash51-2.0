@@ -18,18 +18,18 @@ const Conspirator = (props) => {
   
   return (
     <Box 
-      bg="gray.800" 
-      mb="1px" 
       w="8vw" 
+      mb="1px" 
+      bg="gray.800" 
       borderRadius={10}
     >
       <Image 
-        bg="purple.100" 
-        w="8vw" 
-        h="8vw" 
-        borderTopRadius={10}
-        objectFit="cover"
         src={profileImage}
+        h="8vw" 
+        w="8vw" 
+        bg="purple.100" 
+        objectFit="cover"
+        borderTopRadius={10}
       />
       <Text 
         mt="4px"
@@ -40,14 +40,14 @@ const Conspirator = (props) => {
         {username}
       </Text>
       <Button
+        h="13px"
+        w="8vw"
         mt="2px"
         fontSize="8px"
+        colorScheme="red"
         borderTopRadius={0}
         type="delete"
         variant="solid"
-        colorScheme="red"
-        w="8vw"
-        h="13px"
         onClick={() => updateConspirator(_id)}
       >
         Delete conspirator

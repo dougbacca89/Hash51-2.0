@@ -1,11 +1,8 @@
+/* eslint-disable no-console */
+
 const axios = require('axios');
 
-
 const getImagesFromNasa = (query) => {
-
-
-  // https://images-api.nasa.gov/search?q=&{query}&media_type=image
-
   const options = {
     url: `https://images-api.nasa.gov/search?q=${query}&media_type=image`,
     headers: {
@@ -16,14 +13,11 @@ const getImagesFromNasa = (query) => {
   return axios(options)
     .then((response) => response)
     .catch((error) =>{
-      // eslint-disable-next-line no-console
       console.log(error);
     });
 };
 
-
 const nasaIdCall = (nasaId) => {
-
   const options = {
     url: `https://images-api.nasa.gov/asset/${nasaId}`,
     headers: {
@@ -34,7 +28,6 @@ const nasaIdCall = (nasaId) => {
   return axios(options)
     .then((response) => response)
     .catch((error) =>{
-      // eslint-disable-next-line no-console
       console.log(error);
     });
 };

@@ -66,14 +66,13 @@ const PostStory = () => {
         </Box>
         <Link to="/userPage">
           <Button
-            w="4vw"
             h="80px"
+            w="4vw"
             color="white"
-
             borderLeftRadius={0}
             backgroundColor="#3a2a5e"
-            onClick={() => {
-              postStory(username);
+            onClick={async () => {
+              await postStory(username);
               storeEvidence(nasa_id);
             }}
           >
