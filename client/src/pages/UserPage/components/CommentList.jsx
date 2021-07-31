@@ -26,20 +26,21 @@ const CommentList = (props) => {
       <Text
         pt=".25vw"
         ml="2vw"
-        fontSize="10px"
         mb="1vh"
+        fontSize="10px"
       >
         Comments
       </Text>
+
       {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} />)}
-      {}
+
       {userObj.username ? (
         <PostComment post_id={post_id} />
       ) : (
         <Text
           ml="2vw"
-          fontSize="10px"
           pb="1vh"
+          fontSize="10px"
           color="green.500"
         >
           login to comment.

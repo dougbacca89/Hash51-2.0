@@ -1,38 +1,23 @@
-/* eslint-disable import/extensions, no-unused-vars */
 
-import React, { useState } from 'react';
-import  { useParams } from 'react-router-dom';
-
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import {
   Flex,
-  Box,
+  Box
 } from "@chakra-ui/react";
 
 import NewStory from './components/NewStory';
 
-
-const CreatePageContainer = props => {
-  const { user } = props;
-  const { conspirators, conspiracies } = user;
-
-  return (
-    <Flex>
-      <Box
-        maxH="89vh"
-        minW="50vw"
-        verticalAlign="top"
-      >
-        <NewStory user={user}/>
-
-      </Box>
-    </Flex>
-  );
-};
-
-CreatePageContainer.propTypes = {
-  user: PropTypes.func.isRequired,
-};
+const CreatePageContainer = () => (
+  <Flex>
+    <Box
+      maxH="89vh"
+      minW="50vw"
+      verticalAlign="top"
+    >
+      <NewStory />
+    </Box>
+  </Flex>
+);
 
 export default CreatePageContainer;

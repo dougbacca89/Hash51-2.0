@@ -16,16 +16,16 @@ import {
 import { UserContext } from '../../../contexts/UserContext';
 
 const CreateUser = () => {
-  const {
-    showPassword,
-    userReg,
-    handleUserReg,
-    pass,
-    handlePass,
-    confirm,
-    handleConfirm,
-    localRegister,
-   } = useContext(UserContext);
+const {
+  showPassword,
+  userReg,
+  handleUserReg,
+  pass,
+  handlePass,
+  confirm,
+  handleConfirm,
+  localRegister,
+  } = useContext(UserContext);
 
   return (
     <Stack
