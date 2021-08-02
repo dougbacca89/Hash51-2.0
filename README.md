@@ -68,25 +68,36 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
   - ## `database`
 
+    - ## Comment
+    Contains CommentSchema and Comment Model that are exported.
     - ## Evidence
+    Contains EvidenceSchema and Evidence Model that are exported.
 
+    - ## Video
+    Contains VideoSchema and Video Model that are exported. (Hitherto not implemented)
     - ## index
+    Main mongo/mongoose init file. Contains UserSchema and User Model that are exported. Implements database connection as well as passport and google Oauth. Two constants mongoUri and atlasUri control whether local or atlas database is utilized within the mongo.connect function.
 
   - ## `helpers`
 
     - ## getImages
+      helper function exported that makes query to Nasa api to fetch images for internal search query.
 
   - ## `routes`
 
     - ## passportRoutes
+      handles all queries related to the login, logout, registration of users utilizig the user model. Additionally the route for /getUser which fetches the current user to send to the client side is located here.
 
     - ## routes
-
+      handles routes for evidence and comments. To deliver to the client side.
     - ## userRoutes
+      contains routes for user model not related to authentification. The queries that target embedded documents such as the favorites and coconspirator keys are populated through these routes as well as other miscellaneous routes which target user model.
 
   - ## config
+    configuration of environment variables set in dotenv file. CLIENT_ID and CLIENT_SECRET are related to google OAUTH, MONGO_PASS is related to the atlas cluster used, SECRET is related to the express sessions secret set in server index.js and PORT is the port that the server is run through.
 
   - ## index
+    Main entry point for the backend of the app. Serves express, passport, sessions, cors, and all route configuration.
   ---
 # `Available scripts`
 ### - npm dev:

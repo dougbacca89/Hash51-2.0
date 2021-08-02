@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, no-unused-vars */
 require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -70,6 +70,8 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => done(err, user));
 });
+
+const localCallback = 'http://localhost:3000/auth/google/login';
 
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
