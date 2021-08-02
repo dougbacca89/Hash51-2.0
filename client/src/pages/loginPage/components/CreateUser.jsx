@@ -53,7 +53,8 @@ const {
                   type="email" 
                   placeholder="email address" 
                   value={userReg} 
-                  onChange={handleUserReg}/>
+                  onChange={handleUserReg}
+                />
               </InputGroup>
             </FormControl>
             <FormControl>
