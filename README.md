@@ -9,21 +9,21 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 ## `src`
 - ## `contexts`
   - ## `DisplayContext`
-      Holds all of the hooks for the conspiracies and post comment containers on the user page. `The naming of userName on the front end and username on the back end should have the same name.` 
-      - **`handleCommentBody:`** updates the text value of the comment body as the user types in to the text area of the comment component. 
-      - **`fetchStories:`** gets all of the conspiracies from the database and sets the results to the user page context. 
+      Holds all of the hooks for the conspiracies and post comment containers on the user page. `The naming of userName on the front end and username on the back end should have the same name.`
+      - **`handleCommentBody:`** updates the text value of the comment body as the user types in to the text area of the comment component.
+      - **`fetchStories:`** gets all of the conspiracies from the database and sets the results to the user page context.
       - **`postComment:`** structures client context values into the db schema before sending it to the server.
 
   - ## `EvidenceContext`
-      Holds all of the hooks for the search page. Contexts are for the results of the nasa api query and de-structured information `The naming of userName on the front end and username on the back end should have the same name.` 
-      - **`handlePostBody:`** updates the text value of the conspiracy body as the user types in to the text area of the PostStory component. 
-      - **`handlePostTitle:`** updates the text value of the conspiracy title as the user types in to the text area of the PostStory component. 
+      Holds all of the hooks for the search page. Contexts are for the results of the nasa api query and de-structured information `The naming of userName on the front end and username on the back end should have the same name.`
+      - **`handlePostBody:`** updates the text value of the conspiracy body as the user types in to the text area of the PostStory component.
+      - **`handlePostTitle:`** updates the text value of the conspiracy title as the user types in to the text area of the PostStory component.
       - **`fetchSearch:`** sends a search term to the server to be routed to the nasa api. The image url returned by the query object are thumbnail quality. `The json object could be used with a read stream to access the high quality urls without need for the second api call below.`
-      - **`fetchImage:`** once the user clicks on an image to see or comment a request for the nasa_id of the photo is sent to the nasa api to return the high res url to be displayed to the user. 
-      - **`postStory:`** takes the username of the user logged in and structures the context values of the conspiracy being created to be stored in the database. 
+      - **`fetchImage:`** once the user clicks on an image to see or comment a request for the nasa_id of the photo is sent to the nasa api to return the high res url to be displayed to the user.
+      - **`postStory:`** takes the username of the user logged in and structures the context values of the conspiracy being created to be stored in the database.
 
   - ## `UserContext`
-      Holds all of the hooks for the user login state. userObj represents all of the user relevant values from the database. `The naming of userName on the front end and username on the back end should have the same name.` 
+      Holds all of the hooks for the user login state. userObj represents all of the user relevant values from the database. `The naming of userName on the front end and username on the back end should have the same name.`
       - **`handleUserReg:`** set the text value of email input to the userReg context in the CreateUser component.
       - **`handlePass:`** set the text value of password input to the pass context in the CreateUser component.
       - **`handleConfirm:`** set the text value of confirm password input to the confirm context in the CreateUser component.
@@ -31,10 +31,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
       - **`handlePassLogin:`** set the text value of password input to the confirm context in the Login component.
       - `UNUSED` storeEvidence: for the planned favorites list functionality.
       - `UNUSED` getEvidence: for the planned favorites list functionality.
-      - **`localRegister:`** send a request to the passport route for the user to be created in the database. 
-      - **`getUser:`** sends request to login from the server using the supplied user credentials. 
+      - **`localRegister:`** send a request to the passport route for the user to be created in the database.
+      - **`getUser:`** sends request to login from the server using the supplied user credentials.
       - **`getConspirators:`** requests the information for each conspirator from the database.
-      - **`addConspirator:`** adds conspirator to the logged in users conspirator list. 
+      - **`addConspirator:`** adds conspirator to the logged in users conspirator list.
       - **`localLogin:`** logs in the user with the supplied user information on the login page.
       - **`localLogout:`** logs out the user and resets the state values associated with user state.
 
@@ -96,21 +96,35 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 
   - ## `database`
 
+    - ## Comment
+    Contains CommentSchema and Comment Model that are exported.
     - ## `UNUSED` Comment
     - ## Evidence
+    Contains EvidenceSchema and Evidence Model that are exported.
+
+    - ## Video
+    Contains VideoSchema and Video Model that are exported. (Hitherto not implemented)
 
     - ## index
+    Main mongo/mongoose init file. Contains UserSchema and User Model that are exported. Implements database connection as well as passport and google Oauth. Two constants mongoUri and atlasUri control whether local or atlas database is utilized within the mongo.connect function.
     - ## `UNUSED` Video
 
   - ## `helpers`
 
     - ## getImages
+      helper function exported that makes query to Nasa api to fetch images for internal search query.
       - **`getImagesFromNasa:`**
       - **`nasaIdCall:`**
 
   - ## `routes`
 
     - ## passportRoutes
+      handles all queries related to the login, logout, registration of users utilizig the user model. Additionally the route for /getUser which fetches the current user to send to the client side is located here.
+
+    - ## routes
+      handles routes for evidence and comments. To deliver to the client side.
+    - ## userRoutes
+      contains routes for user model not related to authentification. The queries that target embedded documents such as the favorites and coconspirator keys are populated through these routes as well as other miscellaneous routes which target user model.
       - **`passportRouter.post('/register')`**
       - **`passportRouter.post('/login')`**
       - **`passportRouter.get('/logout')`**
@@ -140,8 +154,10 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
       - **`userRouter.get('/user/:id')`**
 
   - ## config
+    configuration of environment variables set in dotenv file. CLIENT_ID and CLIENT_SECRET are related to google OAUTH, MONGO_PASS is related to the atlas cluster used, SECRET is related to the express sessions secret set in server index.js and PORT is the port that the server is run through.
 
   - ## index
+    Main entry point for the backend of the app. Serves express, passport, sessions, cors, and all route configuration.
   ---
 # `Available scripts`
 ### - npm dev:
@@ -258,13 +274,13 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
 ### - Home Page:
 * **`BUG:`** If a database is not connected the Home Page Renders as Blank as there is no dummy data that populates it automatically. If creating the first entry into the evidence database the user page will not automatically update until the user refreshes the page.
 
-### - Conspirator list: 
-* **`BUG:`** If using locally created user sometimes the app will allow you to add the same user to your conspirator list. Don't have this but with google auth. Seems like the db is slow to send a response with the updated conspirator list so that the client side check doesn't work properly. 
+### - Conspirator list:
+* **`BUG:`** If using locally created user sometimes the app will allow you to add the same user to your conspirator list. Don't have this but with google auth. Seems like the db is slow to send a response with the updated conspirator list so that the client side check doesn't work properly.
 
-###  - Search result: 
-* **`BUG:`** Some high res images are in a .tif format which will not render on the page. 
+###  - Search result:
+* **`BUG:`** Some high res images are in a .tif format which will not render on the page.
 
-###  - Prop-type: 
-* **`BUG:`** prop-type verification isn't working. 
+###  - Prop-type:
+* **`BUG:`** prop-type verification isn't working.
 
 
