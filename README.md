@@ -20,23 +20,23 @@ We want to believe. Hash51 is an app for the free exchange of ideas for connecti
       - **`handlePostTitle:`** updates the text value of the conspiracy title as the user types in to the text area of the PostStory component. 
       - **`fetchSearch:`** sends a search term to the server to be routed to the nasa api. The image url returned by the query object are thumbnail quality. `The json object could be used with a read stream to access the high quality urls without need for the second api call below.`
       - **`fetchImage:`** once the user clicks on an image to see or comment a request for the nasa_id of the photo is sent to the nasa api to return the high res url to be displayed to the user. 
-      - **`postStory:`** Takes the username of the user logged in and structures the context values of the conspiracy being created to be stored in the database. 
+      - **`postStory:`** takes the username of the user logged in and structures the context values of the conspiracy being created to be stored in the database. 
 
   - ## `UserContext`
       Holds all of the hooks for the user login state. userObj represents all of the user relevant values from the database. `The naming of userName on the front end and username on the back end should have the same name.` 
-      - **`handleUserReg:`** Set the text value of email input to the userReg context in the CreateUser component.
-      - **`handlePass:`** Set the text value of password input to the pass context in the CreateUser component.
-      - **`handleConfirm:`** Set the text value of confirm password input to the confirm context in the CreateUser component.
-      - **`handleUserLogin:`** Set the text value of email input to the confirm context in the Login component.
-      - **`handlePassLogin:`** Set the text value of password input to the confirm context in the Login component.
+      - **`handleUserReg:`** set the text value of email input to the userReg context in the CreateUser component.
+      - **`handlePass:`** set the text value of password input to the pass context in the CreateUser component.
+      - **`handleConfirm:`** set the text value of confirm password input to the confirm context in the CreateUser component.
+      - **`handleUserLogin:`** set the text value of email input to the confirm context in the Login component.
+      - **`handlePassLogin:`** set the text value of password input to the confirm context in the Login component.
       - `UNUSED` storeEvidence: for the planned favorites list functionality.
       - `UNUSED` getEvidence: for the planned favorites list functionality.
       - **`localRegister:`** send a request to the passport route for the user to be created in the database. 
-      - **`getUser:`**
-      - **`getConspirators:`** requests the 
-      - **`addConspirator:`** 
-      - **`localLogin:`**
-      - **`localLogout:`** Logs out the user and resets the state values associated with user state.
+      - **`getUser:`** sends request to login from the server using the supplied user credentials. 
+      - **`getConspirators:`** requests the information for each conspirator from the database.
+      - **`addConspirator:`** adds conspirator to the logged in users conspirator list. 
+      - **`localLogin:`** logs in the user with the supplied user information on the login page.
+      - **`localLogout:`** logs out the user and resets the state values associated with user state.
 
 
 
