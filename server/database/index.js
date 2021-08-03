@@ -11,7 +11,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { CLIENT_ID, CLIENT_SECRET, MONGO_PASS } = require('../config');
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
-const atlasUri = `mongodb+srv://SpaceExecs:${MONGO_PASS}@hash51.wtbes.mongodb.net/HashDB?retryWrites=true&w=majority`;
+const atlasUri = null; 
 
 const db = mongoose.connection;
 

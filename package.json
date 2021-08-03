@@ -18,12 +18,20 @@
   },
   "repository": {
     "type": "git",
+<<<<<<< HEAD
     "url": "git+https://github.com/DDR-Greenfield/Hash51-2.0.git"
+=======
+    "url": "git+https://github.com/DDR-Greenfield/Hash51-2.0"
+>>>>>>> e9a472263c37d711cd824db3f56bfd5819601ea3
   },
   "author": "",
   "license": "ISC",
   "bugs": {
+<<<<<<< HEAD
     "url": "https://github.com/DDR-Greenfield/Hash51-2.0/issues"
+=======
+    "url": "https://github.com/DDR-Greenfield/Hash51-2.0"
+>>>>>>> e9a472263c37d711cd824db3f56bfd5819601ea3
   },
   "homepage": "https://github.com/DDR-Greenfield/Hash51-2.0#readme",
   "dependencies": {
