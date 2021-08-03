@@ -17,6 +17,7 @@ function EvidenceContextProvider({ children }){
   const handlePostBody = (event) => setBodyText(event.target.value);
   const handlePostTitle = (event) => setUserTitle(event.target.value);
 
+
   const fetchSearch = async(query) => {
     await axios.post('/routes/search', { query })
     .then(results => {

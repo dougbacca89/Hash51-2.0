@@ -1,8 +1,10 @@
 const path = require('path');
 const express = require('express');
+const http = require('http');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
+const socketio = require('socket.io');
 
 const { serverRouter } = require('./routes/routes');
 const { passportRouter } = require('./routes/passportRoutes');
@@ -13,6 +15,9 @@ const { PORT } = require('./config');
 const port = PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
 const app = express();
+const server = http.createServer(app);
+
+const io = socketio(server);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,7 +47,22 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
 });
 
-app.listen(port, () => {
+io.on('connection', (socket) => {
+  // broacast to everyone else they connected
+  console.log('somebody joined the socket!');
+  socket.broadcast.emit('message', 'a user has joined chat');
+  // broadcast to everyone else they disconnected.
+  socket.on('disconnect', () => {
+    io.emit('message', 'a user has left the chat');
+  });
+
+ socket.on('message', ({name, message}) => {
+   io.emit('message', {name, message});
+ });
+
+});
+
+server.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`
   Listening at: http://localhost:${port}

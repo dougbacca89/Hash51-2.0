@@ -12,6 +12,7 @@ import { UserContext } from '../../contexts/UserContext';
 import ConspiratorList from './components/ConspiratorList';
 import User from './components/User';
 import Story from './components/Story';
+import Chat from './components/Chat';
 
 const UserContainer = props => {
   const { user } = props;
@@ -63,6 +64,7 @@ const UserContainer = props => {
 
         </Box>
       </Flex>
+          <Chat />
     </div>
   );
 };
