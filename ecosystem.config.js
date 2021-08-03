@@ -31,7 +31,7 @@ module.exports = {
     production : {
       user : 'ubuntu',
       host : 'ec2-13-59-110-86.us-east-2.compute.amazonaws.com',
-      key: '~/.ssh/id_rsa',
+//      key: '~/.ssh/id_rsa',
       ref  : 'origin/main',
       repo : 'git@github.com:DDR-Greenfield/Hash51-2.0.git',
       path : '/home/ubuntu/Hash51-2.0',
