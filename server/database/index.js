@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-
+// ci test
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
