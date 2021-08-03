@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpaceExecs/Hash51.git"
+    "url": "git+https://github.com/DDR-Greenfield/Hash51-2.0.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SpaceExecs/Hash51/issues"
+    "url": "https://github.com/DDR-Greenfield/Hash51-2.0/issues"
   },
-  "homepage": "https://github.com/SpaceExecs/Hash51#readme",
+  "homepage": "https://github.com/DDR-Greenfield/Hash51-2.0#readme",
   "dependencies": {
     "@babel/runtime": "^7.14.8",
     "@chakra-ui/react": "^1.6.5",
