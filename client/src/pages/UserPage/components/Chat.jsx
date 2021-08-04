@@ -14,33 +14,41 @@ import {
     ModalCloseButton,
     FormControl,
 } from '@chakra-ui/react';
-import { SocketContext } from '../../../contexts/SocketContext';
+
+import io from 'socket.io-client';
 import { UserContext } from '../../../contexts/UserContext';
 
 
 import Message from './Message';
 
+const socket = io();
+socket.on('message', (message) => {
+  console.log(message);
+});
 
 const Chat = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [msgInput, setMsgInput] = useState('');
 
-    const socket = useContext(SocketContext);
+
     const {userObj} = useContext(UserContext);
+
     const connectUser = () => {
       const userId = userObj.username;  // Retrieve userId
       if (!userId) return;
       socket.emit('userConnected', userId);
     };
+
   const disconnectUser = () =>{  // Called whenever a user signs out
     const userId = userObj.username;  // Retrieve userId
     if (!userId) return;
     socket.emit('userDisconnected', userId);
   };
+
   const sendMessage = (message) => {
-    const userId = userObj.username;
     socket.emit('message', message);
   };
+
   const handleSubmit = (event) => {
     const userID = userObj.username;
      sendMessage({

@@ -48,7 +48,6 @@ app.get('*', (req, res) => {
 });
 
 
-
 io.on('connection', (socket) => {
   // broacast to everyone else they connected
   console.log('somebody joined the socket!');
@@ -68,7 +67,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     io.emit('message', 'a global connection has left the chat');
     console.log('somebody left');
-    socket.leave();
   });
 
  socket.on('message', (message) => {
