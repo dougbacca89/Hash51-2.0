@@ -12,7 +12,7 @@ const EvidenceSchema = new mongoose.Schema({
   videoTitle: String,
   videoDescription: String,
   videoUrl: String,
-  videothumbnail: String
+  videoThumbnail: String
 });
 
 const Evidence = mongoose.model('Evidence', EvidenceSchema);

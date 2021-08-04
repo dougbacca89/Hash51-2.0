@@ -10,6 +10,7 @@ const serverRouter = Router();
 serverRouter.use(express.json());
 
 const { getImagesFromNasa, nasaIdCall } = require('../helpers/getImages');
+const { videoEvidenceSearch } = require('../helpers/getVideos');
 
 serverRouter.get('/', (req, res) => {
   res.json({ message: 'API Initialized!' });
@@ -17,6 +18,33 @@ serverRouter.get('/', (req, res) => {
 
 serverRouter.post('/search', (req, res) => {
   const { query } = req.body;
+  console.log('query: ', query);
+  videoEvidenceSearch(query)
+  .then((data) => {
+    const videos = data.data.items.map((videoObj) => {
+      const video = {
+        videoUrl: `http://youtube.com/embed/${videoObj.id.videoId}`,
+        videoTitle: videoObj.snippet.title,
+        videoDescription: videoObj.snippet.description,
+        videoThumbnail: videoObj.snippet.thumbnails.default.url
+      };
+      return video;
+    });
+    return videos;
+  })
+  .then((data) => {
+    console.log('videoEvidenceSearch: ', data);
+    res.status(201).send(data);
+  })
+  .catch(err => {
+    console.log(err);
+    res.sendStatus(500);
+  });
+});
+
+serverRouter.post('/search', (req, res) => {
+  const { query } = req.body;
+
   getImagesFromNasa(query)
   .then(({ data }) => data)
   .then((data) => {
@@ -32,7 +60,9 @@ serverRouter.post('/search', (req, res) => {
     });
     return parsedData;
   })
-  .then((data) => res.status(201).send(data))
+  .then((data) => {
+    res.status(201).send(data);
+  })
   .catch((err) => {
     console.log(err);
     res.sendStatus(500);

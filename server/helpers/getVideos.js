@@ -1,17 +1,19 @@
 const axios = require('axios');
 
+require('dotenv').config();
+
 const youTubeApi = axios.create({
     baseURL: 'https://www.googleapis.com/youtube/v3',
     params: {
       part: 'snippet',
-      maxResults: 2,
+      maxResults: 1,
       embeddable: true,
-      key: process.env.YOUTUBE_API_KEY,
+      key: process.env.YOUTUBE_API,
     },
   });
 
 const videoEvidenceSearch = (searchTerm) => youTubeApi
-    .get('http://googleapis.com/youtube/v3/search', {
+    .get('https://www.googleapis.com/youtube/v3/search', {
         params: {
             q: `${searchTerm} conspiracies`,
         },
