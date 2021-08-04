@@ -1,15 +1,13 @@
 import React from 'react';
 
 const Message = (props) => {
-
     const {senderName, text} = props;
     return (
             <>
+            <span>
             <div className="message-item" />
-‍
-                <div><b>{senderName}</b></div>
-‍
-                <span>{text}</span>
+                <div><b>{senderName}</b>:
+                {text} </div></span>
             </>
         );};
 

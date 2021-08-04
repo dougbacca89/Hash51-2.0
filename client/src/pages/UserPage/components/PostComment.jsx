@@ -62,7 +62,7 @@ const PostComment = (props) => {
   );
 };
 
-PostComment.propTypes = {
-  post_id: PropTypes.isRequired,
-};
+// PostComment.propTypes = {
+//   post_id: PropTypes.isRequired,
+// };
 export default PostComment;

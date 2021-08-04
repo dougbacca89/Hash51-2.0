@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {
     useDisclosure,
     Modal,
@@ -8,28 +8,31 @@ import {
     ModalBody,
     ModalFooter,
     ModalContent,
-    FormLabel,
     Input,
     chakra,
     ModalCloseButton,
-    FormControl,
 } from '@chakra-ui/react';
 
 import io from 'socket.io-client';
+import MessageList from './MessageList';
 import { UserContext } from '../../../contexts/UserContext';
 
 
-import Message from './Message';
-
 const socket = io();
-socket.on('message', (message) => {
-  console.log(message);
-});
+
+
 
 const Chat = (props) => {
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [msgInput, setMsgInput] = useState('');
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [msgInput, setMsgInput] = useState('');
+  const [msgs, setMsgs] = useState([]);
 
+  useEffect(() => {
+    socket.on('message', (message) => {
+      setMsgs(msgs => [...msgs, message]);
+    });
+
+  }, []);
 
     const {userObj} = useContext(UserContext);
 
@@ -46,11 +49,15 @@ const Chat = (props) => {
   };
 
   const sendMessage = (message) => {
+    const userId = userObj.username;  // Retrieve userId
+    if (!userId) return;
     socket.emit('message', message);
   };
 
   const handleSubmit = (event) => {
-    const userID = userObj.username;
+    const userID = userObj.username;  // Retrieve userId
+    if (!userID) return;
+    setMsgInput('');
      sendMessage({
        userId: userID,
        message: msgInput});
@@ -74,19 +81,18 @@ return (
             <ModalHeader>Chat</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
+              <chakra.div>
+                <MessageList msgs={msgs}/>
+                 </chakra.div>
                 <chakra.div />
-              <FormControl>
-                <FormLabel>Message</FormLabel>
                 <Input 
                 onChange={(event) => {
                   setMsgInput(event.target.value);}}
                 value={msgInput}
                 placeholder="Message" />
-              </FormControl>
             </ModalBody>
-
             <ModalFooter>
-              <Button 
+              <Button
               onClick={() => {
                 handleSubmit();
               }}
@@ -94,7 +100,6 @@ return (
                 Send
               </Button>
               <Button onClick={() => {
-
                 disconnectUser();
                 onClose();}}>Cancel</Button>
             </ModalFooter>
