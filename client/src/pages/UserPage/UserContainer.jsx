@@ -59,12 +59,12 @@ const UserContainer = props => {
             },
           }}
         >
-       
-          {stories.map((story) => <Story key={story._id} story={story}/>)}
+
+          {stories.map((story) => (<Story key={story._id} story={story}/>))}
 
         </Box>
       </Flex>
-          <Chat />
+          <Chat user={user}/>
     </div>
   );
 };

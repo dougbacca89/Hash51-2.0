@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {
     useDisclosure,
     Modal,
@@ -15,16 +15,31 @@ import {
     FormControl,
 } from '@chakra-ui/react';
 import { SocketContext } from '../../../contexts/SocketContext';
+import { UserContext } from '../../../contexts/UserContext';
 import Message from './Message';
+
 
 const Chat = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const socket = useContext(SocketContext);
 
-    return (
+
+    const socket = useContext(SocketContext);
+    const {userObj} = useContext(UserContext);
+    const connectUser = () => {
+      const userId = userObj.username;  // Retrieve userId
+      if (!userId) return;
+      socket.emit('userConnected', userId);
+    };
+  const disconnectUser = () =>{  // Called whenever a user signs out
+    const userId = userObj.username;  // Retrieve userId
+    if (!userId) return;
+    socket.emit('userDisconnected', userId);
+  };
+
+return (
       <>
         <Button onClick={() => {
-            console.log(socket.connect());
+          connectUser();
             onOpen();}}>Open Modal</Button>
         <Button ml={4}>
           I'll receive focus on close
@@ -50,7 +65,10 @@ const Chat = (props) => {
               <Button colorScheme="blue" mr={3}>
                 Save
               </Button>
-              <Button onClick={onClose}>Cancel</Button>
+              <Button onClick={() => {
+
+                disconnectUser();
+                onClose();}}>Cancel</Button>
             </ModalFooter>
           </ModalContent>
         </Modal>

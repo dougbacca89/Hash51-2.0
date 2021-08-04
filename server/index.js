@@ -47,13 +47,28 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/dist/index.html'));
 });
 
+
+
 io.on('connection', (socket) => {
   // broacast to everyone else they connected
   console.log('somebody joined the socket!');
+  const socketJoin = () => {
+    console.log('a user joined the room');
+    socket.join;
+  };
+
+
+  socket.on('userConnected', socketJoin);
   socket.broadcast.emit('message', 'a user has joined chat');
+  socket.on('userDisconnected', () => {
+    io.emit('message', 'a user has left the chat');
+    console.log('somebody left: userDisconnected');
+    socket.leave();});
   // broadcast to everyone else they disconnected.
   socket.on('disconnect', () => {
-    io.emit('message', 'a user has left the chat');
+    io.emit('message', 'a global connection has left the chat');
+    console.log('somebody left');
+    socket.leave();
   });
 
  socket.on('message', ({name, message}) => {

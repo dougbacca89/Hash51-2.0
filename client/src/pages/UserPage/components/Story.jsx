@@ -110,8 +110,5 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
-  story: PropTypes.objectOf(PropTypes.object).isRequired,
-};
 
 export default Story;
