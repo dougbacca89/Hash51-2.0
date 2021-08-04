@@ -16,7 +16,7 @@ serverRouter.get('/', (req, res) => {
   res.json({ message: 'API Initialized!' });
 });
 
-serverRouter.post('/search', (req, res) => {
+serverRouter.post('/searchVideos', (req, res) => {
   const { query } = req.body;
   console.log('query: ', query);
   videoEvidenceSearch(query)

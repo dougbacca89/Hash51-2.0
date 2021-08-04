@@ -18,10 +18,21 @@ function EvidenceContextProvider({ children }){
   const handlePostTitle = (event) => setUserTitle(event.target.value);
 
   const fetchSearch = async(query) => {
-    await axios.post('/routes/search', { query })
-    .then(results => {
-      setSearchResults(results.data);
-    });
+    await axios.all([
+      axios.post('/routes/search', { query }),
+        // .then(results => {
+        //   setSearchResults(results.data);
+        // }),
+      axios.post('/routes/searchVideos', { query })
+        // .then(results => {
+        //   setSearchResults(results.data);
+        // }),
+    ])
+    .then(axios.spread((data1, data2) => {
+      setSearchResults(data1.data);
+      setSearchResults(data2.data);
+      // console.log('picture data: ', data1.data, 'video data: ', data2.data);
+    }));
   };
 
   const fetchImage = async(query) => {
