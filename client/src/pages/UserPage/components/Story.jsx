@@ -6,7 +6,7 @@ import {
   Box,
   Image,
   Flex,
-  Heading  
+  Heading
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -18,29 +18,29 @@ const Story = (props) => {
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
   const { addConspirator, userObj } = useContext(UserContext);
-  
+
   return (
     <div>
-      <Box 
+      <Box
         h="59vh"
-        w="60vw" 
-        bg="gray.800" 
-        mb=".5vh" 
+        w="60vw"
+        bg="gray.800"
+        mb=".5vh"
         borderTopRadius={10}
       >
         <Flex>
           <Image
             src={href}
-            h="55vh" 
+            h="55vh"
             w="45vw"
             bg="purple.100"
             fit="cover"
             borderTopLeftRadius={10}
           />
-          <Box 
+          <Box
             w="17vw"
           >
-            <Heading 
+            <Heading
               mt="2vh"
               p={2}
               maxH="12vh"
@@ -59,7 +59,7 @@ const Story = (props) => {
             >
               {userTitle}
             </Heading>
-              
+
             <Text
               fontSize="10px"
               p={3}
@@ -80,7 +80,7 @@ const Story = (props) => {
             >
               {bodyText}
               <Text
-                ml="10px" 
+                ml="10px"
                 fontSize="10px"
                 mt={1}
                 as="u"
@@ -97,9 +97,9 @@ const Story = (props) => {
             </Text>
           </Box>
         </Flex>
-        <Text 
-          ml="10px" 
-          fontSize="10px" 
+        <Text
+          ml="10px"
+          fontSize="10px"
           mb="1vh"
         >
           NASA image title: {nasaTitle}
@@ -110,8 +110,5 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
-  story: PropTypes.objectOf(PropTypes.object).isRequired,
-};
 
 export default Story;

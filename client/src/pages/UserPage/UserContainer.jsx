@@ -12,6 +12,7 @@ import { UserContext } from '../../contexts/UserContext';
 import ConspiratorList from './components/ConspiratorList';
 import User from './components/User';
 import Story from './components/Story';
+import Chat from './components/Chat/Chat';
 
 const UserContainer = props => {
   const { user } = props;
@@ -32,7 +33,7 @@ const UserContainer = props => {
     <div>
       <Flex color="white">
 
-        {userObj.username ? 
+        {userObj.username ?
         (<Box w="10vw" mr="10px">
           <div>
             <User user={user}/>
@@ -58,11 +59,12 @@ const UserContainer = props => {
             },
           }}
         >
-       
-          {stories.map((story) => <Story key={story._id} story={story}/>)}
+
+          {stories.map((story) => (<Story key={story._id} story={story}/>))}
 
         </Box>
       </Flex>
+          <Chat user={user}/>
     </div>
   );
 };

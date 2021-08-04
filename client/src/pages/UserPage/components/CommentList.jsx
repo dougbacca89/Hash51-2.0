@@ -51,9 +51,9 @@ const CommentList = (props) => {
   );
 };
 
-CommentList.propTypes = {
-  comments: PropTypes.isRequired,
-  post_id: PropTypes.isRequired
-};
+// CommentList.propTypes = {
+//   comments: PropTypes.isRequired,
+//   post_id: PropTypes.isRequired
+// };
 
 export default CommentList;
