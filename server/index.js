@@ -49,28 +49,23 @@ app.get('*', (req, res) => {
 
 
 io.on('connection', (socket) => {
-  // broacast to everyone else they connected
-  console.log('somebody joined the socket!');
   const socketJoin = () => {
-    console.log('a user joined the room');
-    socket.join;
+    socket.join();
   };
 
 
-  socket.on('userConnected', socketJoin);
-  socket.broadcast.emit('message', 'a user has joined chat');
-  socket.on('userDisconnected', () => {
-    io.emit('message', 'a user has left the chat');
-    console.log('somebody left: userDisconnected');
+  socket.on('userConnected', (userId) => {
+    io.emit('message', {message: `${userId} has joined chat`});
+    socketJoin();});
+
+  socket.on('userDisconnected', (userId) => {
+    io.emit('message', {message: `${userId} has left the chat`});
     socket.leave();});
   // broadcast to everyone else they disconnected.
   socket.on('disconnect', () => {
-    io.emit('message', 'a global connection has left the chat');
-    console.log('somebody left');
   });
 
  socket.on('message', (message) => {
-   console.log(message);
    io.emit('message', message);
  });
 

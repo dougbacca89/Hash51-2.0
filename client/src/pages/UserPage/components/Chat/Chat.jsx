@@ -15,7 +15,7 @@ import {
 
 import io from 'socket.io-client';
 import MessageList from './MessageList';
-import { UserContext } from '../../../contexts/UserContext';
+import { UserContext } from '../../../../contexts/UserContext';
 
 
 const socket = io();
@@ -67,11 +67,7 @@ return (
       <>
         <Button onClick={() => {
           connectUser();
-            onOpen();}}>Open Modal</Button>
-        <Button ml={4}>
-          I'll receive focus on close
-        </Button>
-
+            onOpen();}}>Chat</Button>
         <Modal
           isOpen={isOpen}
           onClose={onClose}
@@ -85,7 +81,8 @@ return (
                 <MessageList msgs={msgs}/>
                  </chakra.div>
                 <chakra.div />
-                <Input 
+                <Input
+                onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
                 onChange={(event) => {
                   setMsgInput(event.target.value);}}
                 value={msgInput}

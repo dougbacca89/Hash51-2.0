@@ -6,7 +6,7 @@ const Message = (props) => {
             <>
             <span>
             <div className="message-item" />
-                <div><b>{senderName}</b>:
+                <div><b>{senderName}</b> --
                 {text} </div></span>
             </>
         );};
