@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import {
   Text,
-  Box
+  Box,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import Comment from './Comment';
@@ -15,6 +16,9 @@ const CommentList = (props) => {
   // eslint-disable-next-line camelcase
   const { comments, post_id } = props;
   const { userObj } = useContext(UserContext);
+
+  const bg = useColorModeValue("#201830", "#4a3770");
+  const textColor = useColorModeValue("green.500", "green.300");
 
   return (
     <Box
@@ -41,7 +45,7 @@ const CommentList = (props) => {
           ml="2vw"
           pb="1vh"
           fontSize="10px"
-          color="green.500"
+          color={textColor}
         >
           login to comment.
         </Text>

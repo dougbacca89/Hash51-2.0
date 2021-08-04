@@ -14,7 +14,8 @@ import {
   InputLeftElement,
   Box,
   FormControl,
-  InputRightElement
+  InputRightElement,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -33,7 +34,8 @@ const Login = props => {
     localLogin 
   } = useContext(UserContext);
 
-
+  const bg = useColorModeValue("#201830", "#4a3770");
+  const textColor = useColorModeValue("green.500", "green.300");
   return (
     <Flex
       flexDir="column"
@@ -47,7 +49,7 @@ const Login = props => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="green.500">We want to believe...</Heading>
+        <Heading color={textColor}>We want to believe...</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
