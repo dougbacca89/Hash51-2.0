@@ -16,7 +16,7 @@ const Header = () => {
       <Flex
         justify="space-between"
         borderBottom="1px"
-        bg="#201830"
+        bg="textColor"
         p={1}
       >
       <Link href="/">
@@ -24,7 +24,7 @@ const Header = () => {
           as="h3"
           size="lg"
           m={1}
-          color="green.500"
+          color="danger"
           ml="14.5vw"
         >
           Hash#51
@@ -37,13 +37,13 @@ const Header = () => {
           mr="15vw"
         >
           <Link
-            color="green.500"
+            color="danger"
             href="/search"
           >
             Get evidence
           </Link> {" "}
           <Link
-            color="green.500"
+            color="danger"
             ml="2vw"
             href="/userPage"
           >
@@ -52,7 +52,7 @@ const Header = () => {
 
           { isLoggedIn ?
             (<Link
-              color="green.500"
+              color="danger"
               ml="2vw"
               href="/userLogin"
               onClick={ localLogout }
@@ -60,7 +60,7 @@ const Header = () => {
               Log Out
             </Link>) :
             (<Link
-              color="green.500"
+              color="danger"
               ml="2vw"
               href="/userLogin"
             >

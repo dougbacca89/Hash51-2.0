@@ -3,7 +3,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-// ci test
+
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
@@ -18,7 +18,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
 
-  console.log('Database Connection Successful');
+  console.log('Database Connection');
 });
 
 mongoose.connect(atlasUri || mongoUri, {

@@ -6,7 +6,8 @@ import {
   Box,
   Image,
   Flex,
-  Heading  
+  Heading,
+  Grid, 
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -110,8 +111,8 @@ const Story = (props) => {
   );
 };
 
-Story.propTypes = {
-  story: PropTypes.objectOf(PropTypes.object).isRequired,
-};
+// Story.propTypes = {
+//   story: PropTypes.objectOf(PropTypes.object).isRequired,
+// };
 
 export default Story;
