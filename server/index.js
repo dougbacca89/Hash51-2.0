@@ -71,8 +71,9 @@ io.on('connection', (socket) => {
     socket.leave();
   });
 
- socket.on('message', ({name, message}) => {
-   io.emit('message', {name, message});
+ socket.on('message', (message) => {
+   console.log(message);
+   io.emit('message', message);
  });
 
 });

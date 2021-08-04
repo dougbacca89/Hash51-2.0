@@ -16,12 +16,14 @@ import {
 } from '@chakra-ui/react';
 import { SocketContext } from '../../../contexts/SocketContext';
 import { UserContext } from '../../../contexts/UserContext';
+
+
 import Message from './Message';
 
 
 const Chat = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-
+    const [msgInput, setMsgInput] = useState('');
 
     const socket = useContext(SocketContext);
     const {userObj} = useContext(UserContext);
@@ -34,6 +36,16 @@ const Chat = (props) => {
     const userId = userObj.username;  // Retrieve userId
     if (!userId) return;
     socket.emit('userDisconnected', userId);
+  };
+  const sendMessage = (message) => {
+    const userId = userObj.username;
+    socket.emit('message', message);
+  };
+  const handleSubmit = (event) => {
+    const userID = userObj.username;
+     sendMessage({
+       userId: userID,
+       message: msgInput});
   };
 
 return (
@@ -51,19 +63,27 @@ return (
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Create your account</ModalHeader>
+            <ModalHeader>Chat</ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
                 <chakra.div />
               <FormControl>
                 <FormLabel>Message</FormLabel>
-                <Input placeholder="Message" />
+                <Input 
+                onChange={(event) => {
+                  setMsgInput(event.target.value);}}
+                value={msgInput}
+                placeholder="Message" />
               </FormControl>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3}>
-                Save
+              <Button 
+              onClick={() => {
+                handleSubmit();
+              }}
+              colorScheme="blue" mr={3}>
+                Send
               </Button>
               <Button onClick={() => {
 
