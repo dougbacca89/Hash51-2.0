@@ -65,8 +65,8 @@ const Comment = (props) => {
   );
 };
 
-Comment.propTypes = {
-  comment: PropTypes.isRequired,
-};
+// Comment.propTypes = {
+//   comment: PropTypes.isRequired,
+// };
 
 export default Comment;

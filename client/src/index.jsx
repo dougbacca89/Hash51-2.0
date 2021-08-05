@@ -7,7 +7,6 @@ import { ChakraProvider} from "@chakra-ui/react";
 import { EvidenceContextProvider } from './contexts/EvidenceContext';
 import { UserContextProvider } from './contexts/UserContext';
 import { DisplayContextProvider } from './contexts/DisplayContext';
-
 import App from './pages/App.jsx';
 
 
