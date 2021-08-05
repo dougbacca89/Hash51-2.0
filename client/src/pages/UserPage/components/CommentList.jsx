@@ -39,7 +39,7 @@ const CommentList = (props) => {
         Comments
       </Text>
 
-      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} color={whiteColor} />)}
+      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} color={textColor} />)}
 
       {userObj.username ? (
         <PostComment post_id={post_id} />

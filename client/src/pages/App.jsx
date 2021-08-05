@@ -9,7 +9,6 @@ import {
 
 import {
   Flex,
-  useTheme,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
@@ -25,6 +24,7 @@ import Header from './Header';
 const App = () => {
   const [ user ] = useState({});
 
+  // eslint-disable-next-line no-unused-vars
   const { toggleColorMode } = useColorMode();
 
   const bg = useColorModeValue("#3a2a5e", "#543d8a");

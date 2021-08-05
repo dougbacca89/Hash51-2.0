@@ -5,7 +5,6 @@ import {
   Box,
   Image,
   useColorModeValue,
-  useColorMode
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';

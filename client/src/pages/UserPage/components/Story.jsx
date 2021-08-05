@@ -21,7 +21,7 @@ const Story = (props) => {
 
   const { addConspirator, userObj } = useContext(UserContext);
 
-  const textColor = useColorModeValue("green.500", "green.300");
+  const textColor = useColorModeValue("green.500", "green.700");
   const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
   const greyColor = useColorModeValue("gray.600" , "gray.300");
   
