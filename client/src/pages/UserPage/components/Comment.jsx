@@ -17,7 +17,7 @@ const Comment = (props) => {
 
   const { addConspirator, userObj } = useContext(UserContext);
 
-  const textColor = useColorModeValue("green.500", "green.700");
+  const textColor = useColorModeValue("green.100", "green.700");
   const greyColor = useColorModeValue("gray.600" , "gray.300");
 
   
@@ -41,7 +41,7 @@ const Comment = (props) => {
         p={1}
         ml="6px"  
         minH="2vh"
-        fontSize="15px"
+        fontSize="20px"
         // eslint-disable-next-line consistent-return
         onClick={() => {
           if(userObj.username) {
@@ -49,12 +49,12 @@ const Comment = (props) => {
           }
         }}
       >
-        {userName}:  
+        <b>{userName}</b>:  
           <Text 
           p={1}
           ml="10px"  
           minH="2vh"
-          fontSize="11px"
+          fontSize="18px"
           color={textColor}
         >
           {commentBody}

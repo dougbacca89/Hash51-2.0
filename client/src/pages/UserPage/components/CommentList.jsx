@@ -33,7 +33,7 @@ const CommentList = (props) => {
         pt=".25vw"
         ml="2vw"
         mb="1vh"
-        fontSize="10px"
+        fontSize="px"
         color={whiteColor}
       >
         Comments

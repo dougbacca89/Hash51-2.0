@@ -21,9 +21,10 @@ const Story = (props) => {
 
   const { addConspirator, userObj } = useContext(UserContext);
 
-  const textColor = useColorModeValue("green.500", "green.700");
+  const textColor = useColorModeValue("green.100", "green.700");
   const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
   const greyColor = useColorModeValue("gray.600" , "gray.300");
+  const redColor = useColorModeValue("red.100" , "red.800");
   
   return (
     <div>
@@ -49,9 +50,9 @@ const Story = (props) => {
             <Heading
               mt="2vh"
               p={2}
-              maxH="12vh"
-              fontSize="19px"
-              overflowY="scroll"
+              // maxH="12vh"
+              fontSize="32px"
+              // overflowY="scroll"
               color={whiteColor}
               sx={{
                 '&::-webkit-scrollbar': {
@@ -69,7 +70,7 @@ const Story = (props) => {
             </Heading>
 
             <Text
-              fontSize="10px"
+              fontSize="20px"
               p={3}
               h="38vh"
               mt={3}
@@ -89,7 +90,7 @@ const Story = (props) => {
               {bodyText}
               <Text
                 ml="10px"
-                fontSize="10px"
+                fontSize="16px"
                 mt={1}
                 as="u"
                 color={whiteColor}
@@ -109,7 +110,8 @@ const Story = (props) => {
           ml="10px"
           fontSize="10px"
           mb="1vh"
-          color={whiteColor}
+          color={redColor}
+          pt={2}
         >
           NASA image title: {nasaTitle}
         </Text>
