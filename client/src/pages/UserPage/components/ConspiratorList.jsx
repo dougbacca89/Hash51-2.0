@@ -17,7 +17,7 @@ const ConspiratorList = () => {
   return (
     <VStack
       h="63vh"
-      w="150px"
+      // w="150px"
       divider={<StackDivider borderColor={textColor} />}
       spacing={2}
       overflowY="scroll"
