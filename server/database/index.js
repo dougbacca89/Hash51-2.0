@@ -76,7 +76,7 @@ const localCallback = 'http://localhost:3000/auth/google/login';
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/google/login',
+  callbackURL: 'http://ec2-13-59-110-86.us-east-2.compute.amazonaws.com/auth/google/login',
   passReqToCallback: true
 }, (req, accessToken, refreshToken, profile, cb) => {
   User.findOrCreate(
