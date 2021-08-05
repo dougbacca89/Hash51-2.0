@@ -6,41 +6,40 @@ import {
   Box,
   Image,
   Flex,
-  Heading  
-} from "@chakra-ui/react";
+  Heading,
+} from '@chakra-ui/react';
 
 import CommentList from './CommentList';
 import { UserContext } from '../../../contexts/UserContext';
-
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
   const { addConspirator, userObj } = useContext(UserContext);
-  
+
   return (
     <div>
-      <Box 
+      <Box
         h="59vh"
-        w="60vw" 
-        bg="gray.800" 
-        mb=".5vh" 
+        w="60vw"
+        bg="gray.800"
+        mb=".5vh"
         borderTopRadius={10}
       >
         <Flex>
           <Image
             src={href}
-            h="55vh" 
+            h="55vh"
             w="45vw"
             bg="purple.100"
             fit="cover"
             borderTopLeftRadius={10}
           />
-          <Box 
+          <Box
             w="17vw"
           >
-            <Heading 
+            <Heading
               mt="2vh"
               p={2}
               maxH="12vh"
@@ -50,16 +49,16 @@ const Story = (props) => {
                 '&::-webkit-scrollbar': {
                   width: '16px',
                   borderRadius: '8px',
-                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 },
               }}
             >
               {userTitle}
             </Heading>
-              
+
             <Text
               fontSize="10px"
               p={3}
@@ -71,41 +70,45 @@ const Story = (props) => {
                 '&::-webkit-scrollbar': {
                   width: '16px',
                   borderRadius: '8px',
-                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 },
               }}
             >
               {bodyText}
               <Text
-                ml="10px" 
+                ml="10px"
                 fontSize="10px"
                 mt={1}
                 as="u"
                 color="white"
                 // eslint-disable-next-line consistent-return
                 onClick={() => {
-                  if(userObj.username) {
+                  if (userObj.username) {
                     return addConspirator(userName);
                   }
                 }}
               >
-                Created by {userName}
+                Created by
+                {' '}
+                {userName}
               </Text>
             </Text>
           </Box>
         </Flex>
-        <Text 
-          ml="10px" 
-          fontSize="10px" 
+        <Text
+          ml="10px"
+          fontSize="10px"
           mb="1vh"
         >
-          NASA image title: {nasaTitle}
+          NASA image title:
+          {' '}
+          {nasaTitle}
         </Text>
       </Box>
-      <CommentList comments={comments} post_id={_id}/>
+      <CommentList comments={comments} post_id={_id} />
     </div>
   );
 };
