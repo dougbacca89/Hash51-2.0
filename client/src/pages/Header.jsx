@@ -1,22 +1,35 @@
+// eslint-disable-file anchor-is-valid
 import React, { useContext } from "react";
 
 import {
   Flex,
   Heading,
   Link,
-  Box
+  Box,
+  useColorMode,
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import { UserContext } from "../contexts/UserContext";
 
+
 const Header = () => {
+
+
+  const { toggleColorMode } = useColorMode();
+  const textColor = useColorModeValue("green.500", "green.300");
+  const header = useColorModeValue("#201830", "#34274f");
+
+
+
+
   const { isLoggedIn, localLogout } = useContext(UserContext);
   return (
     <div>
       <Flex
         justify="space-between"
         borderBottom="1px"
-        bg="#201830"
+        bg={header}
         p={1}
       >
       <Link href="/">
@@ -24,7 +37,7 @@ const Header = () => {
           as="h3"
           size="lg"
           m={1}
-          color="green.500"
+          color={textColor}
           ml="14.5vw"
         >
           Hash#51
@@ -33,26 +46,34 @@ const Header = () => {
         <Heading
           as="h3"
           size="md"
-          m={2}
+          m={3}
           mr="15vw"
         >
           <Link
-            color="green.500"
+            color={textColor}
             href="/search"
           >
             Get evidence
           </Link> {" "}
           <Link
-            color="green.500"
+            color={textColor}
             ml="2vw"
             href="/userPage"
           >
             Conspiracies
-          </Link> {" "}
+          </Link>{" "}
+          
 
+          <Link
+          onClick={toggleColorMode}
+          color={textColor}
+          ml="2vw"
+          >
+            Toggle Color
+          </Link> 
           { isLoggedIn ?
             (<Link
-              color="green.500"
+              color={textColor}
               ml="2vw"
               href="/userLogin"
               onClick={ localLogout }
@@ -60,7 +81,7 @@ const Header = () => {
               Log Out
             </Link>) :
             (<Link
-              color="green.500"
+              color={textColor}
               ml="2vw"
               href="/userLogin"
             >
