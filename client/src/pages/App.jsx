@@ -9,8 +9,10 @@ import {
 
 import {
   Flex,
+  useTheme,
   useColorModeValue,
-
+  useColorMode,
+  Button
 } from "@chakra-ui/react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -24,12 +26,15 @@ import Header from './Header';
 const App = () => {
   const [ user ] = useState({});
 
-  const bg = useColorModeValue("#3a2a5e", "#674c9c");
+  const { toggleColorMode } = useColorMode();
+
+  const bg = useColorModeValue("#3a2a5e", "red.200");
 
 
   return (
     <div>
       <Header />
+      <Button size="sm" onClick={toggleColorMode}>Toggle Mode</Button>
       <Flex
         flexDirection="column"
         width="100wh"

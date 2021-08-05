@@ -5,8 +5,7 @@ import {
   Text,
   Box,
   Image,
-  Button,
-  useColorModeValue,
+  Button
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -16,9 +15,6 @@ const Conspirator = (props) => {
   const { username, profileImage, _id } = conspirator;
 
   const { updateConspirator } = useContext(UserContext);
-
-  const bg = useColorModeValue("#201830", "#4a3770");
-  const textColor = useColorModeValue("green.500", "green.300");
   
   return (
     <Box 
@@ -39,7 +35,7 @@ const Conspirator = (props) => {
         mt="4px"
         ml="10px" 
         fontSize="10px"
-        color={textColor}
+        color="green.500"
       >
         {username}
       </Text>

@@ -3,8 +3,7 @@ import React, { useContext }from 'react';
 import {
   Text,
   Box,
-  Image,
-  useColorModeValue,
+  Image
 } from "@chakra-ui/react";
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
@@ -12,13 +11,9 @@ import { UserContext } from '../../../contexts/UserContext';
 
 import PostStory from './PostStory';
 
-
 const NewStory = () => {
   const { href } = useContext(EvidenceContext);
   const { userObj } = useContext(UserContext);
-  const bg = useColorModeValue("#201830", "#4a3770");
-  const textColor = useColorModeValue("green.500", "green.300");
-  
   
   return (
     <div>  
@@ -32,7 +27,7 @@ const NewStory = () => {
           ml="10px" 
           mb="10px"
           fontSize="25px"
-          color={textColor}
+          color="green.500"
         >
         Tell your story {userObj.username}
         </Text>

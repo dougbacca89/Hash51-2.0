@@ -5,16 +5,12 @@ import {
   Text,
   Box,
   Flex,
-  Image,
-  useColorModeValue,
+  Image
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
 
 const Comment = (props) => {
-  const bg = useColorModeValue("#201830", "#4a3770");
-  const textColor = useColorModeValue("green.500", "green.300");
-  
   const { comment } = props;
   const { commentBody, userName, profileImage } = comment;
 
@@ -54,7 +50,7 @@ const Comment = (props) => {
           ml="10px"  
           minH="2vh"
           fontSize="11px"
-          color={textColor}
+          color="green.500"
         >
           {commentBody}
         </Text> 

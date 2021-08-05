@@ -5,15 +5,12 @@ import {
   Image, 
   SimpleGrid,
   Flex,
-  Heading,
-  useColorModeValue,
+  Heading
 } from '@chakra-ui/react';
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
 
 const SearchResult = () => {
-  const bg = useColorModeValue("#201830", "#4a3770");
-  const textColor = useColorModeValue("green.500", "green.300");
   // eslint-disable-next-line camelcase
   const { searchResults, fetchImage, setNasa_id, setNasaTitle, setKeywords } = useContext(EvidenceContext);
 
@@ -51,6 +48,6 @@ const SearchResult = () => {
       }
       </SimpleGrid>
     </Flex>
-  ) : <Heading color={textColor} size="md" m={2}>Search for the truth...</Heading>;
+  ) : <Heading color="green.500" size="md" m={2}>Search for the truth...</Heading>;
 };
 export default SearchResult;
