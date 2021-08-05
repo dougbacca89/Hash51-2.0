@@ -17,7 +17,7 @@ const CommentList = (props) => {
   const { comments, post_id } = props;
   const { userObj } = useContext(UserContext);
 
-  const textColor = useColorModeValue("green.500", "green.300");
+  const textColor = useColorModeValue("green.500", "green.700");
   const greyColor = useColorModeValue("gray.600" , "gray.300");
   const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
 
@@ -27,6 +27,7 @@ const CommentList = (props) => {
       mb="7vh"
       w="60vw"
       borderBottomRadius={10}
+      color={whiteColor}
     >
       <Text
         pt=".25vw"
@@ -38,10 +39,10 @@ const CommentList = (props) => {
         Comments
       </Text>
 
-      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} />)}
+      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} color={whiteColor} />)}
 
       {userObj.username ? (
-        <PostComment post_id={post_id} color={whiteColor}/>
+        <PostComment post_id={post_id} />
       ) : (
         <Text
           ml="2vw"

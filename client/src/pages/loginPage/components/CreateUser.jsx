@@ -29,9 +29,6 @@ const {
   } = useContext(UserContext);
 
   const textColor = useColorModeValue("green.500", "green.300");
-  const bg = useColorModeValue("#3a2a5e", "#543d8a");
-  const header = useColorModeValue("#201830", "#34274f");
-  const boxColor = useColorModeValue("gray.800" , "gray.700");
   const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
   const greyColor = useColorModeValue("gray.600" , "gray.300");
 
@@ -69,7 +66,7 @@ const {
               <InputGroup>
                 <InputLeftElement
                   pointerEvents="none"
-                  color={grayColor}
+                  color={greyColor}
                 />
                 <Input
                   value={pass}
@@ -88,7 +85,7 @@ const {
               <InputGroup>
                 <InputLeftElement
                   pointerEvents="none"
-                  color={grayColor}
+                  color={greyColor}
                 />
                 <Input
                   value={confirm}

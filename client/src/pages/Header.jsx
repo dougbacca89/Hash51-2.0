@@ -1,3 +1,4 @@
+// eslint-disable-file anchor-is-valid
 import React, { useContext } from "react";
 
 import {
@@ -17,9 +18,7 @@ const Header = () => {
 
   const { toggleColorMode } = useColorMode();
   const textColor = useColorModeValue("green.500", "green.300");
-  const bg = useColorModeValue("#3a2a5e", "#543d8a");
   const header = useColorModeValue("#201830", "#34274f");
-  const boxColor = useColorModeValue("gray.800" , "gray.700");
 
 
 
@@ -47,7 +46,7 @@ const Header = () => {
         <Heading
           as="h3"
           size="md"
-          m={2}
+          m={3}
           mr="15vw"
         >
           <Link
@@ -62,12 +61,13 @@ const Header = () => {
             href="/userPage"
           >
             Conspiracies
-          </Link> {" "}
-          {// eslint-disable-next-line anchor-is-valid
-          }
+          </Link>{" "}
+          
+
           <Link
           onClick={toggleColorMode}
           color={textColor}
+          ml="2vw"
           >
             Toggle Color
           </Link> 
