@@ -6,7 +6,9 @@ import {
   Box,
   Image,
   Flex,
-  Heading
+  Heading,
+  Grid, 
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -19,13 +21,17 @@ const Story = (props) => {
 
   const { addConspirator, userObj } = useContext(UserContext);
 
+  const textColor = useColorModeValue("green.500", "green.700");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
+  
   return (
     <div>
       <Box
         h="59vh"
-        w="60vw"
-        bg="gray.800"
-        mb=".5vh"
+        w="60vw" 
+        bg={greyColor} 
+        mb=".5vh" 
         borderTopRadius={10}
       >
         <Flex>
@@ -46,6 +52,7 @@ const Story = (props) => {
               maxH="12vh"
               fontSize="19px"
               overflowY="scroll"
+              color={whiteColor}
               sx={{
                 '&::-webkit-scrollbar': {
                   width: '16px',
@@ -56,6 +63,7 @@ const Story = (props) => {
                   backgroundColor: `rgba(0, 0, 0, 0.5)`,
                 },
               }}
+              
             >
               {userTitle}
             </Heading>
@@ -65,7 +73,7 @@ const Story = (props) => {
               p={3}
               h="38vh"
               mt={3}
-              color="green.500"
+              color={textColor}
               overflowY="scroll"
               sx={{
                 '&::-webkit-scrollbar': {
@@ -84,7 +92,7 @@ const Story = (props) => {
                 fontSize="10px"
                 mt={1}
                 as="u"
-                color="white"
+                color={whiteColor}
                 // eslint-disable-next-line consistent-return
                 onClick={() => {
                   if(userObj.username) {
@@ -101,6 +109,7 @@ const Story = (props) => {
           ml="10px"
           fontSize="10px"
           mb="1vh"
+          color={whiteColor}
         >
           NASA image title: {nasaTitle}
         </Text>
@@ -110,5 +119,8 @@ const Story = (props) => {
   );
 };
 
+// Story.propTypes = {
+//   story: PropTypes.objectOf(PropTypes.object).isRequired,
+// };
 
 export default Story;

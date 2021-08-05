@@ -10,7 +10,8 @@ import {
   InputLeftElement,
   Box,
   FormControl,
-  InputRightElement
+  InputRightElement,
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -27,6 +28,10 @@ const {
   localRegister,
   } = useContext(UserContext);
 
+  const textColor = useColorModeValue("green.500", "green.300");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
+
   return (
     <Stack
       flexDir="column"
@@ -34,13 +39,13 @@ const {
       justifyContent="center"
       alignItems="center"
     >
-      <Heading color="green.500">We want you to believe, too...</Heading>
+      <Heading color={textColor}>We want you to believe, too...</Heading>
       <Box minW={{ base: "90%", md: "468px" }}>
         <form>
           <Stack
             spacing={4}
             p="1rem"
-            backgroundColor="whiteAlpha.900"
+            backgroundColor={whiteColor}
             boxShadow="md"
             borderRadius={10}
           >
@@ -61,7 +66,7 @@ const {
               <InputGroup>
                 <InputLeftElement
                   pointerEvents="none"
-                  color="gray.300"
+                  color={greyColor}
                 />
                 <Input
                   value={pass}
@@ -80,7 +85,7 @@ const {
               <InputGroup>
                 <InputLeftElement
                   pointerEvents="none"
-                  color="gray.300"
+                  color={greyColor}
                 />
                 <Input
                   value={confirm}
