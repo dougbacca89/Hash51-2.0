@@ -8,5 +8,5 @@ module.exports = {
   MONGO_PASS,
   SECRET,
   PORT,
-  YOUTUBE_API
+  YOUTUBE_API,
 };

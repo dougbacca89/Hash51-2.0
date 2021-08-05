@@ -9,7 +9,6 @@ const { passportRouter } = require('./routes/passportRoutes');
 const { userRouter } = require('./routes/userRoutes');
 const { PORT } = require('./config');
 
-
 const port = PORT || 3000;
 const distPath = path.resolve(__dirname, '../client/dist');
 const app = express();
@@ -22,8 +21,8 @@ app.use(express.static(distPath));
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: "Content-Type, Authorization",
-  credentials: true
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true,
 }));
 
 app.use(session({

@@ -32,10 +32,12 @@ const SearchResult = () => {
       title,
       keywords,
       videoDescription,
-      videoId, videoThumbnail,
+      videoId,
+      videoThumbnail,
       videoTitle,
       videoUrl,
     } = result;
+    console.log('result: ', result);
     // eslint-disable-next-line camelcase
     if (nasa_id) {
       setNasa_id(nasa_id);
@@ -44,11 +46,11 @@ const SearchResult = () => {
       fetchImage(nasa_id);
     } else {
       setVideoDescription(videoDescription);
-      setVideoId(videoId);
+      setNasa_id(videoId);
       setVideoThumbnail(videoThumbnail);
       setVideoTitle(videoTitle);
       setVideoUrl(videoUrl);
-      fetchImage(videoThumbnail);
+      fetchImage(videoUrl);
     }
   };
 
@@ -62,14 +64,14 @@ const SearchResult = () => {
           {
             searchResults.map((result) => (
             // eslint-disable-next-line react/no-array-index-key
-              <div key={result.nasa_id ? result.nasa_id : result.videoId}>
-                <Link to={`story/${result.nasa_id ? result.nasa_id : result.videoId}`}>
+              <div key={result.nasa_id}>
+                <Link to={`story/${result.nasa_id}`}>
                   <Image
                     m={1}
                     borderRadius="50px"
                     boxSize="300px"
                     objectFit="cover"
-                    src={result.thumb ? result.thumb : result.thumbnail}
+                    src={result.thumb ? result.thumb : result.videoThumbnail}
                     onClick={() => handleCLick(result)}
                     boxShadow="2xl"
                   />

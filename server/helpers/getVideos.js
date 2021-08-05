@@ -6,7 +6,7 @@ const youTubeApi = axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3',
   params: {
     part: 'snippet',
-    maxResults: 2,
+    maxResults: 1,
     embeddable: true,
     key: process.env.YOUTUBE_API,
   },
