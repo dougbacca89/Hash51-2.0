@@ -12,7 +12,6 @@ import {
   useTheme,
   useColorModeValue,
   useColorMode,
-  Button
 } from "@chakra-ui/react";
 
 // eslint-disable-next-line import/no-unresolved
@@ -28,13 +27,12 @@ const App = () => {
 
   const { toggleColorMode } = useColorMode();
 
-  const bg = useColorModeValue("#3a2a5e", "red.200");
+  const bg = useColorModeValue("#3a2a5e", "#543d8a");
 
 
   return (
     <div>
       <Header />
-      <Button size="sm" onClick={toggleColorMode}>Toggle Mode</Button>
       <Flex
         flexDirection="column"
         width="100wh"

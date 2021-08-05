@@ -8,6 +8,7 @@ import {
   Flex,
   Heading,
   Grid, 
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import CommentList from './CommentList';
@@ -19,13 +20,20 @@ const Story = (props) => {
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
   const { addConspirator, userObj } = useContext(UserContext);
+
+  const textColor = useColorModeValue("green.500", "green.300");
+  const bg = useColorModeValue("#3a2a5e", "#543d8a");
+  const header = useColorModeValue("#201830", "#34274f");
+  const boxColor = useColorModeValue("gray.800" , "gray.700");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
   
   return (
     <div>
       <Box 
         h="59vh"
         w="60vw" 
-        bg="gray.800" 
+        bg={greyColor} 
         mb=".5vh" 
         borderTopRadius={10}
       >
@@ -66,7 +74,7 @@ const Story = (props) => {
               p={3}
               h="38vh"
               mt={3}
-              color="green.500"
+              color={textColor}
               overflowY="scroll"
               sx={{
                 '&::-webkit-scrollbar': {
@@ -85,7 +93,7 @@ const Story = (props) => {
                 fontSize="10px"
                 mt={1}
                 as="u"
-                color="white"
+                color={whiteColor}
                 // eslint-disable-next-line consistent-return
                 onClick={() => {
                   if(userObj.username) {

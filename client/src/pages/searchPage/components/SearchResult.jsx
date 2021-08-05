@@ -5,7 +5,8 @@ import {
   Image, 
   SimpleGrid,
   Flex,
-  Heading
+  Heading,
+  useColorModeValue
 } from '@chakra-ui/react';
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
@@ -13,6 +14,13 @@ import { EvidenceContext } from '../../../contexts/EvidenceContext';
 const SearchResult = () => {
   // eslint-disable-next-line camelcase
   const { searchResults, fetchImage, setNasa_id, setNasaTitle, setKeywords } = useContext(EvidenceContext);
+
+  const textColor = useColorModeValue("green.500", "green.300");
+  const bg = useColorModeValue("#3a2a5e", "#543d8a");
+  const header = useColorModeValue("#201830", "#34274f");
+  const boxColor = useColorModeValue("gray.800" , "gray.700");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
 
   const handleCLick = (result) => {
     // eslint-disable-next-line camelcase
@@ -48,6 +56,6 @@ const SearchResult = () => {
       }
       </SimpleGrid>
     </Flex>
-  ) : <Heading color="green.500" size="md" m={2}>Search for the truth...</Heading>;
+  ) : <Heading color={textColor} size="md" m={2}>Search for the truth...</Heading>;
 };
 export default SearchResult;
