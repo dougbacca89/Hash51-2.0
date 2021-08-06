@@ -33,13 +33,11 @@ function EvidenceContextProvider({ children }) {
   };
 
   const fetchImage = async (query) => {
-    console.log('query: ', query);
     if (query.slice(0, 4) === 'http') {
       await setHref(query);
     } else {
       await axios.post('/routes/asset', { query })
         .then((results) => {
-          console.log('results.data.items[0].href: ', results.data.items[0].href);
           setHref(results.data.items[0].href);
         });
     }

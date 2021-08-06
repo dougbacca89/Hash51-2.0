@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import {
   Flex,
-  Box
-} from "@chakra-ui/react";
+  Box,
+} from '@chakra-ui/react';
 
 import { DisplayContext } from '../../contexts/DisplayContext';
 import { UserContext } from '../../contexts/UserContext';
@@ -13,7 +13,7 @@ import ConspiratorList from './components/ConspiratorList';
 import User from './components/User';
 import Story from './components/Story';
 
-const UserContainer = props => {
+const UserContainer = (props) => {
   const { user } = props;
   const { conspirators } = user;
 
@@ -24,23 +24,25 @@ const UserContainer = props => {
     getUser();
     fetchStories();
     getEvidence();
-    getConspirators();},
-    [JSON.stringify(userObj)]
-  );
+    getConspirators();
+  },
+  [JSON.stringify(userObj)]);
 
   return (
     <div>
       <Flex color="white">
 
-        {userObj.username ? 
-        (<Box w="10vw" mr="10px">
-          <div>
-            <User user={user}/>
-            <ConspiratorList conspirators={conspirators}/>
-          </div>
-        </Box>) : (
-          <div />
-        )}
+        {userObj.username ?
+          (
+            <Box w="10vw" mr="10px">
+              <div>
+                <User user={user} />
+                <ConspiratorList conspirators={conspirators} />
+              </div>
+            </Box>
+          ) : (
+            <div />
+          )}
 
         <Box
           maxH="89vh"
@@ -51,15 +53,15 @@ const UserContainer = props => {
             '&::-webkit-scrollbar': {
               width: '16px',
               borderRadius: '8px',
-              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+              backgroundColor: 'rgba(0, 0, 0, 0.05)',
             },
             '&::-webkit-scrollbar-thumb': {
-              backgroundColor: `rgba(0, 0, 0, 0.5)`,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
           }}
         >
-       
-          {stories.map((story) => <Story key={story._id} story={story}/>)}
+
+          {stories.map((story) => <Story key={story._id} story={story} />)}
 
         </Box>
       </Flex>

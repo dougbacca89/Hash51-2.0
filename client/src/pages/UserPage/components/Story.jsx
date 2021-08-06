@@ -28,14 +28,25 @@ const Story = (props) => {
         borderTopRadius={10}
       >
         <Flex>
-          <Image
-            src={href}
-            h="55vh"
-            w="45vw"
-            bg="purple.100"
-            fit="cover"
-            borderTopLeftRadius={10}
-          />
+          {href.slice(0, 8) !== 'http://y' ?
+            (
+              <Image
+                src={href}
+                h="55vh"
+                w="45vw"
+                bg="purple.100"
+                fit="cover"
+                borderTopLeftRadius={10}
+              />
+            ) :
+            (
+              <iframe
+                title="youtubeVideo"
+                src={href}
+                height="480px"
+                width="854px"
+              />
+            )}
           <Box
             w="17vw"
           >
@@ -103,7 +114,9 @@ const Story = (props) => {
           fontSize="10px"
           mb="1vh"
         >
-          NASA image title:
+          {href.slice(0, 8) !== 'http://y' ?
+            ('NASA image title: ') :
+            ('Video title of the truth: ')}
           {' '}
           {nasaTitle}
         </Text>

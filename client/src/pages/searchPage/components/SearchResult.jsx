@@ -19,9 +19,9 @@ const SearchResult = () => {
     setNasaTitle,
     setKeywords,
     setVideoDescription,
-    setVideoId,
+    // setVideoId,
     setVideoThumbnail,
-    setVideoTitle,
+    // setVideoTitle,
     setVideoUrl,
   } = useContext(EvidenceContext);
 
@@ -37,7 +37,6 @@ const SearchResult = () => {
       videoTitle,
       videoUrl,
     } = result;
-    console.log('result: ', result);
     // eslint-disable-next-line camelcase
     if (nasa_id) {
       setNasa_id(nasa_id);
@@ -48,7 +47,7 @@ const SearchResult = () => {
       setVideoDescription(videoDescription);
       setNasa_id(videoId);
       setVideoThumbnail(videoThumbnail);
-      setVideoTitle(videoTitle);
+      setNasaTitle(videoTitle);
       setVideoUrl(videoUrl);
       fetchImage(videoUrl);
     }
@@ -60,7 +59,6 @@ const SearchResult = () => {
         pt="20px"
       >
         <SimpleGrid columns={4} spacing={10}>
-          { console.log('searchResults: ', searchResults)}
           {
             searchResults.map((result) => (
             // eslint-disable-next-line react/no-array-index-key

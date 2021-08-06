@@ -14,10 +14,7 @@ import PostStory from './PostStory';
 const NewStory = () => {
   const { href } = useContext(EvidenceContext);
   const { userObj } = useContext(UserContext);
-  let imgOrVid = true;
-  if (href.slice(0, 4) === 'http') {
-    imgOrVid = false;
-  }
+
   return (
     <div>
       <Box
@@ -36,7 +33,7 @@ const NewStory = () => {
           {' '}
           {userObj.username}
         </Text>
-        {imgOrVid ?
+        {href.slice(0, 8) !== 'http://y' ?
           (
             <Image
               src={href}
@@ -49,7 +46,9 @@ const NewStory = () => {
           (
             <iframe
               title="youtubeVideo"
-              href={href}
+              src={href}
+              height="360"
+              width="640"
               objectFit="contain"
             />
           )}
