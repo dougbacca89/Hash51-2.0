@@ -7,7 +7,6 @@ import {
   Image,
   Flex,
   Heading,
-  Grid,
   useColorModeValue,
 } from '@chakra-ui/react';
 
@@ -137,8 +136,8 @@ const Story = (props) => {
   );
 };
 
-// Story.propTypes = {
-//   story: PropTypes.objectOf(PropTypes.object).isRequired,
-// };
+Story.propTypes = {
+  story: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default Story;
