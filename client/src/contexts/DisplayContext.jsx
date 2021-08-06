@@ -5,23 +5,23 @@ import axios from 'axios';
 
 const DisplayContext = createContext();
 
-function DisplayContextProvider({ children }){
-  const [ stories, setStories ] = useState([]);
-  const [ commentBody, setCommentBody ] = useState('');
+function DisplayContextProvider({ children }) {
+  const [stories, setStories] = useState([]);
+  const [commentBody, setCommentBody] = useState('');
 
 
 
   const handleCommentBody = (event) => setCommentBody(event.target.value);
 
-  const fetchStories = async() => {
+  const fetchStories = async () => {
     await axios.get('/routes/story')
-    .then(result => {
-      setStories(result.data.reverse());
-    });
+      .then((result) => {
+        setStories(result.data.reverse());
+      });
   };
 
   // eslint-disable-next-line camelcase
-  const postComment = async(post_id, userObj) => {
+  const postComment = async (post_id, userObj) => {
     const { username, profileImage } = userObj;
     const comment = { commentBody, post_id, userName: username, profileImage };
     await axios.post('/routes/story/comment', comment).then(() => setCommentBody('')).then(() => fetchStories());
@@ -45,7 +45,7 @@ function DisplayContextProvider({ children }){
 }
 
 DisplayContextProvider.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 
 export { DisplayContext, DisplayContextProvider };
