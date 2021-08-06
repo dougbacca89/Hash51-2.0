@@ -27,7 +27,7 @@ const UserContainer = (props) => {
     getEvidence();
     getConspirators();
   },
-  [JSON.stringify(userObj)]);
+  [JSON.stringify(userObj), stories]);
 
   return (
     <div>
@@ -35,7 +35,7 @@ const UserContainer = (props) => {
 
         {userObj.username ?
           (
-            <Box w="10vw" mr="10px">
+            <Box>
               <div>
                 <User user={user} />
                 <ConspiratorList conspirators={conspirators} />

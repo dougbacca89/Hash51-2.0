@@ -12,12 +12,13 @@ import {
 
 import CommentList from './CommentList';
 import { UserContext } from '../../../contexts/UserContext';
+import AddFriendPopover from './AddFriendPopover';
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
-  const { addConspirator, userObj } = useContext(UserContext);
+  const { addConspirator, userObj, isLoggedIn } = useContext(UserContext);
 
   const textColor = useColorModeValue('green.100', 'green.700');
   const whiteColor = useColorModeValue('whiteAlpha.900', 'blackAlpha.900');
@@ -110,11 +111,19 @@ const Story = (props) => {
                   }
                 }}
               >
+
                 Created by
                 {' '}
                 {userName}
               </Text>
             </Text>
+            {isLoggedIn && (
+            <AddFriendPopover
+              addConspirator={addConspirator}
+              userName={userName}
+              userObj={userObj}
+            />
+            )}
           </Box>
         </Flex>
         <Text
@@ -134,10 +143,6 @@ const Story = (props) => {
       <CommentList comments={comments} post_id={_id} />
     </div>
   );
-};
-
-Story.propTypes = {
-  story: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Story;

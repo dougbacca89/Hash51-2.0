@@ -16,7 +16,7 @@ const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('Database Connection');
+  console.log('Database Connection Successful');
 });
 
 mongoose.connect(atlasUri || mongoUri, {

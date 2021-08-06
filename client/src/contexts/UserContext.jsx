@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-
-
 const UserContext = createContext();
 
 function UserContextProvider({ children }) {
@@ -19,6 +17,7 @@ function UserContextProvider({ children }) {
   const [confirm, setConfirm] = useState('');
   const [userLogin, setUserLogin] = useState('');
   const [passLogin, setPassLogin] = useState('');
+  const [usersInChat, setUsersInChat] = useState([]);
 
   const handleUserReg = (event) => setUserReg(event.target.value);
   const handlePass = (event) => setPass(event.target.value);
@@ -95,7 +94,10 @@ function UserContextProvider({ children }) {
 
   const localLogin = (username, password) => {
     axios.post('/login', { username, password })
-      .then(getUser)
+      .then(() => {
+        getUser();
+        getConspirators();
+      })
       .catch((err) => {
         console.log('login error', err);
         alert('User Not Found');
@@ -122,6 +124,8 @@ function UserContextProvider({ children }) {
     isLoggedIn,
     localRegister,
     localLogin,
+    usersInChat,
+    setUsersInChat,
     localLogout,
     getUser,
     conspirators,
