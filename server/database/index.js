@@ -3,7 +3,6 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const passport = require('passport');
 
-// ci test
 const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 
@@ -57,6 +56,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.plugin(passportLocalMongoose);
+
 userSchema.plugin(findOrCreate);
 
 // eslint-disable-next-line new-cap
@@ -70,12 +70,12 @@ passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => done(err, user));
 });
 
-const localCallback = 'http://localhost:3000/auth/google/login';
+const localCallback = `http://${process.env.HOST}:${process.env.PORT}/auth/google/login`;
 
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/google/login',
+  callbackURL: localCallback,
   passReqToCallback: true,
 }, (req, accessToken, refreshToken, profile, cb) => {
   User.findOrCreate(

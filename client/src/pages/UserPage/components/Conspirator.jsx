@@ -6,7 +6,7 @@ import {
   Box,
   Image,
   Badge,
-  Button,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import DeleteFriendPopover from './DeleteFriendPopover.jsx';
@@ -17,10 +17,14 @@ const Conspirator = (props) => {
   const { username, profileImage, _id } = conspirator;
   const { updateConspirator, usersInChat, userObj } = useContext(UserContext);
 
+  const textColor = useColorModeValue('green.500', 'green.300');
+  const greyColor = useColorModeValue('gray.600', 'gray.300');
+
   return (
     <Box
+      w="8vw"
       mb="1px"
-      bg="gray.800"
+      bg={greyColor}
       borderRadius={10}
     >
       {usersInChat.includes(username) && <Badge>In Chat</Badge>}
@@ -34,7 +38,7 @@ const Conspirator = (props) => {
         mt="4px"
         ml="10px"
         fontSize="10px"
-        color="green.500"
+        color={textColor}
       >
         {username}
       </Text>

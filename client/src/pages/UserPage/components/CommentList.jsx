@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 
 import {
   Text,
-  Box
+  Box,
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import Comment from './Comment';
@@ -16,23 +17,29 @@ const CommentList = (props) => {
   const { comments, post_id } = props;
   const { userObj } = useContext(UserContext);
 
+  const textColor = useColorModeValue("green.500", "green.700");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+
   return (
     <Box
-      bg="gray.800"
+      bg={greyColor}
       mb="7vh"
       w="60vw"
       borderBottomRadius={10}
+      color={whiteColor}
     >
       <Text
         pt=".25vw"
         ml="2vw"
         mb="1vh"
-        fontSize="10px"
+        fontSize="px"
+        color={whiteColor}
       >
         Comments
       </Text>
 
-      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} />)}
+      {comments.map((comment) => <Comment key={comment.commentBody} comment={comment} color={textColor} />)}
 
       {userObj.username ? (
         <PostComment post_id={post_id} />
@@ -41,7 +48,7 @@ const CommentList = (props) => {
           ml="2vw"
           pb="1vh"
           fontSize="10px"
-          color="green.500"
+          color={textColor}
         >
           login to comment.
         </Text>

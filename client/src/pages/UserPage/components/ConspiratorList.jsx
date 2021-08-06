@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import {
-  Stack,
+  VStack,
   StackDivider,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import Conspirator from './Conspirator';
@@ -12,12 +13,15 @@ const ConspiratorList = () => {
   const { conspirators, usersInChat } = useContext(UserContext);
   useEffect(() => {
   }, [conspirators]);
+
+  const textColor = useColorModeValue('green.500', 'green.300');
+
   return (
-    <Stack
-      float="right"
-      mt={4}
-      h="43vh"
-      w="17vh"
+    <VStack
+      h="63vh"
+      // w="150px"
+      divider={<StackDivider borderColor={textColor} />}
+      spacing={2}
       overflowY="scroll"
       sx={{
         '&::-webkit-scrollbar': {
@@ -30,9 +34,10 @@ const ConspiratorList = () => {
         },
       }}
     >
+      <StackDivider borderColor={textColor} />
       {/* eslint-disable-next-line no-underscore-dangle */}
       {conspirators.map((conspirator) => (<Conspirator isInChat={usersInChat} key={conspirator._id} conspirator={conspirator} />))}
-    </Stack>
+    </VStack>
 
   );
 };

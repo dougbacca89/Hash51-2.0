@@ -4,6 +4,7 @@ import {
   Text,
   Box,
   Image,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -12,9 +13,12 @@ const User = () => {
   const { userObj } = useContext(UserContext);
   const { username, profileImage } = userObj;
 
+  const textColor = useColorModeValue('green.500', 'green.700');
+  const greyColor = useColorModeValue('gray.600', 'gray.300');
+
   return (
     <Box
-      bg="gray.800"
+      bg={greyColor}
       mb="1px"
       w="10vw"
       borderRadius={10}
@@ -30,7 +34,7 @@ const User = () => {
       <Text
         ml="10px"
         fontSize="12px"
-        color="green.500"
+        color={textColor}
       >
         {username}
       </Text>

@@ -14,7 +14,8 @@ import {
   InputLeftElement,
   Box,
   FormControl,
-  InputRightElement
+  InputRightElement,
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -33,6 +34,10 @@ const Login = props => {
     localLogin 
   } = useContext(UserContext);
 
+  const textColor = useColorModeValue("green.500", "green.300");
+  const whiteColor = useColorModeValue("whiteAlpha.900" , "blackAlpha.900");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
+
 
   return (
     <Flex
@@ -47,13 +52,13 @@ const Login = props => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="green.500">We want to believe...</Heading>
+        <Heading color={textColor}>We want to believe...</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
               spacing={4}
               p="1rem"
-              backgroundColor="whiteAlpha.900"
+              backgroundColor={whiteColor}
               boxShadow="md"
               borderRadius={10}
             >
@@ -74,7 +79,7 @@ const Login = props => {
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    color="gray.300"
+                    color={greyColor}
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -110,7 +115,7 @@ const Login = props => {
               </Box>
               <Button
                 borderRadius={10}
-                color="white"
+                color={whiteColor}
                 onClick={createUserClick}
                 variant="solid"
                 colorScheme="purple"
