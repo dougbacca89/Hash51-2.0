@@ -52,7 +52,6 @@ const NewStory = () => {
               src={href}
               height="360"
               width="640"
-              objectFit="contain"
             />
           )}
         { userObj.username ? (
