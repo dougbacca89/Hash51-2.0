@@ -9,6 +9,8 @@ function DisplayContextProvider({ children }) {
   const [stories, setStories] = useState([]);
   const [commentBody, setCommentBody] = useState('');
 
+
+
   const handleCommentBody = (event) => setCommentBody(event.target.value);
 
   const fetchStories = async () => {

@@ -69,12 +69,12 @@ passport.deserializeUser((id, done) => {
   User.findById(id, (err, user) => done(err, user));
 });
 
-const localCallback = 'http://localhost:3000/auth/google/login';
+const localCallback = `http://${process.env.HOST}:${process.env.PORT}/auth/google/login`;
 
 passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/google/login',
+  callbackURL: localCallback,
   passReqToCallback: true,
 }, (req, accessToken, refreshToken, profile, cb) => {
   User.findOrCreate(

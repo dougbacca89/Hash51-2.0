@@ -5,7 +5,8 @@ import {
   Text,
   Box,
   Flex,
-  Image
+  Image,
+  useColorModeValue
 } from "@chakra-ui/react";
 
 import { UserContext } from '../../../contexts/UserContext';
@@ -15,11 +16,15 @@ const Comment = (props) => {
   const { commentBody, userName, profileImage } = comment;
 
   const { addConspirator, userObj } = useContext(UserContext);
+
+  const textColor = useColorModeValue("green.100", "green.700");
+  const greyColor = useColorModeValue("gray.600" , "gray.300");
+
   
   return (
   <Box  
     w="56vw" 
-    bg="gray.700" 
+    bg={greyColor}
     mb="1.25vh" 
     ml="2vw" 
     borderRadius={5}
@@ -36,7 +41,7 @@ const Comment = (props) => {
         p={1}
         ml="6px"  
         minH="2vh"
-        fontSize="15px"
+        fontSize="20px"
         // eslint-disable-next-line consistent-return
         onClick={() => {
           if(userObj.username) {
@@ -44,13 +49,13 @@ const Comment = (props) => {
           }
         }}
       >
-        {userName}:  
+        <b>{userName}</b>:  
           <Text 
           p={1}
           ml="10px"  
           minH="2vh"
-          fontSize="11px"
-          color="green.500"
+          fontSize="18px"
+          color={textColor}
         >
           {commentBody}
         </Text> 
@@ -60,8 +65,8 @@ const Comment = (props) => {
   );
 };
 
-Comment.propTypes = {
-  comment: PropTypes.isRequired,
-};
+// Comment.propTypes = {
+//   comment: PropTypes.isRequired,
+// };
 
 export default Comment;

@@ -6,6 +6,7 @@ import {
   SimpleGrid,
   Flex,
   Heading,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 import { EvidenceContext } from '../../../contexts/EvidenceContext';
@@ -24,6 +25,8 @@ const SearchResult = () => {
     // setVideoTitle,
     setVideoUrl,
   } = useContext(EvidenceContext);
+
+  const textColor = useColorModeValue('green.500', 'green.300');
 
   const handleCLick = (result) => {
     const {
@@ -79,7 +82,7 @@ const SearchResult = () => {
           }
         </SimpleGrid>
       </Flex>
-    ) : <Heading color="green.500" size="md" m={2}>Search for the truth...</Heading>;
+    ) : <Heading color={textColor} size="md" m={2}>Search for the truth...</Heading>;
 };
 
 export default SearchResult;
