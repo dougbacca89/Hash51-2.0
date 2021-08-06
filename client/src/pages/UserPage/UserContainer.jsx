@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 import {
   Flex,
-  Box
-} from "@chakra-ui/react";
+  Box,
+} from '@chakra-ui/react';
 
 import { DisplayContext } from '../../contexts/DisplayContext';
 import { UserContext } from '../../contexts/UserContext';
@@ -14,7 +14,7 @@ import User from './components/User';
 import Story from './components/Story';
 import Chat from './components/Chat/Chat';
 
-const UserContainer = props => {
+const UserContainer = (props) => {
   const { user } = props;
   const { conspirators } = user;
 
@@ -25,23 +25,25 @@ const UserContainer = props => {
     getUser();
     fetchStories();
     getEvidence();
-    getConspirators();},
-    [JSON.stringify(userObj)]
-  );
+    getConspirators();
+  },
+  [JSON.stringify(userObj), stories]);
 
   return (
     <div>
       <Flex color="white">
 
         {userObj.username ?
-        (<Box w="10vw" mr="10px">
-          <div>
-            <User user={user}/>
-            <ConspiratorList conspirators={conspirators}/>
-          </div>
-        </Box>) : (
-          <div />
-        )}
+          (
+            <Box>
+              <div>
+                <User user={user} />
+                <ConspiratorList conspirators={conspirators} />
+              </div>
+            </Box>
+          ) : (
+            <div />
+          )}
 
         <Box
           maxH="89vh"
@@ -52,19 +54,19 @@ const UserContainer = props => {
             '&::-webkit-scrollbar': {
               width: '16px',
               borderRadius: '8px',
-              backgroundColor: `rgba(0, 0, 0, 0.05)`,
+              backgroundColor: 'rgba(0, 0, 0, 0.05)',
             },
             '&::-webkit-scrollbar-thumb': {
-              backgroundColor: `rgba(0, 0, 0, 0.5)`,
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
             },
           }}
         >
 
-          {stories.map((story) => (<Story key={story._id} story={story}/>))}
+          {stories.map((story) => (<Story key={story._id} story={story} />))}
 
         </Box>
       </Flex>
-          <Chat user={user}/>
+      <Chat user={user} />
     </div>
   );
 };

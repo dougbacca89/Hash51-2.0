@@ -11,13 +11,12 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { CLIENT_ID, CLIENT_SECRET, MONGO_PASS } = require('../config');
 
 const mongoUri = 'mongodb://localhost:27017/Hash51';
-const atlasUri = null; 
+const atlasUri = null;
 
 const db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-
   console.log('Database Connection Successful');
 });
 
@@ -35,26 +34,26 @@ const userSchema = mongoose.Schema({
   googleId: {
     type: String,
     unique: true,
-    sparse: true
+    sparse: true,
   },
   profileImage: String,
   source: String,
   coConspirators: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
-    }
+      ref: 'User',
+    },
   ],
   favorites: [
     {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Evidence'
-  }
-],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Evidence',
+    },
+  ],
   comments: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
+    ref: 'Comment',
+  }],
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -77,17 +76,16 @@ passport.use(new GoogleStrategy({
   clientID: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
   callbackURL: 'http://localhost:3000/auth/google/login',
-  passReqToCallback: true
+  passReqToCallback: true,
 }, (req, accessToken, refreshToken, profile, cb) => {
   User.findOrCreate(
-    { googleId: profile.id},
+    { googleId: profile.id },
     { username: profile.displayName,
-    email: profile.emails[0].value,
-    profileImage: profile.photos[0].value,
-    source: profile.provider
-  }, (err, user) => cb(err, user)
+      email: profile.emails[0].value,
+      profileImage: profile.photos[0].value,
+      source: profile.provider,
+    }, (err, user) => cb(err, user),
   );
-}
-));
+}));
 
 module.exports = { User, mongoUri };

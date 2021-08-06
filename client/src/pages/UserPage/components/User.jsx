@@ -3,16 +3,14 @@ import React, { useContext } from 'react';
 import {
   Text,
   Box,
-  Image
-} from "@chakra-ui/react";
+  Image,
+} from '@chakra-ui/react';
 
 import { UserContext } from '../../../contexts/UserContext';
-
 
 const User = () => {
   const { userObj } = useContext(UserContext);
   const { username, profileImage } = userObj;
-
 
   return (
     <Box

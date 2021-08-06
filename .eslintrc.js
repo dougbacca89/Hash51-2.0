@@ -5,7 +5,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
+  extends: ['airbnb'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -20,7 +20,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'linebreak-style': 'off',
     'no-console': ['error', { allow: ['info', 'warn'] }],
-    'semi': ['error', 'always'],
+    semi: ['error', 'always'],
     'func-style': ['error', 'expression'],
     'eol-last': ['error', 'always'],
     'object-curly-newline': 'off',

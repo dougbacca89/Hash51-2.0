@@ -6,18 +6,18 @@ import {
   Box,
   Image,
   Flex,
-  Heading
-} from "@chakra-ui/react";
+  Heading,
+} from '@chakra-ui/react';
 
 import CommentList from './CommentList';
 import { UserContext } from '../../../contexts/UserContext';
-
+import AddFriendPopover from './AddFriendPopover';
 
 const Story = (props) => {
   const { story } = props;
   const { userName, nasaTitle, userTitle, href, bodyText, comments, _id } = story;
 
-  const { addConspirator, userObj } = useContext(UserContext);
+  const { addConspirator, userObj, isLoggedIn } = useContext(UserContext);
 
   return (
     <div>
@@ -50,10 +50,10 @@ const Story = (props) => {
                 '&::-webkit-scrollbar': {
                   width: '16px',
                   borderRadius: '8px',
-                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 },
               }}
             >
@@ -71,10 +71,10 @@ const Story = (props) => {
                 '&::-webkit-scrollbar': {
                   width: '16px',
                   borderRadius: '8px',
-                  backgroundColor: `rgba(0, 0, 0, 0.05)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.05)',
                 },
                 '&::-webkit-scrollbar-thumb': {
-                  backgroundColor: `rgba(0, 0, 0, 0.5)`,
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 },
               }}
             >
@@ -87,14 +87,24 @@ const Story = (props) => {
                 color="white"
                 // eslint-disable-next-line consistent-return
                 onClick={() => {
-                  if(userObj.username) {
+                  if (userObj.username) {
                     return addConspirator(userName);
                   }
                 }}
               >
-                Created by {userName}
+
+                Created by
+                {' '}
+                {userName}
               </Text>
             </Text>
+            {isLoggedIn && (
+            <AddFriendPopover
+              addConspirator={addConspirator}
+              userName={userName}
+              userObj={userObj}
+            />
+            )}
           </Box>
         </Flex>
         <Text
@@ -102,13 +112,14 @@ const Story = (props) => {
           fontSize="10px"
           mb="1vh"
         >
-          NASA image title: {nasaTitle}
+          NASA image title:
+          {' '}
+          {nasaTitle}
         </Text>
       </Box>
-      <CommentList comments={comments} post_id={_id}/>
+      <CommentList comments={comments} post_id={_id} />
     </div>
   );
 };
-
 
 export default Story;

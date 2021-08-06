@@ -1,41 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import {
- VStack,
- StackDivider 
-} from "@chakra-ui/react";
+  Stack,
+  StackDivider,
+} from '@chakra-ui/react';
 
 import Conspirator from './Conspirator';
 import { UserContext } from '../../../contexts/UserContext';
 
 const ConspiratorList = () => {
-  const { conspirators } = useContext(UserContext);
-
+  const { conspirators, usersInChat } = useContext(UserContext);
+  useEffect(() => {
+  }, [conspirators]);
   return (
-    <VStack
-      h="63vh"
-      w="150px"
-      divider={<StackDivider borderColor="green.500" />}
-      spacing={2}
+    <Stack
+      float="right"
+      mt={4}
+      h="43vh"
+      w="17vh"
       overflowY="scroll"
       sx={{
         '&::-webkit-scrollbar': {
           width: '16px',
           borderRadius: '8px',
-          backgroundColor: `rgba(0, 0, 0, 0.05)`,
+          backgroundColor: 'rgba(0, 0, 0, 0.05)',
         },
         '&::-webkit-scrollbar-thumb': {
-          backgroundColor: `rgba(0, 0, 0, 0.5)`,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
         },
       }}
     >
-      <StackDivider borderColor="green.500" />
       {/* eslint-disable-next-line no-underscore-dangle */}
-      {conspirators.map((conspirator) => <Conspirator key={conspirator._id}conspirator={conspirator} />)}
-    </VStack>
-  
+      {conspirators.map((conspirator) => (<Conspirator isInChat={usersInChat} key={conspirator._id} conspirator={conspirator} />))}
+    </Stack>
+
   );
 };
-
 
 export default ConspiratorList;
