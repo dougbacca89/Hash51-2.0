@@ -56,6 +56,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.plugin(passportLocalMongoose);
+
 userSchema.plugin(findOrCreate);
 
 // eslint-disable-next-line new-cap
